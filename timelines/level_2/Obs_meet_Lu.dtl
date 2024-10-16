@@ -1,0 +1,74 @@
+Lulu: Ah ! Mais je ne trouve pas la sortie ! Il n'y a pas un trou où je pourrais me faufiler ???
+Lulu: Raaah ! Je pense que je vais creuser...
+Obs: ...
+Obs: Elle est idiote ou quoi ?
+[signal arg="lulu_leve_la_tete"]
+[wait time="1.0"]
+Lulu: Hein ? Y'a quelqu'un !!
+Lulu: Mais... T'es qui toi ? Et qu'est-ce que tu fais ici ??
+[signal arg="lulu_avance_vers_obs"]
+[wait time="1.0"]
+Lulu: (Oh, il est mignon...)
+Obs: N'approchez pas, je sais que vous êtes une Fée !!\
+Même si vous, vous n'êtes pas une Ombre, je suis sûr que vous faites partie des leurs !!
+Lulu: ... une Ombre ? Mais qu'est-ce qu'il raconte lui ?
+[signal arg="lulu_avance_encore_vers_obs"]
+[wait time="1.0"]
+Obs: Arrêtez vous !! Vous n'en avez jamais assez, hein ?!!
+Lulu: Hein ?
+Obs: Huf...
+Obs: Que faites-vous ici ?! Ca fait des lustres qu'une Fée n'est pas venue dans les Sous-Terres.
+Lulu: Attends, on n'en a jamais assez de quoi ?? Qu'est-ce que tu voulais dire par là ??
+Obs: Répondez à ma question !
+[wait time="2.0"]
+Lulu: ...
+[wait time="2.0" hide_text="false"]
+Lulu: Notre Mère se meurt.
+Lulu: Elle se met à geler complètement en surface... Le froid atteint des records extrêmes.
+Lulu: Son Coeur a cessé de battre. J'ai été envoyée pour la soigner.
+[wait time="1.0"]
+Obs: Comment savez-vous que c'est son Coeur ?
+Lulu: Nous pouvons le sentir.
+Obs: Hum...
+[wait time="2.0"]
+Obs: Donc... Vous êtes venu pour soigner le Grand Batteur ?
+Lulu: Si c'est ce que toi et tes amis, appelez le Coeur de notre Mère, alors oui.
+Obs: ... Vous êtes sûr ?
+Lulu: Pourquoi ? Il y aurait une autre raison selon toi ?
+Obs: Hmm...
+Obs: Comment je peux savoir que ce que vous dites est vrai ? Qu'est-ce qui me dit que vos intentions ne sont pas mauvaises ?
+Lulu: Ben, regarde \: 
+[signal arg="lulu_montre_le_fragment"]
+[wait time="1.0"]
+Obs: C'est un simple Cristal.
+Lulu: Non, non non. C'est un Fragment de Pulsateur.
+Obs: Un Fragment de quoi ?
+Lulu: Le Coeur s'est arrêté de battre parce que presque tout les Pulsateurs se sont cassé.
+Lulu: Ma mission est de retrouver les Fragments du Pulsateur Tulipe pour le relancer.
+Lulu: Une fois que j'aurai tout les Fragments, je n'aurais qu'à me rendre à son nid pour le remettre en vie.
+Lulu: Un souffle de Lumière, et tout redeviendra comme avant.
+Lulu: C'est le dernier Pulsateur a réanimer. Ensuite, le Coeur de notre Mère se remettra à battre.
+Lulu: Voilà ! C'est pour ça que je suis descendu aussi bas !\
+C'est le premier que je trouve.
+[wait time="2.0"]
+Lulu: Mais... au fait... T'ES QUI TOI ?!! ET POURQUOI TOUTES LES LUMIERES SONT ETEINTES ?!! VITE !! JE DOIS EN ALLUMER UNE !!! Sinon.......... Euh...
+[wait time="1.5"]
+Lulu: ... Mais... je suis dans le noir ?
+Obs: Je vois...
+Obs: Bien, je vous fais confiance.\
+J'ai décidé de vous aider mademoiselle. Je connais un chemin pour descendre.
+Lulu: Oh, c'est vrai ???
+Obs: Suivez-moi.
+Lulu: Chouette !! Merci beaucoup !!
+[signal arg="Obs_part_mais_lulu_l_arrete"]
+[wait time="1.0"]
+Lulu: Attends une seconde !!
+[signal arg="obs_s_arrete"]
+[wait time="1.0"]
+Lulu: Mais comment tu fais pour te déplacer sans Lumière ?
+Obs: Je suis un Ténébreux. Je me déplace dans l'obscurité. Je croyais que vous étiez au courant.
+[wait time="1.0"]
+Obs: Suivez-moi.
+[signal arg="obs_part"]
+Obs: (Mais comment a-t-elle fait pour survivre jusqu'ici ?)
+[signal arg="end_meeting"]

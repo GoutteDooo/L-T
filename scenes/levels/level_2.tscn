@@ -1,0 +1,506 @@
+[gd_scene load_steps=25 format=4 uid="uid://vn6qc30mlso4"]
+
+[ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_mk6ou"]
+[ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="1_njl74"]
+[ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="2_o2txv"]
+[ext_resource type="PackedScene" uid="uid://cfvb6ft7w6ys4" path="res://scenes/GUI/gui.tscn" id="2_t17ww"]
+[ext_resource type="Texture2D" uid="uid://b67mnscpgsv3h" path="res://assets/sprites/decor/background4a.png" id="3_0vmn1"]
+[ext_resource type="Texture2D" uid="uid://b37kpjsol1tlf" path="res://assets/sprites/decor/world_tileset.png" id="3_673a1"]
+[ext_resource type="Texture2D" uid="uid://bawyr2vu0ttsv" path="res://assets/sprites/decor/background1.png" id="4_u2dh7"]
+[ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="5_pvy32"]
+[ext_resource type="PackedScene" uid="uid://d3k7f01mk0jkc" path="res://scenes/objects/magic_light.tscn" id="6_bw2e7"]
+[ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="8_8ty5h"]
+[ext_resource type="PackedScene" uid="uid://doxiyohuarwi6" path="res://scenes/objects/checkpoint_obscurite.tscn" id="9_h5f8d"]
+[ext_resource type="PackedScene" uid="uid://cty4e4wfd0ri1" path="res://scenes/objects/cristal_rouge.tscn" id="15_22bx4"]
+[ext_resource type="PackedScene" uid="uid://8yvdlv2frcn5" path="res://scenes/objects/CristalBleu.tscn" id="15_b1y15"]
+[ext_resource type="PackedScene" uid="uid://bylv3tmj3jxtg" path="res://scenes/objects/fragment.tscn" id="16_ks6kw"]
+[ext_resource type="PackedScene" uid="uid://xx3en3vg2dxk" path="res://scenes/objects/platform.tscn" id="17_f6j8o"]
+[ext_resource type="PackedScene" uid="uid://dpt628j8atjwq" path="res://scenes/objects/event_zone.tscn" id="18_auw2s"]
+
+[sub_resource type="Animation" id="Animation_1huds"]
+resource_name = "Obs_meet_Lu"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Obscurite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(546, 321)]
+}
+
+[sub_resource type="Animation" id="Animation_33h56"]
+resource_name = "Obscurite_appear"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Obscurite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(3.56667, 4.73333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-12, -152), Vector2(28, -152)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3.56667, 4.73334, 5.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-11, -11)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3.56667, 4.73334, 5.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2, 2), Vector2(4, 4)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"deactive_light_hole"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mushroom")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.73333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"handle_mushroom_light"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_h2l0f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Obscurite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-22, -152), Vector2(-19, -151)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lumiere:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(30, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_wtu6w"]
+resource_name = "end_Obscur_appeared"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333334, 1.4, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, -11), Vector2(-11, -11), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 1.4, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(4, 4), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wky64"]
+_data = {
+"Obs_meet_Lu": SubResource("Animation_1huds"),
+"Obscurite_appear": SubResource("Animation_33h56"),
+"RESET": SubResource("Animation_h2l0f"),
+"end_Obscur_appeared": SubResource("Animation_wtu6w")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8vq5b"]
+polygon = PackedVector2Array(-8, 8, -8, -8, 8, -8, 8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s2ae0"]
+texture = ExtResource("3_673a1")
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+11:0/0 = 0
+0:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_8vq5b")
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+9:2/0 = 0
+10:2/0 = 0
+11:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+9:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+9:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+6:8/0 = 0
+7:8/0 = 0
+8:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+6:9/0 = 0
+7:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+6:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+0:12/0 = 0
+1:12/0 = 0
+2:12/0 = 0
+3:12/0 = 0
+4:12/0 = 0
+0:13/0 = 0
+1:13/0 = 0
+2:13/0 = 0
+3:13/0 = 0
+4:13/0 = 0
+5:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+2:14/0 = 0
+3:14/0 = 0
+4:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+2:15/0 = 0
+3:15/0 = 0
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_won75"]
+occlusion_layer_0/light_mask = 1
+physics_layer_0/collision_layer = 15
+physics_layer_0/collision_mask = 15
+sources/0 = SubResource("TileSetAtlasSource_s2ae0")
+
+[node name="Level2" type="Node2D"]
+position = Vector2(18, 74)
+script = ExtResource("1_mk6ou")
+
+[node name="Cinematique" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_wky64")
+}
+
+[node name="Magic_light" parent="Cinematique" instance=ExtResource("6_bw2e7")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 0, 1)
+position = Vector2(18, 58)
+rotation = -3.14159
+scale = Vector2(0.683103, 0.683103)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 70
+limit_right = 640
+limit_bottom = 400
+
+[node name="GUI" parent="." instance=ExtResource("2_t17ww")]
+
+[node name="Ambiance" type="CanvasModulate" parent="."]
+z_index = -10
+position = Vector2(6, 6)
+color = Color(0.165656, 0.165656, 0.165656, 1)
+
+[node name="Obscurite" parent="." instance=ExtResource("1_njl74")]
+unique_name_in_owner = true
+position = Vector2(-22, -152)
+
+[node name="Lumiere" parent="." instance=ExtResource("2_o2txv")]
+unique_name_in_owner = true
+position = Vector2(30, 3)
+
+[node name="BGs" type="Node2D" parent="."]
+position = Vector2(368, 159)
+scale = Vector2(0.799095, 0.799095)
+
+[node name="Background" type="Sprite2D" parent="BGs"]
+z_index = -99
+position = Vector2(-98.8618, 53.8109)
+scale = Vector2(1.15635, 1.15635)
+texture = ExtResource("3_0vmn1")
+
+[node name="Bg2" type="Sprite2D" parent="BGs"]
+z_index = -100
+position = Vector2(-89.748, 31.4213)
+scale = Vector2(1.17655, 1.30821)
+texture = ExtResource("4_u2dh7")
+
+[node name="floor" type="TileMapLayer" parent="."]
+z_index = 10
+use_parent_material = true
+position = Vector2(6, 65)
+scale = Vector2(1.03741, 0.993878)
+tile_map_data = PackedByteArray("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AAAIAAAAAAAGAAEAAAAJAP//AAAGAAEAAAAKAP//AAAGAAEAAAALAP//AAAGAAEAAAAMAP//AAAGAAEAAAANAAAAAAAGAAEAAAAOAP//AAAGAAEAAAARAP//AAAGAAEAAAATAAAAAAAGAAEAAAAUAAAAAAAGAAEAAAAVAAAAAAAGAAEAAAAfAPz/AAAGAAEAAAAfAP3/AAAGAAEAAAAfAP7/AAAGAAEAAAAfAP//AAAGAAEAAAATAAUAAAAGAAEAAAAYAAUAAAAGAAEAAAAZAAUAAAAGAAEAAAAaAAUAAAAGAAEAAAAaAAQAAAAGAAEAAAAbAAQAAAAGAAEAAAAcAAQAAAAGAAEAAAAWAAAAAAAGAAEAAAAXAAAAAAAGAAEAAAAYAAAAAAAGAAEAAAAZAAAAAAAGAAEAAAAaAAAAAAAGAAEAAAAkAAUAAAAGAAEAAAAjAAYAAAAGAAEAAAAiAAcAAAAGAAEAAAAdAAQAAAAGAAEAAAAeAAQAAAAGAAEAAAAfAAkAAAAGAAEAAAAbAA4AAAAGAAEAAAAbAA8AAAAGAAEAAAAaAA8AAAAGAAEAAAAGAA8AAAAGAAEAAAAHAA8AAAAGAAEAAAAIAA8AAAAGAAEAAAALAA8AAAAGAAEAAAAMAA8AAAAGAAEAAAANAA8AAAAGAAEAAAAOAA8AAAAGAAEAAAATAA8AAAAGAAEAAAAUAA8AAAAGAAEAAAAVAA8AAAAGAAEAAAAWAA8AAAAGAAEAAAAXAA8AAAAGAAEAAAAYAA8AAAAGAAEAAAAZAA8AAAAGAAEAAAAYAAsAAAAGAAEAAAAWAAoAAAAGAAEAAAAVAAoAAAAGAAEAAAAUAAsAAAAGAAEAAAATAAsAAAAGAAEAAAASAAsAAAAGAAEAAAAPAAoAAAAGAAEAAAAQAAoAAAAGAAEAAAAMAAsAAAAGAAEAAAANAAsAAAAGAAEAAAAOAAsAAAAGAAEAAAAUABAAAAAGAAEAAAALABAAAAAGAAEAAAAHABAAAAAGAAEAAAAIABAAAAAGAAEAAAAZABAAAAAGAAEAAAAaABAAAAAGAAEAAAAbAAkAAAAGAAEAAAAVAAkAAAAGAAEAAAASAAoAAAAGAAEAAAATAAoAAAAGAAEAAAAUAAoAAAAGAAEAAAAUAAQAAAAGAAEAAAAVAAQAAAAGAAEAAAAWAAQAAAAGAAEAAAAXAAQAAAAGAAEAAAAdAA0AAAAGAAEAAAAcAA0AAAAGAAEAAAAOAAQAAAAGAAEAAAAPAP//AAAGAAEAAAAQAP//AAAGAAEAAAAOAAkAAAAGAAEAAAAQAAkAAAAGAAEAAAARAAoAAAAGAAEAAAAOAAoAAAAGAAEAAAAIAAsAAAAGAAEAAAAHAAsAAAAGAAEAAAAGAAsAAAAGAAEAAAADAAYAAAAGAAEAAAADAAoAAAAGAAEAAAADAAsAAAAGAAEAAAACAAwAAAAGAAEAAAABAA0AAAAGAAEAAAAAAA4AAAAGAAEAAAABAA8AAAAGAAEAAAACABAAAAAGAAEAAAADABEAAAAGAAEAAAAEABIAAAAGAAEAAAAEABMAAAAGAAEAAAAFABMAAAAGAAEAAAADABIAAAAGAAEAAAADABMAAAAGAAEAAAACABMAAAAGAAEAAAACABIAAAAGAAEAAAACABEAAAAGAAEAAAABABEAAAAGAAEAAAABABIAAAAGAAEAAAABABMAAAAGAAEAAAAAABMAAAAGAAEAAAAAABIAAAAGAAEAAAABABAAAAAGAAEAAAAAABAAAAAGAAEAAAAAAA8AAAAGAAEAAAAAABEAAAAGAAEAAAAfAAoAAAAGAAEAAAAfAAsAAAAGAAEAAAAeAAwAAAAGAAEAAAADAPv/AAAGAAEAAAADAPz/AAAGAAEAAAADAP3/AAAGAAEAAAADAP7/AAAGAAEAAAADAP//AAAGAAEAAAADAAAAAAAGAAEAAAADAAEAAAAGAAEAAAAAAA0AAAAGAAEAAAAgABUAAAAGAAEAAAAfABUAAAAGAAEAAAAeABUAAAAGAAEAAAAdABUAAAAGAAEAAAAcABUAAAAGAAEAAAAbABUAAAAGAAEAAAAaABUAAAAGAAEAAAAZABUAAAAGAAEAAAAYABUAAAAGAAEAAAAXABUAAAAGAAEAAAAWABUAAAAGAAEAAAAVABUAAAAGAAEAAAAUABUAAAAGAAEAAAATABUAAAAGAAEAAAASABUAAAAGAAEAAAARABUAAAAGAAEAAAAQABUAAAAGAAEAAAAPABUAAAAGAAEAAAAOABUAAAAGAAEAAAANABUAAAAGAAEAAAAMABUAAAAGAAEAAAALABUAAAAGAAEAAAAKABUAAAAGAAEAAAAJABUAAAAGAAEAAAAIABUAAAAGAAEAAAAHABUAAAAGAAEAAAAGABUAAAAGAAEAAAAFABUAAAAGAAEAAAAEABUAAAAGAAEAAAADABUAAAAGAAEAAAACABUAAAAGAAEAAAABABUAAAAGAAEAAAAAABUAAAAGAAEAAAD//xUAAAAGAAEAAAAgABEAAAAGAAEAAAAgABAAAAAGAAEAAAAhABkAAAAGAAEAAAAiABkAAAAGAAEAAAAjABkAAAAGAAEAAAAkABkAAAAGAAEAAAAlABYAAAAGAAEAAAAlABUAAAAGAAEAAAAfABMAAAAGAAEAAAAfABIAAAAGAAEAAAAeABMAAAAGAAEAAAAlAAgAAAAGAAEAAAAlAAkAAAAGAAEAAAAlAAoAAAAGAAEAAAAlAAsAAAAGAAEAAAAkAAYAAAAGAAEAAAAkAAcAAAAGAAEAAAAjAAcAAAAGAAEAAAAiAAgAAAAGAAEAAAAjAAgAAAAGAAEAAAAjAAkAAAAGAAEAAAAkAAkAAAAGAAEAAAAkAAgAAAAGAAEAAAAiAAkAAAAGAAEAAAAhAAwAAAAGAAEAAAAiAAsAAAAGAAEAAAAiAAoAAAAGAAEAAAAjAAoAAAAGAAEAAAAkAAoAAAAGAAEAAAAkAAwAAAAGAAEAAAAkAA0AAAAGAAEAAAAhABAAAAAGAAEAAAD+/w0AAAAGAAEAAAD9/w0AAAAGAAEAAAD8/w0AAAAGAAEAAAD9/wgAAAAGAAEAAAD7/wgAAAAGAAEAAAD8/wgAAAAGAAEAAAD6/wgAAAAGAAEAAAD5/wgAAAAGAAEAAAD4/wgAAAAGAAEAAAD4/wkAAAAGAAEAAAD4/woAAAAGAAEAAAD4/wsAAAAGAAEAAAD4/wwAAAAGAAEAAAD4/w0AAAAGAAEAAAD5/w0AAAAGAAEAAAD6/w0AAAAGAAEAAAD7/w0AAAAGAAEAAAADAPP/AAAGAAEAAAAEAPP/AAAGAAEAAAAFAPP/AAAGAAEAAAD///P/AAAGAAEAAAD+//P/AAAGAAEAAAD9//P/AAAGAAEAAAD8//P/AAAGAAEAAAAhABUAAAAGAAEAAAAiABUAAAAGAAEAAAAjABUAAAAGAAEAAAAkABUAAAAGAAEAAAARAAUAAAAGAAEAAAASAAUAAAAGAAEAAAAQAAQAAAAGAAEAAAAPAAQAAAAGAAEAAAAPAAkAAAAGAAEAAAASAP//AAAGAAEAAAATAP//AAAGAAEAAAAUAP//AAAGAAEAAAANAP//AAAGAAEAAAAIAAEAAAAGAAEAAAAJAAAAAAAGAAEAAAASAA8AAAAGAAEAAAAQABAAAAAGAAEAAAARAA8AAAAGAAEAAAAQAA8AAAAGAAEAAAAPAA8AAAAGAAEAAAD///T/AAAGAAEAAAD///X/AAAGAAEAAAD///b/AAAGAAEAAAD///f/AAAGAAEAAAD///j/AAAGAAEAAAD///n/AAAGAAEAAAD///r/AAAGAAEAAAD///v/AAAGAAEAAAADAPT/AAAGAAEAAAADAPX/AAAGAAEAAAADAPb/AAAGAAEAAAADAPf/AAAGAAEAAAADAPj/AAAGAAEAAAADAPn/AAAGAAEAAAADAPr/AAAGAAEAAAD8//L/AAAGAAEAAAD8//H/AAAGAAEAAAD8//D/AAAGAAEAAAD8/+//AAAGAAEAAAAFAPL/AAAGAAEAAAAFAPH/AAAGAAEAAAAFAPD/AAAGAAEAAAAFAO//AAAGAAEAAAAFAO7/AAAGAAEAAAAEAO7/AAAGAAEAAAADAO7/AAAGAAEAAAACAO7/AAAGAAEAAAABAO7/AAAGAAEAAAAAAO7/AAAGAAEAAAD//+7/AAAGAAEAAAD+/+7/AAAGAAEAAAD9/+7/AAAGAAEAAAD8/+7/AAAGAAEAAAAkABQAAAAGAAEAAAAjABQAAAAGAAEAAAAiABQAAAAGAAEAAAAhABQAAAAGAAEAAAAmAAgAAAAGAAEAAAAmAAkAAAAGAAEAAAAmAAoAAAAGAAEAAAAmAAsAAAAGAAEAAAAnAAcAAAAGAAEAAAAnAAgAAAAGAAEAAAAnAAkAAAAGAAEAAAAnAAoAAAAGAAEAAAAnAAsAAAAGAAEAAAAXAAsAAAAGAAEAAAAZAAsAAAAGAAEAAAAaAAoAAAAGAAEAAAAUAAkAAAAGAAEAAAAcAAkAAAAGAAEAAAAJAAsAAAAGAAEAAAAGAAoAAAAGAAEAAAA=")
+tile_set = SubResource("TileSet_won75")
+
+[node name="Checkpoint_Lumiere" parent="." instance=ExtResource("8_8ty5h")]
+unique_name_in_owner = true
+position = Vector2(-98, 204)
+scale = Vector2(1.87533, 1)
+
+[node name="Checkpoint_Obscurite" parent="." instance=ExtResource("9_h5f8d")]
+unique_name_in_owner = true
+position = Vector2(-97, 206)
+scale = Vector2(1.85774, 1.04021)
+
+[node name="Mushroom" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(108, 144)
+scale = Vector2(1.82541, 1.82541)
+mushroom_light_on = true
+
+[node name="Mushroom2" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(254, 50)
+scale = Vector2(1.71999, 1.71999)
+
+[node name="Mushroom3" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(456, 3)
+rotation = 3.14159
+scale = Vector2(1.15848, 1.15848)
+
+[node name="Mushroom4" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(440, 74)
+rotation = 1.57079
+scale = Vector2(1.92288, 1.92288)
+
+[node name="M_OK1" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(293, 143)
+scale = Vector2(1.20378, 1.20378)
+
+[node name="M_OK2" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(488, 129)
+scale = Vector2(1.88157, 1.88157)
+
+[node name="CR_OK3" parent="." instance=ExtResource("15_22bx4")]
+position = Vector2(462, 189)
+scale = Vector2(0.306065, 0.306065)
+
+[node name="M_OK3" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(412, 240)
+scale = Vector2(1.53209, 1.53209)
+
+[node name="Mushroom8" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(319, 304)
+scale = Vector2(0.658454, 0.658454)
+
+[node name="CR_OK4" parent="." instance=ExtResource("15_22bx4")]
+position = Vector2(379, 296)
+scale = Vector2(0.306065, 0.306065)
+
+[node name="M_OK4" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(205, 242)
+rotation = 12.5664
+scale = Vector2(1.00164, 1.00164)
+
+[node name="Mushroom10" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(208, 305)
+rotation = 6.28318
+scale = Vector2(0.711668, 0.711668)
+
+[node name="CR_OK5" parent="." instance=ExtResource("15_22bx4")]
+position = Vector2(210, 301)
+scale = Vector2(0.306065, 0.306065)
+
+[node name="M_OK5" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(71, 249)
+rotation = 1.57079
+scale = Vector2(0.940946, 0.940946)
+
+[node name="Mushroom12" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(94, 370)
+scale = Vector2(1.07431, 1.07769)
+mushroom_light_on = true
+
+[node name="CB_OK6" parent="." instance=ExtResource("15_b1y15")]
+position = Vector2(131, 380)
+scale = Vector2(0.310676, 0.310676)
+
+[node name="Mushroom13" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(249, 385)
+scale = Vector2(1.04907, 1.04907)
+
+[node name="Mushroom14" parent="." instance=ExtResource("5_pvy32")]
+position = Vector2(400, 385)
+scale = Vector2(1.335, 1.335)
+
+[node name="Fragment" parent="." instance=ExtResource("16_ks6kw")]
+position = Vector2(565, 368)
+scale = Vector2(0.799095, 0.799095)
+
+[node name="Platform" parent="." instance=ExtResource("17_f6j8o")]
+position = Vector2(-2.38419e-07, 245)
+rotation = 1.57079
+scale = Vector2(2.34091, 1.30958)
+collision_layer = 0
+collision_mask = 0
+
+[node name="Entering_Obscur" parent="." instance=ExtResource("18_auw2s")]
+unique_name_in_owner = true
+position = Vector2(549, 296)
+scale = Vector2(0.173593, -0.858669)
+collision_layer = 15
+collision_mask = 15
+
+[connection signal="animation_finished" from="Cinematique" to="." method="_on_cinematique_animation_finished"]
+[connection signal="body_entered" from="Checkpoint_Lumiere" to="." method="_on_checkpoint_lumiere_body_entered"]
+[connection signal="body_entered" from="Fragment" to="." method="_on_fragment_body_entered"]
+[connection signal="body_entered" from="Entering_Obscur" to="." method="_on_entering_obscur_body_entered"]

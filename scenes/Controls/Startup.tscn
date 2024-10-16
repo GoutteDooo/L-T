@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://xhoh8ignsul2"]
+
+[ext_resource type="Script" path="res://scripts/startup.gd" id="1_mmkd6"]
+[ext_resource type="AudioStream" uid="uid://cx73llh6q1wd8" path="res://assets/sounds/Retro Negative Short 21.wav" id="2_6gvsi"]
+[ext_resource type="AudioStream" uid="uid://demnomrj4khma" path="res://assets/sounds/Retro Magic 11.wav" id="3_evtgx"]
+[ext_resource type="AudioStream" uid="uid://bckdy2233yi63" path="res://assets/sounds/Victory.wav" id="4_p5631"]
+[ext_resource type="AudioStream" uid="uid://n7w7qo1ik7p3" path="res://assets/sounds/Checkpoint.wav" id="5_87bra"]
+[ext_resource type="AudioStream" uid="uid://4vubxm7gtgho" path="res://assets/sounds/NoMagicYet.wav" id="6_0f88m"]
+[ext_resource type="AudioStream" uid="uid://pymm75pdc4um" path="res://assets/sounds/MagicLoop.wav" id="7_kqbr7"]
+[ext_resource type="AudioStream" uid="uid://bq3i38httoevp" path="res://assets/sounds/MagicLoopMP3.mp3" id="8_odj1h"]
+
+[node name="Startup" type="Node2D"]
+script = ExtResource("1_mmkd6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="DyingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_6gvsi")
+bus = &"SFX"
+
+[node name="MagicLumiereSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_evtgx")
+bus = &"SFX"
+
+[node name="MagicObscuriteSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_evtgx")
+pitch_scale = 0.9
+attenuation = 0.933033
+bus = &"SFX"
+
+[node name="VictorySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p5631")
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="CheckpointSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_87bra")
+bus = &"SFX"
+
+[node name="NoMagicYetSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_0f88m")
+bus = &"SFX"
+
+[node name="MagicLoopSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kqbr7")
+bus = &"SFX"
+
+[node name="MagicLoopHadesSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_odj1h")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

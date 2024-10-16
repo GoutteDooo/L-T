@@ -1,0 +1,164 @@
+[gd_scene load_steps=9 format=3 uid="uid://bylv3tmj3jxtg"]
+
+[ext_resource type="Texture2D" uid="uid://8wutyg8p8bin" path="res://icon.svg" id="1_n00gd"]
+[ext_resource type="Script" path="res://scripts/fragment.gd" id="1_ngueb"]
+[ext_resource type="Texture2D" uid="uid://ddw5vknpsgw1k" path="res://assets/sprites/lights/ddxt97e-141fe084-2604-4e10-b33a-94202ffb4315.png" id="3_u7ma8"]
+[ext_resource type="AudioStream" uid="uid://bacwlwd3xrf7s" path="res://assets/sounds/PickUp.mp3" id="4_t4f8p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_um0hp"]
+radius = 12.2066
+
+[sub_resource type="Animation" id="Animation_8yg5m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Fragment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Recup_Fragment:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Light_Fragment:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_agroh"]
+resource_name = "collected"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite_Fragment:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Recup_Fragment:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.83333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Light_Fragment:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_281iv"]
+_data = {
+"RESET": SubResource("Animation_8yg5m"),
+"collected": SubResource("Animation_agroh")
+}
+
+[node name="Fragment" type="Area2D"]
+script = ExtResource("1_ngueb")
+
+[node name="Sprite_Fragment" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+light_mask = 3
+rotation = 2.09283
+scale = Vector2(0.2, 0.2)
+skew = 0.523599
+texture = ExtResource("1_n00gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.96046e-08, 5.96045e-08)
+rotation = 0.912629
+shape = SubResource("CircleShape2D_um0hp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_281iv")
+}
+
+[node name="Light_Fragment" type="PointLight2D" parent="."]
+position = Vector2(-7.45058e-09, 1)
+scale = Vector2(-0.0788469, -0.134039)
+texture = ExtResource("3_u7ma8")
+
+[node name="Recup_Fragment" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_t4f8p")
+pitch_scale = 0.8
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

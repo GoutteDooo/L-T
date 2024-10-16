@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv6gseyuvh3xk"]
+
+[ext_resource type="Texture2D" uid="uid://cestig11dv1eb" path="res://assets/sprites/decor/platforms.png" id="1_3y5lo"]
+[ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="2_hsbjf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gu0p8"]
+size = Vector2(188.25, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b2ms"]
+size = Vector2(4.08427, 51.25)
+
+[node name="Platform_Both" type="AnimatableBody2D"]
+
+[node name="CentreDroit" type="Sprite2D" parent="."]
+position = Vector2(23.25, -0.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="Droite" type="Sprite2D" parent="."]
+position = Vector2(70.25, -0.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="Gauche" type="Sprite2D" parent="."]
+position = Vector2(-70.75, -0.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="CentreGauche" type="Sprite2D" parent="."]
+position = Vector2(-23.75, -0.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="CollisionShapeBas" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_gu0p8")
+one_way_collision = true
+
+[node name="CentreGauche2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-0.5, -27.75)
+rotation = 1.5708
+scale = Vector2(1.8, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="CollisionShapeColonne" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
+scale = Vector2(1.8, 1)
+shape = SubResource("RectangleShape2D_0b2ms")
+
+[node name="CentreDroit2" type="Sprite2D" parent="."]
+position = Vector2(23.25, -57.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="Droite2" type="Sprite2D" parent="."]
+position = Vector2(70.25, -57.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="Gauche2" type="Sprite2D" parent="."]
+position = Vector2(-70.75, -57.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="CentreGauche3" type="Sprite2D" parent="."]
+position = Vector2(-23.75, -57.5)
+scale = Vector2(1.5, 1)
+texture = ExtResource("1_3y5lo")
+region_enabled = true
+region_rect = Rect2(16.5835, 15.8093, 31.5734, 9.84859)
+
+[node name="CollisionShapeBas2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -58)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_gu0p8")
+one_way_collision = true
+
+[node name="Mushroom" parent="." instance=ExtResource("2_hsbjf")]
+position = Vector2(-49, -52)
+rotation = 3.14159
+mushroom_light_on = true

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb4catmofiahb"]
+
+[ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="1_lmw63"]
+[ext_resource type="PackedScene" uid="uid://cfvb6ft7w6ys4" path="res://scenes/GUI/gui.tscn" id="1_ueryn"]
+[ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="2_5ildt"]
+
+[node name="Game" type="Node2D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_ueryn")]
+
+[node name="Lumiere" parent="." instance=ExtResource("1_lmw63")]
+
+[node name="Obscurite" parent="." instance=ExtResource("2_5ildt")]

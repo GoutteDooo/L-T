@@ -1,0 +1,146 @@
+[gd_scene load_steps=18 format=3 uid="uid://d3k7f01mk0jkc"]
+
+[ext_resource type="Script" path="res://scripts/magic_light.gd" id="1_gjxg2"]
+[ext_resource type="Texture2D" uid="uid://c3ihx2ldmubo5" path="res://assets/sprites/lights/64x64 textures (99).png" id="2_635ak"]
+[ext_resource type="Texture2D" uid="uid://cei6vjla7f3ps" path="res://assets/sprites/lights/white_circle_thin-500x500.png" id="4_twrul"]
+[ext_resource type="Texture2D" uid="uid://cp3xvbhpdwalp" path="res://assets/sprites/lights/160x160 textures (107).png" id="5_sl3mb"]
+[ext_resource type="Texture2D" uid="uid://crn3df5mmgoue" path="res://assets/sprites/lights/circle-128.png" id="6_d4n0f"]
+[ext_resource type="Texture2D" uid="uid://bg3mluagyynlb" path="res://assets/sprites/lights/4.png" id="8_ymumb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_166en"]
+radius = 123.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ok4vs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2y8rp"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_olu44"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_w32nk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wfdqr"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rbhh"]
+atlas = ExtResource("8_ymumb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w47c5"]
+atlas = ExtResource("8_ymumb")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00gp5"]
+atlas = ExtResource("8_ymumb")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o50im"]
+atlas = ExtResource("8_ymumb")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pkcwu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rbhh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w47c5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00gp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o50im")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Magic_light" type="Area2D" groups=["lights"]]
+light_mask = 2
+visibility_layer = 2
+z_index = 100
+collision_layer = 15
+collision_mask = 15
+script = ExtResource("1_gjxg2")
+
+[node name="luminosity" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(1, 0)
+scale = Vector2(4.11132, 4.11132)
+range_item_cull_mask = 7
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = ExtResource("2_635ak")
+
+[node name="fullCircle" type="PointLight2D" parent="."]
+scale = Vector2(2.04149, 2.04149)
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("6_d4n0f")
+
+[node name="bg(unvisibile)" type="ColorRect" parent="."]
+visible = false
+z_index = -100
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+color = Color(0.466181, 0.466181, 0.466181, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.05584, 1.05584)
+shape = SubResource("CircleShape2D_166en")
+
+[node name="circle" type="Sprite2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 6
+material = SubResource("CanvasItemMaterial_ok4vs")
+scale = Vector2(0.700253, 0.700253)
+texture = ExtResource("4_twrul")
+region_rect = Rect2(0, 0, 980, 980)
+
+[node name="FullCircle2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.45098)
+light_mask = 2
+visibility_layer = 7
+z_index = 10
+material = SubResource("CanvasItemMaterial_2y8rp")
+scale = Vector2(1.51382, 1.51382)
+texture = ExtResource("5_sl3mb")
+
+[node name="LightTest" type="Sprite2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+material = SubResource("CanvasItemMaterial_olu44")
+rotation = -3.14159
+scale = Vector2(1.65825, 1.65825)
+texture = ExtResource("5_sl3mb")
+
+[node name="SpriteTest" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.286275)
+light_mask = 2
+material = SubResource("CanvasItemMaterial_w32nk")
+rotation = -3.14159
+scale = Vector2(2.0331, 2.0331)
+texture = ExtResource("6_d4n0f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+material = SubResource("CanvasItemMaterial_wfdqr")
+scale = Vector2(1.92919, 1.92919)
+sprite_frames = SubResource("SpriteFrames_pkcwu")
+autoplay = "default"
+frame_progress = 0.37338
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="input_event" from="." to="." method="_on_input_event"]

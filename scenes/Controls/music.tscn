@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://beaj688ulq1y7"]
+
+[ext_resource type="Script" path="res://scripts/music.gd" id="1_ikqp5"]
+[ext_resource type="AudioStream" uid="uid://du02sqq3xbqlw" path="res://assets/sounds/Musics/level1.mp3" id="2_3v4n5"]
+[ext_resource type="AudioStream" uid="uid://b68mmckhcs722" path="res://assets/sounds/Musics/level2.mp3" id="3_vf7fa"]
+[ext_resource type="AudioStream" uid="uid://bnsxudmremcmi" path="res://assets/sounds/Musics/level3.mp3" id="4_r87vr"]
+[ext_resource type="AudioStream" uid="uid://bo11jl2o8bsv7" path="res://assets/sounds/Musics/hades_meet_lulu.mp3" id="4_th3x4"]
+
+[node name="Music" type="Node2D"]
+script = ExtResource("1_ikqp5")
+g_music_lv1 = ExtResource("2_3v4n5")
+g_music_lv2 = ExtResource("3_vf7fa")
+g_music_lv3 = ExtResource("4_r87vr")
+hades_meet_lulu = ExtResource("4_th3x4")
+
+[node name="GeneralMusic" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+bus = &"Music"

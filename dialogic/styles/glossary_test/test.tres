@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogicGlossary" load_steps=2 format=3 uid="uid://cqf3w8ju4y6tg"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Glossary/glossary_resource.gd" id="1_6luan"]
+
+[resource]
+script = ExtResource("1_6luan")
+entries = {
+"Lumière": {
+"case_sensitive": true,
+"color": Color(0.945313, 1, 0, 1),
+"name": "Lumière"
+},
+"complexe": {
+"case_sensitive": true,
+"enabled": true,
+"name": "complexe"
+},
+"sortie": {
+"case_sensitive": false,
+"enabled": false,
+"name": "sortie"
+}
+}
+enabled = true
+_translation_id = ""
+_translation_keys = {}

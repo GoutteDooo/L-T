@@ -1,0 +1,130 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfvb6ft7w6ys4"]
+
+[ext_resource type="Script" path="res://scripts/gui.gd" id="1_3mqw5"]
+[ext_resource type="Texture2D" uid="uid://cnnb7d1pv5v8w" path="res://assets/sprites/ProgressBar/BarV1_Bar.png" id="1_i7vvn"]
+[ext_resource type="Texture2D" uid="uid://blfo4xybepjlj" path="res://assets/sprites/ProgressBar/BarV1_ProgressBarBorder.png" id="2_g7c7s"]
+[ext_resource type="Texture2D" uid="uid://dy5hqupbq8vhy" path="res://assets/sprites/ProgressBar/BarV1_ProgressBar.png" id="3_jr4x2"]
+[ext_resource type="Texture2D" uid="uid://cgjbdxdt4si0f" path="res://assets/sprites/ProgressBar/BarV2_Bar.png" id="4_c2h0l"]
+[ext_resource type="Texture2D" uid="uid://c4t8wvsmt1vad" path="res://assets/sprites/ProgressBar/BarV3_ProgressBarOrange.png" id="6_ckka5"]
+[ext_resource type="Texture2D" uid="uid://b31hcil153lcn" path="res://assets/sprites/ProgressBar/heart_video_game2.png" id="7_v4db3"]
+[ext_resource type="Texture2D" uid="uid://der5iuwycwmat" path="res://assets/sprites/decor/lightning_mushroom.png" id="8_b66xg"]
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_3mqw5")
+
+[node name="BarLumiere" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -596.0
+offset_top = -378.0
+offset_right = -499.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 4.0
+value = 2.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_i7vvn")
+texture_over = ExtResource("2_g7c7s")
+texture_progress = ExtResource("3_jr4x2")
+
+[node name="BarShadow" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -596.0
+offset_top = -356.0
+offset_right = -499.0
+offset_bottom = -336.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.28319
+size_flags_horizontal = 4
+max_value = 4.0
+value = 2.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_c2h0l")
+texture_over = ExtResource("2_g7c7s")
+texture_progress = ExtResource("6_ckka5")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -7.0
+offset_right = 39.0
+offset_bottom = 33.0
+
+[node name="Lives" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 14.0
+offset_right = 39.0
+offset_bottom = 43.0
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_v4db3")
+stretch_mode = 1
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -36.0
+offset_top = 2.0
+offset_right = 4.0
+offset_bottom = 42.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Container"]
+offset_left = 1065.0
+offset_top = 7.0
+offset_right = 1220.0
+offset_bottom = 52.0
+
+[node name="HSeparator" type="HSeparator" parent="Container/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HSeparator2" type="HSeparator" parent="Container/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="inventaire" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+offset_left = 1062.0
+offset_top = 10.0
+offset_right = 1222.0
+offset_bottom = 50.0
+
+[node name="VSeparator3" type="VSeparator" parent="Container/inventaire"]
+layout_mode = 2
+
+[node name="Item_1" type="TextureRect" parent="Container/inventaire"]
+layout_mode = 2
+texture = ExtResource("8_b66xg")
+expand_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="Container/inventaire"]
+layout_mode = 2
+
+[node name="Item_2" type="TextureRect" parent="Container/inventaire"]
+layout_mode = 2
+texture = ExtResource("8_b66xg")
+expand_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="Container/inventaire"]
+layout_mode = 2
+
+[node name="Item_3" type="TextureRect" parent="Container/inventaire"]
+layout_mode = 2
+texture = ExtResource("8_b66xg")
+expand_mode = 2
+
+[node name="VSeparator4" type="VSeparator" parent="Container/inventaire"]
+layout_mode = 2

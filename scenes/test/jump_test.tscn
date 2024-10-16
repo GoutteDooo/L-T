@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dve8ptxbei20v"]
+
+[ext_resource type="Texture2D" uid="uid://8wutyg8p8bin" path="res://icon.svg" id="1_cichg"]
+[ext_resource type="Script" path="res://scripts/tests/jump_test.gd" id="1_j6gtq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljr2p"]
+size = Vector2(127, 128)
+
+[sub_resource type="GDScript" id="GDScript_8o36e"]
+script/source = "extends CollisionShape2D
+
+@export var coyote_time = 0.1
+
+var coyote_timer = 0
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+func enter() -> void:
+	coyote_timer = coyote_time
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="Jump_test" type="CharacterBody2D"]
+script = ExtResource("1_j6gtq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(-2, -4)
+texture = ExtResource("1_cichg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -3)
+shape = SubResource("RectangleShape2D_ljr2p")
+script = SubResource("GDScript_8o36e")

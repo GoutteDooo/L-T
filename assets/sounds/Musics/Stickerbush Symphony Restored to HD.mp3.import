@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr78yp2bi6rxh"
+path="res://.godot/imported/Stickerbush Symphony Restored to HD.mp3-c7bff09bb509b85dc8440238447e414d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Musics/Stickerbush Symphony Restored to HD.mp3"
+dest_files=["res://.godot/imported/Stickerbush Symphony Restored to HD.mp3-c7bff09bb509b85dc8440238447e414d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
