@@ -372,8 +372,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ie4k"]
-size = Vector2(40, 120)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itrcd"]
+size = Vector2(8, 56)
 
 [sub_resource type="Animation" id="Animation_gobry"]
 resource_name = "BL_Clignote"
@@ -680,9 +680,9 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(4, -30)
+position = Vector2(0, -14)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_8ie4k")
+shape = SubResource("RectangleShape2D_itrcd")
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

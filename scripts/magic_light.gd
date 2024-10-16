@@ -42,9 +42,11 @@ func _on_body_entered(body: Node2D) -> void:
 		get_tree().call_group("Lumiere", "on_enter_light")
 		
 	if body.is_in_group(obscurite_group):
-		get_tree().call_group("Obscurite", "on_enter_light")
+		get_tree().call_group("Obscurite", "on_enter_light",self)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group(lumiere_group) and !Global.game_over:
-		get_tree().call_group("Lumiere", "on_exit_light")
+		get_tree().call_group("Lumiere", "on_exit_light",self)
+	if body.is_in_group(obscurite_group) and !Global.game_over:
+		get_tree().call_group("Obscurite", "on_exit_light")

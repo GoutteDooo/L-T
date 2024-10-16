@@ -10,6 +10,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Lumiere") and !Global.game_over:
-		get_tree().call_group("Lumiere", "on_exit_black_light")
+		get_tree().call_group("Lumiere", "on_exit_black_light",self)
 	if body.is_in_group("Obscurite") and !Global.game_over:
 		get_tree().call_group("Obscurite", "on_exit_black_light")

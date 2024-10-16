@@ -17,6 +17,11 @@ var hasFinished = false #pour placer le perso immobile qd il a atteint le xpoint
 var l_click_position = Vector2()
 var direction = 0
 var fragment_is_put = false
+	#variables importantes pour que lului reste dans les lights
+const pas_when_darkness = 10 #le nombre de pas a calculer pour l'animation quand lulu touche les ténèbres
+var pas = Vector2() #le pas pour revenir au centre de la light
+var lulu_entered_darkness = false #levier permettant de jouer le process
+var counter_pas = 0 #compteur permettant de réaliser le bon nombre de pas
 
 #coyote jump
 @export var coyote_time = 0.2
@@ -55,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		#Si le joueur n'a pas le contrôle, on stoppe le process
 		if !Global.player_control_L:
-			velocity = Vector2(0,300)
+			#velocity = Vector2(0,300)
 			#désactiver la range si elle était activée pendant l'arrêt du contrôle player
 			if %Range.monitoring == true:
 				%Range.monitoring = false
@@ -119,6 +124,15 @@ func _physics_process(delta: float) -> void:
 	if $Fragment_Timer.time_left <= 10 and fragment_is_put:
 		fragment_is_put = false
 		play_BL_clignote()
+		
+	##Lorsque Lulu entre dans les ténèbres
+	if lulu_entered_darkness:
+		print("pas : ", pas)
+		position -= pas
+		counter_pas +=1
+		if counter_pas >= 10:
+			counter_pas = 0
+			lulu_entered_darkness = false
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -202,21 +216,31 @@ func on_enter_black_light() -> void:
 	
 
 #Lorsque Lumiere quitte la black_light, son light_mask se remet à sa valeur par défaut
-func on_exit_black_light() -> void:
-	on_exit_light()
+func on_exit_black_light(black_light:Area2D) -> void:
+	on_exit_light(black_light)
 	%AnimatedSprite2D.light_mask = 7
 	print("light mask :", %AnimatedSprite2D.light_mask)
 
 
 #Lorsque Lumiere quitte une light & qu'elle n'est pas dans une autre light, c'est game over.
-func on_exit_light() -> void:
+func on_exit_light(light: Area2D) -> void:
 	compteur_lights_Lumiere -= 1
 	print("compteur Lumiere (exit) : ", compteur_lights_Lumiere)
 	if compteur_lights_Lumiere <= 0:
 		#agit comme une sécurité au cas où il y aurait un mauvais décompte
 		#DEBUG
 		print("Lumiere is in darknesses")
-		Global.restart_game()
+		
+		
+		#MIS SUR OFF le temps du test
+		#Global.restart_game()
+		
+		#TEST
+		#si Lulu percute le bord d'une light, elle se retrouve au centre de celle-ci
+		#print(light.position)
+		#self.position = light.global_position
+		lulu_entered_darkness = true
+		pas = (position - light.global_position) / pas_when_darkness
 		
 #Lorsque Lumiere atteint son Checkpoint
 func on_enter_checkpoint() -> void:
@@ -348,8 +372,6 @@ func on_put_cristal() -> void:
 		%AnimationPlayer.stop()
 		
 	%AnimationPlayer.play("ML_clignote")
-		
-	
 
 func _on_cristal_timer_timeout() -> void:
 	%ML.monitoring = false
