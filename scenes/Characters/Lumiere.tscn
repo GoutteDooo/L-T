@@ -664,7 +664,7 @@ _data = {
 
 [node name="Lumiere" type="CharacterBody2D" groups=["Characters", "Lumiere"]]
 z_index = 20
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("1_3jle8")
 sfx_L_footsteps = ExtResource("6_58n88")
 sfx_L_jump = ExtResource("3_1h8p3")
@@ -755,6 +755,58 @@ texture = ExtResource("14_mvqwy")
 [node name="CollisionRange" type="CollisionShape2D" parent="Range"]
 scale = Vector2(-25.737, -25.737)
 shape = SubResource("CircleShape2D_o4s4n")
+
+[node name="DetectStuckDown" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+target_position = Vector2(0, 20)
+hit_from_inside = true
+
+[node name="DetectStuckUp" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+rotation = -3.14159
+target_position = Vector2(0, 20)
+
+[node name="DetectDarknessRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1.38243e-11, -25)
+rotation = -7.85397
+scale = Vector2(1, 1)
+target_position = Vector2(0.000232697, 35)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectDarknessLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1.38243e-11, -25)
+rotation = 1.57079
+scale = Vector2(1, 1)
+target_position = Vector2(0.000232697, 35)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectDarknessUp" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1.38243e-11, -25)
+rotation = -3.14159
+scale = Vector2(1, 1)
+target_position = Vector2(0.000255446, 57.5)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectDarknessDown" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1.38243e-11, -25)
+rotation = -6.28318
+scale = Vector2(1, 1)
+target_position = Vector2(0.000255446, 57.5)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

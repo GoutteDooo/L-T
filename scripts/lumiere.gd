@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+#variable de test
+var levier_test = false
+const light_pushing = 25 #en px
+
 #constantes
 const SPEED = 170.0
 const JUMP_VELOCITY = -400.0
@@ -22,6 +26,7 @@ const pas_when_darkness = 10 #le nombre de pas a calculer pour l'animation quand
 var pas = Vector2() #le pas pour revenir au centre de la light
 var lulu_entered_darkness = false #levier permettant de jouer le process
 var counter_pas = 0 #compteur permettant de réaliser le bon nombre de pas
+var exiting_light_pos = Vector2()
 
 #coyote jump
 @export var coyote_time = 0.2
@@ -60,7 +65,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		#Si le joueur n'a pas le contrôle, on stoppe le process
 		if !Global.player_control_L:
-			#velocity = Vector2(0,300)
+			velocity = Vector2(0,300)
 			#désactiver la range si elle était activée pendant l'arrêt du contrôle player
 			if %Range.monitoring == true:
 				%Range.monitoring = false
@@ -116,8 +121,6 @@ func _physics_process(delta: float) -> void:
 			create_light()
 			
 			
-		#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-		move_and_slide()
 		
 	##POUR LA BULLE DE BLACK LIGHT :
 	##PERMET DE JOUER L'ANIMATION DE CLIGNOTEMENT PEU IMPORTE LE TEMPS DEFINI
@@ -125,14 +128,49 @@ func _physics_process(delta: float) -> void:
 		fragment_is_put = false
 		play_BL_clignote()
 		
-	##Lorsque Lulu entre dans les ténèbres
-	if lulu_entered_darkness:
-		print("pas : ", pas)
-		position -= pas
-		counter_pas +=1
-		if counter_pas >= 10:
-			counter_pas = 0
-			lulu_entered_darkness = false
+	##Lorsque Lulu entre dans les ténèbres via sa collisionShape
+	#if lulu_entered_darkness:
+		#Global.player_control_L = false
+		#print("pas : ", pas)
+		#position -= pas
+		#counter_pas +=1
+		#print("counter pas : ", counter_pas)
+		#if counter_pas >= pas_when_darkness:
+			#Global.player_control_L = true
+			#counter_pas = 0
+			#lulu_entered_darkness = false 
+			##Si Lulu est encore dans les ténèbres
+			#if compteur_lights_Lumiere <= 0:
+				#await get_tree().create_timer(0.5).timeout
+				#if compteur_lights_Lumiere <= 0: #si après le timer, Lulu est toujours dans les ténèbres (évite de trop spam Lulu au centre)
+					#position = exiting_light_pos
+			
+	#Calculer si Lulu est stuck dans un tileset
+	if %DetectStuckDown.is_colliding():
+		position.y -= 1
+		print("colliding down ! go UP")
+	if %DetectStuckUp.is_colliding():
+		position.y += 1
+		print("colliding up ! go DOWN")
+		
+	##TEST
+	if %DetectDarknessDown.is_colliding() && compteur_lights_Lumiere <= 0:
+		position.y += light_pushing
+	if %DetectDarknessLeft.is_colliding() && compteur_lights_Lumiere <= 0:
+		position.x -= light_pushing
+	if %DetectDarknessUp.is_colliding() && compteur_lights_Lumiere <= 0:
+		position.y -= light_pushing
+	if %DetectDarknessRight.is_colliding() && compteur_lights_Lumiere <= 0:
+		position.x += light_pushing
+	
+	if compteur_lights_Lumiere <= 0:
+		await get_tree().create_timer(0.2).timeout
+		if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
+			Global.restart_game()
+	
+	
+	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
+	move_and_slide()
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -237,10 +275,19 @@ func on_exit_light(light: Area2D) -> void:
 		
 		#TEST
 		#si Lulu percute le bord d'une light, elle se retrouve au centre de celle-ci
-		#print(light.position)
-		#self.position = light.global_position
+		#déclenche l'animation dans process
+		
+		##ICI, c'était pour créer un effet d'animation mais
+		##depuis j'ai changé de devise, et j'ai préféré utiliser du raycasting.
+		## donc peut-être que ces lignes ne servent plus
 		lulu_entered_darkness = true
+		#définir le pas pour l'animation de rebondissement
+		exiting_light_pos = light.global_position
 		pas = (position - light.global_position) / pas_when_darkness
+		
+		##FIN commentaire
+		
+		#Global.restart_game()
 		
 #Lorsque Lumiere atteint son Checkpoint
 func on_enter_checkpoint() -> void:

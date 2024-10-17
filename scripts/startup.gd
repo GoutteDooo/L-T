@@ -119,7 +119,14 @@ func obscur_control(levier:bool) -> void:
 	print("Hades control : ", levier)
 
 func handleLuluView(levier:bool) -> void:
-	pass
+	if levier:
+		lulu.animated_sprite.light_mask = 12
+		print("lulu light mask :", lulu.light_mask)
+	else:
+		lulu.animated_sprite.light_mask = 15
 	
 func handleHadesView(levier: bool) -> void:
-	pass
+	if levier:
+		hades.visible = false
+	else:
+		hades.visible = true

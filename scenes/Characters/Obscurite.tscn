@@ -292,7 +292,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihy2o"]
-size = Vector2(20, 60)
+size = Vector2(20, 42)
 
 [sub_resource type="Animation" id="Animation_1gxwp"]
 length = 0.001
@@ -426,7 +426,7 @@ sfx_O_magic_loop = ExtResource("4_8msxb")
 light_mask = 7
 visibility_layer = 7
 position = Vector2(2, -44)
-scale = Vector2(4.6, 4.6)
+scale = Vector2(5.04617, 5.04617)
 energy = 5.0
 blend_mode = 1
 range_item_cull_mask = 8
@@ -437,7 +437,7 @@ texture_scale = 0.2
 light_mask = 7
 visibility_layer = 7
 position = Vector2(4, -48)
-scale = Vector2(4.675, 4.6)
+scale = Vector2(4.57271, 4.49935)
 color = Color(0, 1, 1, 1)
 energy = 2.0
 blend_mode = 1
@@ -448,7 +448,7 @@ texture_scale = 0.2
 [node name="LumierePerso" type="PointLight2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(4, -48)
-scale = Vector2(6.22016, 6.39277)
+scale = Vector2(6.64294, 6.82729)
 color = Color(1, 0.845564, 0.87294, 1)
 shadow_enabled = true
 texture = ExtResource("5_0v7em")
@@ -462,7 +462,7 @@ animation = &"lose"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -30)
+position = Vector2(2, -21)
 shape = SubResource("RectangleShape2D_ihy2o")
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
@@ -508,6 +508,41 @@ texture = ExtResource("10_ks427")
 position = Vector2(2, -42)
 scale = Vector2(25.6377, 25.6377)
 shape = SubResource("CircleShape2D_0g5d5")
+
+[node name="DetectLightDown" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -30)
+target_position = Vector2(0, 54)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectLightRight" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -30)
+rotation = -1.57079
+target_position = Vector2(8.96454e-05, 40)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectLightUp" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -30)
+rotation = -3.14159
+target_position = Vector2(0, 54)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="DetectLightLeft" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2, -30)
+rotation = -4.71238
+target_position = Vector2(0.00028038, 42)
+collision_mask = 128
+collide_with_areas = true
+collide_with_bodies = false
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

@@ -1189,7 +1189,7 @@ shape = SubResource("RectangleShape2D_pfhqp")
 debug_color = Color(0, 0.576471, 0.670588, 0)
 
 [node name="RoomAllLeftPCam2D" type="Node2D" parent="."]
-position = Vector2(227.273, 656)
+position = Vector2(272.727, 656)
 script = ExtResource("14_lwqfg")
 follow_mode = 1
 zoom = Vector2(2.2, 2.2)
@@ -1219,7 +1219,7 @@ collision_layer = 34
 
 [node name="Lumiere" parent="." instance=ExtResource("4_2tk6s")]
 unique_name_in_owner = true
-position = Vector2(1104, -20)
+position = Vector2(976, 135)
 collision_layer = 33
 
 [node name="BGs" type="Node2D" parent="."]
@@ -1261,7 +1261,7 @@ shape = SubResource("WorldBoundaryShape2D_b6uw1")
 
 [node name="Mushroom" parent="." instance=ExtResource("11_kx1xv")]
 position = Vector2(975, 159)
-scale = Vector2(1.33477, 1.32633)
+scale = Vector2(1.15913, 1.1518)
 mushroom_light_on = true
 
 [node name="Mushroom3" parent="." instance=ExtResource("11_kx1xv")]

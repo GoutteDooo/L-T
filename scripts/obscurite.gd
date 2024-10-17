@@ -143,11 +143,27 @@ func _physics_process(delta: float) -> void:
 			
 		move_and_slide()
 		
+		
+	##TEST##
+	#On va changer la manière de faire pour les raycasters
+	#Si un raycast détecte une light, cela repousse Hadès vers la direction opposée.
+	#Si la shape d'Hades entre dans une light, il meurt. Comme ça, plus de soucis quand Lulu crée une light dans Hadès
+	#GO
+	if %DetectLightRight.is_colliding():
+		position.x -= 10
+	if %DetectLightDown.is_colliding():
+		position.y -= 10
+	if %DetectLightLeft.is_colliding():
+		position.x += 10
+	if %DetectLightUp.is_colliding():
+		position.y += 10
+	
+	
 	#si Hades collides avec une light, alors on va calculer sa position x à ce moment-là.
 	#cela déterminera sa direction à prendre pour rebondir.
-	if collides_with_light:
-		if counter_in_light > 0:
-			position.x += sign(diff_x) * 10
+	#if collides_with_light:
+		#if counter_in_light > 0:
+			#position.x += sign(diff_x) * 10
 			
 
 func Coyote_timeout() -> void:
@@ -175,28 +191,27 @@ func _flip_sprite() -> void:
 
 ##  END ANIMATIONS
 
-#lorsque Hades touche une light, il rebondit.
-#plusieurs options : 
-# - soit je calcule sa position toutes les x secondes, et lorsqu'il touche une light, il retourne à sa position calculée
-# pbs : s'il vient de tomber, il retournera en hauteur et il y aura boucle infinie
-# - Du coup j'ai pensé à le faire rebondir en arrière par rapport à l'orientation de son sprite.
-# pbs : Si le joueur fait exprès de sauter dans la light et de retourner le sprite au dernier moment,
-# hadès rebondira dans la light et se retrouvera de l'autre côté de celle-ci, il l'aura traversée.
-# Comment faire alors ?
-## 	- Je peux calculer sa position x au moment de la collision avec la position x de la light.
-# si la différence est positive, alors il est à droite, et la on le fait rebondir un cran à droite
-#pas de pbs de sprite dans ce cas-là.
-#s'il vient du haut, alors il rebondira du côté où il est.
-#sinon je peux simplement mettre un physics layer sur la light sur son layer à lui, comme ça il ne pourra jamais entrer dans la light ever
 
 func on_enter_light(light:Area2D) -> void:
-	counter_in_light += 1
-	collides_with_light = true
-	diff_x = position.x - light.global_position.x
+	#lorsque Hades touche une light, il rebondit.
+	#plusieurs options : 
+	# - soit je calcule sa position toutes les x secondes, et lorsqu'il touche une light, il retourne à sa position calculée
+	# pbs : s'il vient de tomber, il retournera en hauteur et il y aura boucle infinie
+	# - Du coup j'ai pensé à le faire rebondir en arrière par rapport à l'orientation de son sprite.
+	# pbs : Si le joueur fait exprès de sauter dans la light et de retourner le sprite au dernier moment,
+	# hadès rebondira dans la light et se retrouvera de l'autre côté de celle-ci, il l'aura traversée.
+	# Comment faire alors ?
+	## 	- Je peux calculer sa position x au moment de la collision avec la position x de la light.
+	# si la différence est positive, alors il est à droite, et la on le fait rebondir un cran à droite
+	#pas de pbs de sprite dans ce cas-là.
+	#s'il vient du haut, alors il rebondira du côté où il est.
+	#sinon je peux simplement mettre un physics layer sur la light sur son layer à lui, comme ça il ne pourra jamais entrer dans la light ever
+	#counter_in_light += 1
+	#collides_with_light = true
+	#diff_x = position.x - light.global_position.x
+	self.visible = true
+	Global.restart_game()
 	print("enter, compteur light Hades : ", counter_in_light)
-	
-	#ancien
-	#Global.restart_game()
 
 #fonction qui servira surtout à checker si Hades est encore en train de collide avec une light ou non
 # lorsqu'il est en train de rebondir. Dans ce cas, il rebondira encore jusqu'à ce qu'il soit sorti.
