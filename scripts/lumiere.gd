@@ -153,20 +153,22 @@ func _physics_process(delta: float) -> void:
 		position.y += 1
 		print("colliding up ! go DOWN")
 		
-	##TEST
-	if %DetectDarknessDown.is_colliding() && compteur_lights_Lumiere <= 0:
-		position.y += light_pushing
-	if %DetectDarknessLeft.is_colliding() && compteur_lights_Lumiere <= 0:
-		position.x -= light_pushing
-	if %DetectDarknessUp.is_colliding() && compteur_lights_Lumiere <= 0:
-		position.y -= light_pushing
-	if %DetectDarknessRight.is_colliding() && compteur_lights_Lumiere <= 0:
-		position.x += light_pushing
+	##TEST BOUNCING IN LIGHT
+	#if %DetectDarknessDown.is_colliding() && compteur_lights_Lumiere <= 0:
+		#position.y += light_pushing
+	#if %DetectDarknessLeft.is_colliding() && compteur_lights_Lumiere <= 0:
+		#position.x -= light_pushing
+	#if %DetectDarknessUp.is_colliding() && compteur_lights_Lumiere <= 0:
+		#position.y -= light_pushing
+	#if %DetectDarknessRight.is_colliding() && compteur_lights_Lumiere <= 0:
+		#position.x += light_pushing
 	
-	if compteur_lights_Lumiere <= 0:
-		await get_tree().create_timer(0.2).timeout
-		if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
-			Global.restart_game()
+	#vérifie constamment que Lulu est bien dans une light, sinon la kill
+	## MIS EN COMMENTAIRE TEMPORAIRE
+	#if compteur_lights_Lumiere <= 0:
+		#await get_tree().create_timer(0.1).timeout #le compteur agit comme une sécurité au début des lvls
+		#if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
+			#Global.restart_game()
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
@@ -268,24 +270,22 @@ func on_exit_light(light: Area2D) -> void:
 		#agit comme une sécurité au cas où il y aurait un mauvais décompte
 		#DEBUG
 		print("Lumiere is in darknesses")
-		
-		
-		#MIS SUR OFF le temps du test
-		#Global.restart_game()
-		
 		#TEST
 		#si Lulu percute le bord d'une light, elle se retrouve au centre de celle-ci
 		#déclenche l'animation dans process
-		
-		##ICI, c'était pour créer un effet d'animation mais
-		##depuis j'ai changé de devise, et j'ai préféré utiliser du raycasting.
-		## donc peut-être que ces lignes ne servent plus
 		lulu_entered_darkness = true
 		#définir le pas pour l'animation de rebondissement
 		exiting_light_pos = light.global_position
 		pas = (position - light.global_position) / pas_when_darkness
 		
-		##FIN commentaire
+		#vérifie la position de Lulu dans l'espace par rapport au centre de la light
+		if sign(position.x - exiting_light_pos.x) == -1:
+			position.x += light_pushing
+		else:
+			position.x -= light_pushing
+			
+		
+		
 		
 		#Global.restart_game()
 		

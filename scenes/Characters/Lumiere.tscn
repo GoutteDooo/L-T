@@ -372,8 +372,9 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_itrcd"]
-size = Vector2(8, 56)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfaiv"]
+radius = 20.0
+height = 56.0
 
 [sub_resource type="Animation" id="Animation_gobry"]
 resource_name = "BL_Clignote"
@@ -682,7 +683,7 @@ autoplay = "idle"
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 scale = Vector2(0.5, 0.5)
-shape = SubResource("RectangleShape2D_itrcd")
+shape = SubResource("CapsuleShape2D_sfaiv")
 
 [node name="sfx_player" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
@@ -772,7 +773,6 @@ target_position = Vector2(0, 20)
 unique_name_in_owner = true
 position = Vector2(1.38243e-11, -25)
 rotation = -7.85397
-scale = Vector2(1, 1)
 target_position = Vector2(0.000232697, 35)
 collision_mask = 128
 collide_with_areas = true
@@ -782,7 +782,6 @@ collide_with_bodies = false
 unique_name_in_owner = true
 position = Vector2(1.38243e-11, -25)
 rotation = 1.57079
-scale = Vector2(1, 1)
 target_position = Vector2(0.000232697, 35)
 collision_mask = 128
 collide_with_areas = true
@@ -792,7 +791,6 @@ collide_with_bodies = false
 unique_name_in_owner = true
 position = Vector2(1.38243e-11, -25)
 rotation = -3.14159
-scale = Vector2(1, 1)
 target_position = Vector2(0.000255446, 57.5)
 collision_mask = 128
 collide_with_areas = true
@@ -802,7 +800,6 @@ collide_with_bodies = false
 unique_name_in_owner = true
 position = Vector2(1.38243e-11, -25)
 rotation = -6.28318
-scale = Vector2(1, 1)
 target_position = Vector2(0.000255446, 57.5)
 collision_mask = 128
 collide_with_areas = true
