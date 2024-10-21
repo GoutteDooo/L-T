@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b3d53xqf7rbh2"]
+[gd_scene load_steps=16 format=4 uid="uid://b3d53xqf7rbh2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1_2.gd" id="1_g2ste"]
 [ext_resource type="Texture2D" uid="uid://c6b1asvtp5xj6" path="res://assets/sprites/decor/main_lev_build_1.png" id="1_of2ru"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bawyr2vu0ttsv" path="res://assets/sprites/decor/background1.png" id="2_hmoqy"]
 [ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="2_qdr6f"]
 [ext_resource type="Texture2D" uid="uid://b67mnscpgsv3h" path="res://assets/sprites/decor/background4a.png" id="3_fie7o"]
+[ext_resource type="PackedScene" uid="uid://div3qf20hikek" path="res://scenes/GUI/switch_camera.tscn" id="4_vsw0c"]
 [ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="6_31nni"]
 [ext_resource type="PackedScene" uid="uid://dg61vboaimjrs" path="res://scenes/objects/butterfly.tscn" id="7_fg7qq"]
 [ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="7_rctse"]
@@ -598,16 +599,14 @@ tile_set = SubResource("TileSet_8rh8o")
 unique_name_in_owner = true
 position = Vector2(555, -116)
 
-[node name="Camera2D" type="Camera2D" parent="Obscurite"]
-zoom = Vector2(3, 3)
+[node name="Switch_camera" parent="Obscurite" instance=ExtResource("4_vsw0c")]
+enabled = false
 
 [node name="Lumiere" parent="." instance=ExtResource("2_qdr6f")]
 unique_name_in_owner = true
 position = Vector2(-516, 38)
 
-[node name="Camera2D" type="Camera2D" parent="Lumiere"]
-position = Vector2(130, -12)
-zoom = Vector2(3, 3)
+[node name="Switch_camera" parent="Lumiere" instance=ExtResource("4_vsw0c")]
 
 [node name="Node" type="Node" parent="."]
 

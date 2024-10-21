@@ -9,6 +9,8 @@ const SPEED = 170.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 const FALL_GRAVITY = 1200
+enum States {playing, stuck}
+var state: States = States.playing
 
 
 #sprite
@@ -144,15 +146,17 @@ func _physics_process(delta: float) -> void:
 				#await get_tree().create_timer(0.5).timeout
 				#if compteur_lights_Lumiere <= 0: #si après le timer, Lulu est toujours dans les ténèbres (évite de trop spam Lulu au centre)
 					#position = exiting_light_pos
-			
+	#Je dois réactiver la shape une fois le process relancé car sinon Lulu ne se déplacera pas car cela agira comme si que la shape n'avait pas changé d'état
 	#Calculer si Lulu est stuck dans un tileset
 	if %DetectStuckDown.is_colliding():
+		STATE = STATE.stuck
 		position.y -= 1
-		print("colliding down ! go UP")
-	if %DetectStuckUp.is_colliding():
+		print_debug("colliding down ! position y : ", position.y)
+		print_debug("état de la shape:  ", $CollisionShape.disabled)
+	elif %DetectStuckUp.is_colliding():
 		position.y += 1
 		print("colliding up ! go DOWN")
-		
+	
 	##TEST BOUNCING IN LIGHT
 	#if %DetectDarknessDown.is_colliding() && compteur_lights_Lumiere <= 0:
 		#position.y += light_pushing
@@ -171,7 +175,8 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-	move_and_slide()
+	if STATE.playing:
+		move_and_slide()
 
 func Coyote_timeout() -> void:
 	jump_available = false

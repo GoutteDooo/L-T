@@ -667,6 +667,7 @@ _data = {
 z_index = 20
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_3jle8")
+coyote_time = null
 sfx_L_footsteps = ExtResource("6_58n88")
 sfx_L_jump = ExtResource("3_1h8p3")
 sfx_L_magic_charge = ExtResource("4_sbunb")

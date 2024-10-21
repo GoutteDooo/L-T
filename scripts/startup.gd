@@ -122,12 +122,18 @@ func obscur_control(levier:bool) -> void:
 func handleLuluView(levier:bool) -> void:
 	if levier:
 		lulu.animated_sprite.light_mask = 12
-		print("lulu light mask :", lulu.light_mask)
+		#print_debug("lulu light mask :", lulu.light_mask)
 	else:
 		lulu.animated_sprite.light_mask = 15
+		cam_L.enabled = true
+		cam_H.enabled = false
+		print_debug("cam lulu activée & H désactivée")
 	
 func handleHadesView(levier: bool) -> void:
 	if levier:
 		hades.visible = false
 	else:
 		hades.visible = true
+		cam_L.enabled = false
+		cam_H.enabled = true
+		print_debug("cam H activée & L désactivée")
