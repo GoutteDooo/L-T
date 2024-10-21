@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 #variable de test
 var levier_test = false
-const light_pushing = 25 #en px
+const light_pushing = 50 #en px
 
 #constantes
 const SPEED = 170.0
@@ -164,11 +164,10 @@ func _physics_process(delta: float) -> void:
 		#position.x += light_pushing
 	
 	#vérifie constamment que Lulu est bien dans une light, sinon la kill
-	## MIS EN COMMENTAIRE TEMPORAIRE
-	#if compteur_lights_Lumiere <= 0:
-		#await get_tree().create_timer(0.1).timeout #le compteur agit comme une sécurité au début des lvls
-		#if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
-			#Global.restart_game()
+	if compteur_lights_Lumiere <= 0:
+		await get_tree().create_timer(0.1).timeout #le compteur agit comme une sécurité au début des lvls
+		if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
+			Global.restart_game()
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
@@ -267,11 +266,9 @@ func on_exit_light(light: Area2D) -> void:
 	compteur_lights_Lumiere -= 1
 	print("compteur Lumiere (exit) : ", compteur_lights_Lumiere)
 	if compteur_lights_Lumiere <= 0:
-		#agit comme une sécurité au cas où il y aurait un mauvais décompte
 		#DEBUG
 		print("Lumiere is in darknesses")
 		#TEST
-		#si Lulu percute le bord d'une light, elle se retrouve au centre de celle-ci
 		#déclenche l'animation dans process
 		lulu_entered_darkness = true
 		#définir le pas pour l'animation de rebondissement
@@ -279,11 +276,8 @@ func on_exit_light(light: Area2D) -> void:
 		pas = (position - light.global_position) / pas_when_darkness
 		
 		#vérifie la position de Lulu dans l'espace par rapport au centre de la light
-		if sign(position.x - exiting_light_pos.x) == -1:
-			position.x += light_pushing
-		else:
-			position.x -= light_pushing
-			
+		var rebond = (position - exiting_light_pos) * 0.33
+		position = position - rebond
 		
 		
 		

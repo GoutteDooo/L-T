@@ -5,7 +5,8 @@ var game_over = false #évite de relancer le timer à chaque fois (fix slow bug)
 var detectVictory = 0 #Quand ça atteint 2 -> victoire
 var counter_level = 1 #Compteur de niveau
 var annulerAction = false #Permettra de faire des annulations d'actions (pendant les cutscenes, tutos et autres...)
-var body_cam = null #Sert de switch au joueur pour la caméra
+var cam_H = null #Sert de switch au joueur pour la caméra
+var cam_L = null #Sert de switch au joueur pour la caméra
 
 #Player
 const number_click_obscurite = [100, 4, 5, 4, 0,0] #chaque number en fonction du niveau

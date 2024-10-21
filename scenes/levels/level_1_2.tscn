@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://b3d53xqf7rbh2"]
+[gd_scene load_steps=15 format=4 uid="uid://b3d53xqf7rbh2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1_2.gd" id="1_g2ste"]
 [ext_resource type="Texture2D" uid="uid://c6b1asvtp5xj6" path="res://assets/sprites/decor/main_lev_build_1.png" id="1_of2ru"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dg61vboaimjrs" path="res://scenes/objects/butterfly.tscn" id="7_fg7qq"]
 [ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="7_rctse"]
 [ext_resource type="PackedScene" uid="uid://d3k7f01mk0jkc" path="res://scenes/objects/magic_light.tscn" id="9_1ji0j"]
+[ext_resource type="PackedScene" uid="uid://8yvdlv2frcn5" path="res://scenes/objects/CristalBleu.tscn" id="11_c3566"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ilvwo"]
 tile_data = PackedInt32Array(0, 851969, 23, 2, 1114113, 23, 65539, 1245185, 24, 65541, 1376257, 24, 65543, 1572865, 24, 65544, 1769473, 24, 65545, 1900545, 23, 65547, 2031617, 23)
@@ -595,7 +596,10 @@ tile_set = SubResource("TileSet_8rh8o")
 
 [node name="Obscurite" parent="." instance=ExtResource("2_8smen")]
 unique_name_in_owner = true
-position = Vector2(-391, 4)
+position = Vector2(555, -116)
+
+[node name="Camera2D" type="Camera2D" parent="Obscurite"]
+zoom = Vector2(3, 3)
 
 [node name="Lumiere" parent="." instance=ExtResource("2_qdr6f")]
 unique_name_in_owner = true
@@ -664,3 +668,6 @@ scale = Vector2(18.4821, 1.10321)
 modulate = Color(1, 1, 0, 1)
 position = Vector2(-514, 22)
 scale = Vector2(0.557645, 0.557645)
+
+[node name="CristalBleu" parent="." instance=ExtResource("11_c3566")]
+position = Vector2(-320, 35)

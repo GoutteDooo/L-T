@@ -721,6 +721,7 @@ unique_name_in_owner = true
 visible = false
 modulate = Color(3.46541e-06, 0.831358, 0.840467, 1)
 position = Vector2(0, -42)
+collision_layer = 15
 monitoring = false
 
 [node name="Cristal_Timer" type="Timer" parent="."]

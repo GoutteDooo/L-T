@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://div3qf20hikek"]
+
+[ext_resource type="Script" path="res://scripts/switch_camera.gd" id="1_nxdr4"]
+
+[node name="Switch_camera" type="Camera2D"]
+zoom = Vector2(3, 3)
+script = ExtResource("1_nxdr4")
