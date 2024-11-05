@@ -9,8 +9,9 @@ const SPEED = 170.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 const FALL_GRAVITY = 1200
-enum States {playing, stuck}
-var state: States = States.playing
+#states
+enum States {PLAYING, STUCK}
+var state: States = States.PLAYING
 
 
 #sprite
@@ -149,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	#Je dois réactiver la shape une fois le process relancé car sinon Lulu ne se déplacera pas car cela agira comme si que la shape n'avait pas changé d'état
 	#Calculer si Lulu est stuck dans un tileset
 	if %DetectStuckDown.is_colliding():
-		STATE = STATE.stuck
+		state
 		position.y -= 1
 		print_debug("colliding down ! position y : ", position.y)
 		print_debug("état de la shape:  ", $CollisionShape.disabled)
@@ -158,25 +159,28 @@ func _physics_process(delta: float) -> void:
 		print("colliding up ! go DOWN")
 	
 	##TEST BOUNCING IN LIGHT
-	#if %DetectDarknessDown.is_colliding() && compteur_lights_Lumiere <= 0:
+	#if !%DetectDarknessDown.is_colliding():
 		#position.y += light_pushing
-	#if %DetectDarknessLeft.is_colliding() && compteur_lights_Lumiere <= 0:
+	#if !%DetectDarknessLeft.is_colliding():
 		#position.x -= light_pushing
-	#if %DetectDarknessUp.is_colliding() && compteur_lights_Lumiere <= 0:
+	#if !%DetectDarknessUp.is_colliding():
 		#position.y -= light_pushing
-	#if %DetectDarknessRight.is_colliding() && compteur_lights_Lumiere <= 0:
+	#if !%DetectDarknessRight.is_colliding():
 		#position.x += light_pushing
 	
 	#vérifie constamment que Lulu est bien dans une light, sinon la kill
-	if compteur_lights_Lumiere <= 0:
-		await get_tree().create_timer(0.1).timeout #le compteur agit comme une sécurité au début des lvls
-		if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
-			Global.restart_game()
+	#if Global.light_array.size() <= 0:
+		#print("TABLEAU LIGHT VIDE !")
+		#await get_tree().create_timer(0.1).timeout #le compteur agit comme une sécurité au début des lvls
+		#if compteur_lights_Lumiere <= 0:#ca veut dire que Lulu est dans le noir
+			#Global.restart_game()
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-	if STATE.playing:
+	if state == States.PLAYING:
 		move_and_slide()
+	elif state in [States.STUCK]:
+		pass
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -247,6 +251,7 @@ func on_enter_light() -> void:
 	compteur_lights_Lumiere += 1
 	print("compteur Lumiere (enter): ", compteur_lights_Lumiere)
 	
+	
 #Lorsque Lumiere enter une light, son compteur s'incrémente
 func on_enter_black_light() -> void:
 	on_enter_light()
@@ -275,14 +280,14 @@ func on_exit_light(light: Area2D) -> void:
 		print("Lumiere is in darknesses")
 		#TEST
 		#déclenche l'animation dans process
-		lulu_entered_darkness = true
-		#définir le pas pour l'animation de rebondissement
-		exiting_light_pos = light.global_position
-		pas = (position - light.global_position) / pas_when_darkness
-		
-		#vérifie la position de Lulu dans l'espace par rapport au centre de la light
-		var rebond = (position - exiting_light_pos) * 0.33
-		position = position - rebond
+		#lulu_entered_darkness = true
+		##définir le pas pour l'animation de rebondissement
+		#exiting_light_pos = light.global_position        
+		#pas = (position - light.global_position) / pas_when_darkness
+		#
+		##vérifie la position de Lulu dans l'espace par rapport au centre de la light
+		#var rebond = (position - exiting_light_pos) * 0.33
+		#position = position - rebond
 		
 		
 		

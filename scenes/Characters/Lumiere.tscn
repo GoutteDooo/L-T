@@ -667,7 +667,6 @@ _data = {
 z_index = 20
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_3jle8")
-coyote_time = null
 sfx_L_footsteps = ExtResource("6_58n88")
 sfx_L_jump = ExtResource("3_1h8p3")
 sfx_L_magic_charge = ExtResource("4_sbunb")
@@ -721,7 +720,7 @@ monitoring = false
 unique_name_in_owner = true
 visible = false
 modulate = Color(3.46541e-06, 0.831358, 0.840467, 1)
-position = Vector2(0, -42)
+position = Vector2(0, -22.5)
 collision_layer = 15
 monitoring = false
 
@@ -773,37 +772,45 @@ target_position = Vector2(0, 20)
 
 [node name="DetectDarknessRight" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1.38243e-11, -25)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-52.5, -25)
 rotation = -7.85397
 target_position = Vector2(0.000232697, 35)
 collision_mask = 128
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="DetectDarknessLeft" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1.38243e-11, -25)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(55, -25)
 rotation = 1.57079
 target_position = Vector2(0.000232697, 35)
 collision_mask = 128
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="DetectDarknessUp" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1.38243e-11, -25)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1.54612e-12, 37.5)
 rotation = -3.14159
-target_position = Vector2(0.000255446, 57.5)
+target_position = Vector2(9.50693e-05, 37.5)
 collision_mask = 128
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="DetectDarknessDown" type="RayCast2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1.38243e-11, -25)
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-1.70985e-11, -110)
 rotation = -6.28318
-target_position = Vector2(0.000255446, 57.5)
+target_position = Vector2(0.00021549, 42.5)
 collision_mask = 128
+hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 

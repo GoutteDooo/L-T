@@ -588,7 +588,7 @@ script = ExtResource("1_g2ste")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = -10
-color = Color(0, 0, 0, 1)
+color = Color(0.230315, 0.230315, 0.230315, 1)
 
 [node name="floor" type="TileMapLayer" parent="."]
 z_index = 10
@@ -597,7 +597,7 @@ tile_set = SubResource("TileSet_8rh8o")
 
 [node name="Obscurite" parent="." instance=ExtResource("2_8smen")]
 unique_name_in_owner = true
-position = Vector2(555, -116)
+position = Vector2(-357, 13)
 
 [node name="Switch_camera" parent="Obscurite" instance=ExtResource("4_vsw0c")]
 enabled = false
@@ -614,10 +614,13 @@ position = Vector2(-516, 38)
 light_mask = 7
 visibility_layer = 7
 z_index = -10
+position = Vector2(24, 0)
+scale = Vector2(1.4125, 1)
 texture = ExtResource("2_hmoqy")
 
 [node name="bg_2" type="Sprite2D" parent="Node"]
-scale = Vector2(1.00392, 1.00392)
+position = Vector2(23.5, 0)
+scale = Vector2(1.41771, 1.00392)
 texture = ExtResource("3_fie7o")
 
 [node name="Mushroom" parent="." instance=ExtResource("6_31nni")]

@@ -15,6 +15,8 @@ var counter_click_obscurite = number_click_obscurite[counter_level] #nbs de ligh
 var counter_click_lumiere = number_click_lumiere[counter_level] #nbs de lights que Lumiere peut créer par scene
 var lulu = null
 var hades = null
+var light_array: Array[Object] = [] #Array de lights dynamique représentant les lights dans lesquelles Lulu se trouve
+var last_light_in = null #Check constamment la dernière light que Lulu a quittée
 
 
 #GUI
@@ -59,6 +61,19 @@ func _process(delta: float) -> void:
 		hades.animated_sprite.play("idle")
 		handleLuluView(!player_control_L)
 		handleHadesView(!player_control_O)
+	#PROBLEME !
+	#Parfois, un <Freed Object> se plante dans le tableau lorsque Lulu kill Hadès
+	#Avec cette fonction qui vérifie en permanence s'il y'a un freed object, ça permet de les remove s'il y'en a.
+	#Pas trouvé mieux pour l'instant, mais peut-être à opti
+	if light_array.size() > 1:
+		for i in range(0, light_array.size()):
+			print("Array : ", light_array)
+			if light_array[i] == null:
+				print("Tentative de removing freed object...")
+				light_array.remove_at(i)
+				print("Réussite ! Array : ", light_array)
+			else:
+				print("Pas de freed object !")
 		
 func restart_game() -> void:
 	#DEBUG
@@ -68,6 +83,7 @@ func restart_game() -> void:
 		#Engine.time_scale = 0.5
 		dying_sound.play()
 		timer.start()
+		light_array = [] #Remettre l'array vide pour éviter tout bug de freed object
 
 func victory() -> void:
 	#DEBUG

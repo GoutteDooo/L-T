@@ -44,7 +44,7 @@ func _ready() -> void:
 	Global.lumiere_control(true)
 	Global.obscur_control(false)
 	#déclarer où la caméra se situe en 1er
-	Global.body_cam = %Lumiere
+	#Global.body_cam = %Lumiere
 	
 	pcam_room_top_right.set_follow_offset(Vector2(-80, 0))
 	room_top_right.body_entered.connect(_on_body_entered.bind(pcam_room_top_right))
