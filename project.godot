@@ -25,21 +25,21 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 [dialogic]
 
 directories/dch_directory={
-"Help": "res://dialogic/help.dch",
 "Lulu": "res://timelines/level_2/Lulu.dch",
-"Obs": "res://timelines/level_2/Obs.dch"
+"Obs": "res://timelines/level_2/Obs.dch",
+"help": "res://dialogic/help.dch"
 }
 directories/dtl_directory={
 "Obs_meet_Lu": "res://timelines/level_2/Obs_meet_Lu.dtl",
 "bad_light": "res://timelines/intro/bad_light.dtl",
 "dialogues_later": "res://timelines/level_2/dialogues_later.dtl",
 "first_light_ok": "res://timelines/intro/first_light_ok.dtl",
-"intro": "res://timelines/intro.dtl",
+"intro": "res://timelines/level_2/intro.dtl",
 "intro_Obscur": "res://timelines/intro/intro_Obscur.dtl",
-"level_2/intro": "res://timelines/level_2/intro.dtl",
 "pickup_cristal": "res://timelines/intro/pickup_cristal.dtl",
 "second_light_ok": "res://timelines/intro/second_light_ok.dtl",
-"timeline": "res://timelines/timeline.dtl"
+"timeline": "res://timelines/timeline.dtl",
+"timelines/intro": "res://timelines/intro.dtl"
 }
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.03
@@ -82,7 +82,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogic/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [global_group]
 

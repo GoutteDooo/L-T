@@ -1,0 +1,58 @@
+{
+	"categories": [
+		{
+			"uuid": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"title": "Task",
+			"color": "70bafa"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "4120a288-cbcb-4438-9953-dd7928ec7908",
+			"title": "Todo",
+			"tasks": [
+				"63b73c9e-5a12-487d-a46c-081b3d66f79c",
+				"2fa42cd5-e538-4032-b40c-43673b2842cc"
+			]
+		},
+		{
+			"uuid": "001ca8df-a615-44b4-ab8b-e7b1a6f1bb33",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "399709c0-727f-41b0-8f38-5de25fc847be",
+			"title": "Done",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "63b73c9e-5a12-487d-a46c-081b3d66f79c",
+			"title": "startup.gd -> freed object (?)",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "2fa42cd5-e538-4032-b40c-43673b2842cc",
+			"title": "Terminer le bouncing de Lulu dans magic_light.gd",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"4120a288-cbcb-4438-9953-dd7928ec7908"
+			],
+			[
+				"001ca8df-a615-44b4-ab8b-e7b1a6f1bb33"
+			],
+			[
+				"399709c0-727f-41b0-8f38-5de25fc847be"
+			]
+		]
+	}
+}
