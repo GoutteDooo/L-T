@@ -14,7 +14,8 @@
 				"84ca3b21-9178-4e33-8a11-46cf45eb8afd",
 				"927a6c41-36d6-456e-b8b8-a44caecb44d8",
 				"ff7c3120-2e6b-458c-9293-e67425f64132",
-				"9cb3de32-edcb-4348-ac77-c94493e19166"
+				"9cb3de32-edcb-4348-ac77-c94493e19166",
+				"8e797887-b836-4a4a-9ace-9995abd468a8"
 			]
 		},
 		{
@@ -79,6 +80,13 @@
 		{
 			"uuid": "9cb3de32-edcb-4348-ac77-c94493e19166",
 			"title": "Rendre impossible le switch cam au lvl 2 tant que Lulu n'a pas été cherché son fragment",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "8e797887-b836-4a4a-9ace-9995abd468a8",
+			"title": "Intégrer black_light dans array_light",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []
