@@ -10,7 +10,7 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 const FALL_GRAVITY = 1200
 #states
-enum States {PLAYING, STUCK}
+enum States {PLAYING, IDLE2, STUCK, RUNNING}
 var state: States = States.PLAYING
 
 
@@ -104,9 +104,9 @@ func _physics_process(delta: float) -> void:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
 				else:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
-					if direction == 0:
+					if direction == 0 and state == States.PLAYING:
 						animated_sprite.play("idle")
-					else:
+					elif state == States.RUNNING:
 						animated_sprite.play("run")
 				
 			else:
@@ -116,9 +116,11 @@ func _physics_process(delta: float) -> void:
 			
 			if direction and !hasFinished:
 				velocity.x = direction * SPEED
-				
+				state = States.RUNNING
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
+				if state == States.RUNNING:
+					state = States.PLAYING
 			
 			
 			create_light()
@@ -150,7 +152,6 @@ func _physics_process(delta: float) -> void:
 	#Je dois réactiver la shape une fois le process relancé car sinon Lulu ne se déplacera pas car cela agira comme si que la shape n'avait pas changé d'état
 	#Calculer si Lulu est stuck dans un tileset
 	if %DetectStuckDown.is_colliding():
-		state
 		position.y -= 1
 		print_debug("colliding down ! position y : ", position.y)
 		print_debug("état de la shape:  ", $CollisionShape.disabled)
@@ -177,7 +178,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-	if state == States.PLAYING:
+	if state == States.PLAYING or state == States.IDLE2 or state == States.RUNNING:
 		move_and_slide()
 	elif state in [States.STUCK]:
 		pass
@@ -244,6 +245,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		isPlayingMagic = false
 		#DEBUG
 		#print("isPlayingMagic, fin anim : ", isPlayingMagic)
+	#Lorsque clignement des yeux finis, on retourne à idle original
+	if animated_sprite.animation == "idle_2":
+		print("fin idle2!")
+		animated_sprite.animation = "idle"
+		state = States.PLAYING
 
 
 #Lorsque Lumiere enter une light, son compteur s'incrémente
@@ -255,7 +261,7 @@ func on_enter_light() -> void:
 #Lorsque Lumiere enter une light, son compteur s'incrémente
 func on_enter_black_light() -> void:
 	on_enter_light()
-	%AnimatedSprite2D.light_mask = 2
+	animated_sprite.light_mask = 2
 	#Pour la BL, problèmes de bugs
 	#désactive la ML si elle est déjà activée
 	if %ML.monitoring == true && %BL.visible == true:
@@ -267,8 +273,8 @@ func on_enter_black_light() -> void:
 #Lorsque Lumiere quitte la black_light, son light_mask se remet à sa valeur par défaut
 func on_exit_black_light(black_light:Area2D) -> void:
 	on_exit_light(black_light)
-	%AnimatedSprite2D.light_mask = 7
-	print("light mask :", %AnimatedSprite2D.light_mask)
+	animated_sprite.light_mask = 7
+	print("light mask :", animated_sprite.light_mask)
 
 
 #Lorsque Lumiere quitte une light & qu'elle n'est pas dans une autre light, c'est game over.
@@ -326,24 +332,32 @@ func load_sfx(sfx_to_load):
 
 
 func _play_run_animation() -> void:
-	%AnimatedSprite2D.animation = "run"
+	animated_sprite.animation = "run"
 	
 func _play_idle_animation() -> void:
-	%AnimatedSprite2D.animation = "idle"
+	animated_sprite.animation = "idle"
 	
 func _flip_sprite() -> void:
 	animated_sprite.flip_h = !animated_sprite.flip_h
 
 func _on_animated_sprite_2d_frame_changed() -> void:
-	if %AnimatedSprite2D.animation == "idle": return
-	if %AnimatedSprite2D.animation == "jump": return
-	if %AnimatedSprite2D.animation == "magic_end": return
-	if %AnimatedSprite2D.animation == "magic_loop": return
-	if %AnimatedSprite2D.animation == "magic_start": return
-	if %AnimatedSprite2D.animation == "lose": return
-	if %AnimatedSprite2D.animation == "run":
+	#Animation clignement yeux aléatoire
+	if animated_sprite.animation == "idle" and animated_sprite.frame == 2:
+		var rng = randf()
+		if rng > 0.8:
+			print("lancement idle2 ! Ancien state : ", state)
+			state = States.IDLE2
+			print("state actuel : ",state)
+			animated_sprite.animation = "idle_2"
+	if animated_sprite.animation == "jump": return
+	if animated_sprite.animation == "magic_end": return
+	if animated_sprite.animation == "magic_loop": return
+	if animated_sprite.animation == "magic_start": return
+	if animated_sprite.animation == "lose": return
+	if animated_sprite.animation == "run":
 		load_sfx(sfx_L_footsteps)
-		if %AnimatedSprite2D.frame in footstep_frames: %sfx_player.play()
+		if animated_sprite.frame in footstep_frames: %sfx_player.play()
+	
 
 
 func create_light() -> void:

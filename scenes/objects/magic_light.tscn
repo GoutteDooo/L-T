@@ -99,7 +99,6 @@ scale = Vector2(1.05584, 1.05584)
 shape = SubResource("CircleShape2D_166en")
 
 [node name="circle" type="Sprite2D" parent="."]
-visible = false
 light_mask = 2
 visibility_layer = 6
 material = SubResource("CanvasItemMaterial_ok4vs")

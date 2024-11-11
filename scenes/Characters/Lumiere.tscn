@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dxgrb1rjapq76"]
+[gd_scene load_steps=70 format=3 uid="uid://dxgrb1rjapq76"]
 
 [ext_resource type="Script" path="res://scripts/lumiere.gd" id="1_3jle8"]
 [ext_resource type="Texture2D" uid="uid://c258s65pwiupf" path="res://assets/sprites/Enchantress/Idle.png" id="1_uewwh"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dngbj1ef678lw" path="res://scenes/objects/black_light.tscn" id="12_eyg0n"]
 [ext_resource type="Texture2D" uid="uid://cei6vjla7f3ps" path="res://assets/sprites/lights/white_circle_thin-500x500.png" id="14_mvqwy"]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7ebyv"]
+polygon = PackedVector2Array(0, 59, -5, 64, 7.5, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1h8b"]
 atlas = ExtResource("1_uewwh")
 region = Rect2(0, 0, 128, 128)
@@ -27,11 +30,11 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("1_uewwh")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ne5tq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u62qa"]
 atlas = ExtResource("1_uewwh")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c4l8l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gemu1"]
 atlas = ExtResource("1_uewwh")
 region = Rect2(512, 0, 128, 128)
 
@@ -204,14 +207,22 @@ animations = [{
 "texture": SubResource("AtlasTexture_28wnm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ne5tq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c4l8l")
+"texture": SubResource("AtlasTexture_soeqx")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 10.0
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u62qa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gemu1")
+}],
+"loop": false,
+"name": &"idle_2",
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -670,6 +681,11 @@ script = ExtResource("1_3jle8")
 sfx_L_footsteps = ExtResource("6_58n88")
 sfx_L_jump = ExtResource("3_1h8p3")
 sfx_L_magic_charge = ExtResource("4_sbunb")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(0, -64)
+scale = Vector2(1, 1)
+occluder = SubResource("OccluderPolygon2D_7ebyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
