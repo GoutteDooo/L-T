@@ -123,7 +123,7 @@ func _on_timer_timeout() -> void:
 		game_over = false
 	else:
 		#si game over over
-		print("game over over!")
+		#print("game over over!")
 		counter_level = 1
 		get_tree().change_scene_to_file.call_deferred("res://scenes/levels/level_1.tscn")
 		get_tree().reload_current_scene()
@@ -132,11 +132,11 @@ func _on_timer_timeout() -> void:
 
 func lumiere_control(levier:bool) -> void:
 	Global.player_control_L = levier
-	print("Lulu control : ", levier)
+	#print("Lulu control : ", levier)
 	
 func obscur_control(levier:bool) -> void:
 	Global.player_control_O = levier
-	print("Hades control : ", levier)
+	#print("Hades control : ", levier)
 
 func handleLuluView(levier:bool) -> void:
 	if levier:
@@ -146,7 +146,7 @@ func handleLuluView(levier:bool) -> void:
 		lulu.animated_sprite.light_mask = 15
 		cam_L.enabled = true
 		cam_H.enabled = false
-		print_debug("cam lulu activée & H désactivée")
+		#print_debug("cam lulu activée & H désactivée")
 	
 func handleHadesView(levier: bool) -> void:
 	if levier:
@@ -155,4 +155,30 @@ func handleHadesView(levier: bool) -> void:
 		hades.visible = true
 		cam_L.enabled = false
 		cam_H.enabled = true
-		print_debug("cam H activée & L désactivée")
+		#print_debug("cam H activée & L désactivée")
+		
+func lulu_exit_light() -> void:
+	#Gérer le tableau des lights de Lulu
+	for i in range(0,light_array.size()):
+		#print("array size : ", Global.light_array.size())
+		#print("i : ", i)
+		#Vérifie que la light quittée est bien dans le tableau
+		if (light_array[i] == last_light_in or light_array[i] == null):
+			light_array.remove_at(i)
+			#print("Removed at index : ",i)
+			#print("BREAK")
+			break
+		#print("light array : ",Global.light_array)
+	#Enfin, on vérifie si son tableau est vide, et si tel est le cas, cela veut dire que Lulu n'est plus dans aucune light
+	if light_array.size() == 0 and last_light_in.monitoring:
+		#On check si la last_light existe encore
+		#Si c'est le cas, alors on renvoie Lulu à son origine
+		#Sinon, on recommence la partie (Hades a du l'éteindre)
+		#print("last light in :",Global.last_light_in)
+		print("Lulu est retransférée à la position : ", Global.last_light_in.global_position)
+		lulu.position = last_light_in.global_position + Vector2(0, -10)
+		#print("Position de lulu : ", Global.lulu.position)
+	elif light_array.size() == 0:
+		print("dernière light quittée inexistante, fin de la partie : ", Global.last_light_in)
+		restart_game()
+	#print("Tableau vide !")

@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 Global="*res://scenes/Controls/Startup.tscn"
 Music="*res://scenes/Controls/music.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogic]
 
@@ -70,8 +69,6 @@ text/autoadvance_per_word_delay=0
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=900
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 

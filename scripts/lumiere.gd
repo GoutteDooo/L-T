@@ -104,15 +104,19 @@ func _physics_process(delta: float) -> void:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
 				else:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
-					if direction == 0 and state == States.PLAYING:
+					if direction == 0 and state in [States.PLAYING, States.STUCK]:
 						animated_sprite.play("idle")
+						#print("State ",state,"détecté ! Animation idle played")
 					elif state == States.RUNNING:
 						animated_sprite.play("run")
-				
-			else:
+			else:#se trouve dans les airs ou est stuck
 				#ne joue l'animation jump qu'une seule fois
-				if not animated_sprite.is_playing() or animated_sprite.animation != "jump":
+				if not animated_sprite.is_playing() or animated_sprite.animation != "jump" and state != States.STUCK:
+					print("Playing jump ?")
 					animated_sprite.play("jump")
+				elif state == States.STUCK:
+					#print("inonfloor false and state STUCK !")
+					animated_sprite.play("idle")
 			
 			if direction and !hasFinished:
 				velocity.x = direction * SPEED
@@ -186,6 +190,11 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 	elif state in [States.STUCK]:
 		pass
+		
+	##TEST
+	var rng = randf()
+	if rng > 0.98:
+		print("Lulu state : ", state, " and isonfloor ? : ", is_on_floor())
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -259,7 +268,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 #Lorsque Lumiere enter une light, son compteur s'incrémente
 func on_enter_light() -> void:
 	compteur_lights_Lumiere += 1
-	print("compteur Lumiere (enter): ", compteur_lights_Lumiere)
+	#print("compteur Lumiere (enter): ", compteur_lights_Lumiere)
 	
 	
 #Lorsque Lumiere enter une light, son compteur s'incrémente
@@ -271,7 +280,7 @@ func on_enter_black_light() -> void:
 	if %ML.monitoring == true && %BL.visible == true:
 		%ML.monitoring = false
 		%ML.visible = false
-		print("monitoring ML off")
+		#print("monitoring ML off")
 	
 
 #Lorsque Lumiere quitte la black_light, son light_mask se remet à sa valeur par défaut
@@ -284,10 +293,12 @@ func on_exit_black_light(black_light:Area2D) -> void:
 #Lorsque Lumiere quitte une light & qu'elle n'est pas dans une autre light, c'est game over.
 func on_exit_light(light: Area2D) -> void:
 	compteur_lights_Lumiere -= 1
-	print("compteur Lumiere (exit) : ", compteur_lights_Lumiere)
+	#print("compteur Lumiere (exit) : ", compteur_lights_Lumiere)
 	if compteur_lights_Lumiere <= 0:
+#		#A PRIORI, LE COMPTEUR NE ME SERT PLUS A RIEN
+		pass
 		#DEBUG
-		print("Lumiere is in darknesses")
+		#print("Lumiere is in darknesses")
 		#TEST
 		#déclenche l'animation dans process
 		#lulu_entered_darkness = true

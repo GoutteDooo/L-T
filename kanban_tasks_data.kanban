@@ -15,14 +15,14 @@
 				"927a6c41-36d6-456e-b8b8-a44caecb44d8",
 				"ff7c3120-2e6b-458c-9293-e67425f64132",
 				"9cb3de32-edcb-4348-ac77-c94493e19166",
-				"8e797887-b836-4a4a-9ace-9995abd468a8"
+				"681ced7c-583c-4cbc-b4c6-b05234b61c44",
+				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
 			]
 		},
 		{
 			"uuid": "001ca8df-a615-44b4-ab8b-e7b1a6f1bb33",
 			"title": "Doing",
 			"tasks": [
-				"63b73c9e-5a12-487d-a46c-081b3d66f79c",
 				"2fa42cd5-e538-4032-b40c-43673b2842cc"
 			]
 		},
@@ -30,7 +30,9 @@
 			"uuid": "399709c0-727f-41b0-8f38-5de25fc847be",
 			"title": "Done",
 			"tasks": [
-				"ab06f2dd-c08b-4169-b9d4-c41460d31606"
+				"ab06f2dd-c08b-4169-b9d4-c41460d31606",
+				"8e797887-b836-4a4a-9ace-9995abd468a8",
+				"63b73c9e-5a12-487d-a46c-081b3d66f79c"
 			]
 		}
 	],
@@ -65,7 +67,7 @@
 		},
 		{
 			"uuid": "927a6c41-36d6-456e-b8b8-a44caecb44d8",
-			"title": "Gérer les caméras de tout les lvls et les readys",
+			"title": "Gérer les switch cams de tout les lvls et les readys",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []
@@ -87,6 +89,20 @@
 		{
 			"uuid": "8e797887-b836-4a4a-9ace-9995abd468a8",
 			"title": "Intégrer black_light dans array_light",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "681ced7c-583c-4cbc-b4c6-b05234b61c44",
+			"title": "une seule cinématique lvl2",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "5fe4a0f2-5d86-46fb-8656-0a518c586569",
+			"title": "Rendre les switch cams impossible durant les cinématiques",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []

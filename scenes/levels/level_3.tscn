@@ -1152,7 +1152,7 @@ color = Color(0.237539, 0.237539, 0.237539, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 z_index = 1000
-position = Vector2(927.273, 181.818)
+position = Vector2(836.364, 204.545)
 zoom = Vector2(2.2, 2.2)
 limit_left = 500
 limit_top = 0
@@ -1160,10 +1160,12 @@ limit_right = 1200
 limit_bottom = 800
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("3_msadi")
 
 [node name="RoomTopRightPCam2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(927.273, 181.818)
+position = Vector2(836.364, 204.545)
 script = ExtResource("14_lwqfg")
 priority = 5
 follow_mode = 1
@@ -1189,7 +1191,7 @@ shape = SubResource("RectangleShape2D_pfhqp")
 debug_color = Color(0, 0.576471, 0.670588, 0)
 
 [node name="RoomAllLeftPCam2D" type="Node2D" parent="."]
-position = Vector2(227.273, 656)
+position = Vector2(136.364, 656)
 script = ExtResource("14_lwqfg")
 follow_mode = 1
 zoom = Vector2(2.2, 2.2)
