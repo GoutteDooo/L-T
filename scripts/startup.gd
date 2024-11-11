@@ -66,14 +66,17 @@ func _process(delta: float) -> void:
 	#Avec cette fonction qui vérifie en permanence s'il y'a un freed object, ça permet de les remove s'il y'en a.
 	#Pas trouvé mieux pour l'instant, mais peut-être à opti
 	if light_array.size() > 1:
-		for i in range(0, light_array.size()):
-			print("Array : ", light_array)
-			if light_array[i] == null:
-				print("Tentative de removing freed object...")
-				light_array.remove_at(i)
-				print("Réussite ! Array : ", light_array)
-			else:
-				print("Pas de freed object !")
+		var rng = randf() #permettra de randomiser pour éviter de lancer la fonction 10000x/sec
+		if rng > 0.9:
+			for i in range(0, light_array.size()):
+				print("Array : ", light_array)
+				if light_array[i] == null:
+					#print("Tentative de removing freed object...")
+					light_array.remove_at(i)
+					#print("Réussite ! Array : ", light_array)
+				else:
+					#print("Pas de freed object !")
+					pass
 		
 func restart_game() -> void:
 	#DEBUG
@@ -83,7 +86,7 @@ func restart_game() -> void:
 		#Engine.time_scale = 0.5
 		dying_sound.play()
 		timer.start()
-		light_array = [] #Remettre l'array vide pour éviter tout bug de freed object
+		light_array = [] #Remettre l'array de Lulu vide pour éviter tout bug de freed object
 
 func victory() -> void:
 	#DEBUG

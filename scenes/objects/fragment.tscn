@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bylv3tmj3jxtg"]
+[gd_scene load_steps=10 format=3 uid="uid://bylv3tmj3jxtg"]
 
 [ext_resource type="Texture2D" uid="uid://8wutyg8p8bin" path="res://icon.svg" id="1_n00gd"]
 [ext_resource type="Script" path="res://scripts/fragment.gd" id="1_ngueb"]
 [ext_resource type="Texture2D" uid="uid://ddw5vknpsgw1k" path="res://assets/sprites/lights/ddxt97e-141fe084-2604-4e10-b33a-94202ffb4315.png" id="3_u7ma8"]
 [ext_resource type="AudioStream" uid="uid://bacwlwd3xrf7s" path="res://assets/sounds/PickUp.mp3" id="4_t4f8p"]
+[ext_resource type="PackedScene" uid="uid://d3k7f01mk0jkc" path="res://scenes/objects/magic_light.tscn" id="5_dpida"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_um0hp"]
 radius = 12.2066
@@ -57,6 +58,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Magic_light:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_agroh"]
@@ -160,5 +173,9 @@ texture = ExtResource("3_u7ma8")
 stream = ExtResource("4_t4f8p")
 pitch_scale = 0.8
 bus = &"SFX"
+
+[node name="Magic_light" parent="." instance=ExtResource("5_dpida")]
+visible = false
+scale = Vector2(0.1, 0.1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

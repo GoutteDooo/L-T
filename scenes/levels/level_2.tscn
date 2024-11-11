@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://vn6qc30mlso4"]
+[gd_scene load_steps=26 format=4 uid="uid://vn6qc30mlso4"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_mk6ou"]
 [ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="1_njl74"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b37kpjsol1tlf" path="res://assets/sprites/decor/world_tileset.png" id="3_673a1"]
 [ext_resource type="Texture2D" uid="uid://bawyr2vu0ttsv" path="res://assets/sprites/decor/background1.png" id="4_u2dh7"]
 [ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="5_pvy32"]
+[ext_resource type="PackedScene" uid="uid://div3qf20hikek" path="res://scenes/GUI/switch_camera.tscn" id="5_ynmbd"]
 [ext_resource type="PackedScene" uid="uid://d3k7f01mk0jkc" path="res://scenes/objects/magic_light.tscn" id="6_bw2e7"]
 [ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="8_8ty5h"]
 [ext_resource type="PackedScene" uid="uid://doxiyohuarwi6" path="res://scenes/objects/checkpoint_obscurite.tscn" id="9_h5f8d"]
@@ -365,9 +366,13 @@ color = Color(0.165656, 0.165656, 0.165656, 1)
 unique_name_in_owner = true
 position = Vector2(-22, -152)
 
+[node name="Switch_camera" parent="Obscurite" instance=ExtResource("5_ynmbd")]
+
 [node name="Lumiere" parent="." instance=ExtResource("2_o2txv")]
 unique_name_in_owner = true
 position = Vector2(30, 3)
+
+[node name="Switch_camera" parent="Lumiere" instance=ExtResource("5_ynmbd")]
 
 [node name="BGs" type="Node2D" parent="."]
 position = Vector2(368, 159)

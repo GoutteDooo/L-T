@@ -684,7 +684,6 @@ sfx_L_magic_charge = ExtResource("4_sbunb")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2(0, -64)
-scale = Vector2(1, 1)
 occluder = SubResource("OccluderPolygon2D_7ebyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

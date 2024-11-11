@@ -11,8 +11,10 @@
 			"uuid": "4120a288-cbcb-4438-9953-dd7928ec7908",
 			"title": "Todo",
 			"tasks": [
-				"ab06f2dd-c08b-4169-b9d4-c41460d31606",
-				"84ca3b21-9178-4e33-8a11-46cf45eb8afd"
+				"84ca3b21-9178-4e33-8a11-46cf45eb8afd",
+				"927a6c41-36d6-456e-b8b8-a44caecb44d8",
+				"ff7c3120-2e6b-458c-9293-e67425f64132",
+				"9cb3de32-edcb-4348-ac77-c94493e19166"
 			]
 		},
 		{
@@ -26,7 +28,9 @@
 		{
 			"uuid": "399709c0-727f-41b0-8f38-5de25fc847be",
 			"title": "Done",
-			"tasks": []
+			"tasks": [
+				"ab06f2dd-c08b-4169-b9d4-c41460d31606"
+			]
 		}
 	],
 	"tasks": [
@@ -40,7 +44,7 @@
 		{
 			"uuid": "2fa42cd5-e538-4032-b40c-43673b2842cc",
 			"title": "Terminer le bouncing de Lulu dans magic_light.gd",
-			"description": "Animation à faire",
+			"description": "[ ] Animation à faire\n[ ] Calculer la position de Lulu par rapport au centre de la light et la faire rebondir en fonction",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []
 		},
@@ -54,6 +58,27 @@
 		{
 			"uuid": "84ca3b21-9178-4e33-8a11-46cf45eb8afd",
 			"title": "Gérer ombres personnages",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "927a6c41-36d6-456e-b8b8-a44caecb44d8",
+			"title": "Gérer les caméras de tout les lvls et les readys",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "ff7c3120-2e6b-458c-9293-e67425f64132",
+			"title": "Animation de la cinématique lvl2",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "9cb3de32-edcb-4348-ac77-c94493e19166",
+			"title": "Rendre impossible le switch cam au lvl 2 tant que Lulu n'a pas été cherché son fragment",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []

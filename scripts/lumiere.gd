@@ -152,12 +152,16 @@ func _physics_process(delta: float) -> void:
 	#Je dois réactiver la shape une fois le process relancé car sinon Lulu ne se déplacera pas car cela agira comme si que la shape n'avait pas changé d'état
 	#Calculer si Lulu est stuck dans un tileset
 	if %DetectStuckDown.is_colliding():
+		state = States.STUCK
+		print("Lulu STUCK DOWN ! State : ",state)
 		position.y -= 1
-		print_debug("colliding down ! position y : ", position.y)
+		#print_debug("colliding down ! position y : ", position.y)
 		print_debug("état de la shape:  ", $CollisionShape.disabled)
 	elif %DetectStuckUp.is_colliding():
 		position.y += 1
-		print("colliding up ! go DOWN")
+		state = States.STUCK
+		print("Lulu STUCK UP ! State : ",state)
+		#print("colliding up ! go DOWN")
 	
 	##TEST BOUNCING IN LIGHT
 	#if !%DetectDarknessDown.is_colliding():
@@ -247,7 +251,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		#print("isPlayingMagic, fin anim : ", isPlayingMagic)
 	#Lorsque clignement des yeux finis, on retourne à idle original
 	if animated_sprite.animation == "idle_2":
-		print("fin idle2!")
+		#print("fin idle2!")
 		animated_sprite.animation = "idle"
 		state = States.PLAYING
 
@@ -345,9 +349,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite.animation == "idle" and animated_sprite.frame == 2:
 		var rng = randf()
 		if rng > 0.8:
-			print("lancement idle2 ! Ancien state : ", state)
+			#print("lancement idle2 ! Ancien state : ", state)
 			state = States.IDLE2
-			print("state actuel : ",state)
+			#print("state actuel : ",state)
 			animated_sprite.animation = "idle_2"
 	if animated_sprite.animation == "jump": return
 	if animated_sprite.animation == "magic_end": return

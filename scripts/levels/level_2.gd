@@ -9,6 +9,8 @@ func _ready() -> void:
 	#déclarer lulu et hades en global
 	Global.lulu = %Lumiere
 	Global.hades = %Obscurite
+	Global.player_control_O = false
+	Global.player_control_L = true
 	
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Global.obscur_control(false)

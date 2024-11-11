@@ -7,6 +7,7 @@ func _ready() -> void:
 	Global.lulu = %Lumiere
 	Global.hades = %Obscurite
 	Global.player_control_O = false
+	Global.player_control_L = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -18,12 +18,12 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	#éteindre une light avec clic droit
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		return
-		print("magic light off s'est joué !!")
+		#print("magic light off s'est joué !!")
 		if Global.counter_click_obscurite > 0:
 			Global.counter_click_obscurite -= 1
 			#fait disparaître la light
 			queue_free()
-			print("magic light : désactivé")
+			#print("magic light : désactivé")
 			#jouer le son magie
 			
 			#DEBUG
@@ -40,7 +40,7 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group(lumiere_group):
 		get_tree().call_group("Lumiere", "on_enter_light")
 		Global.light_array.push_front(self)
-		print("LULU ENTERED LIGHT, ARRAY :", Global.light_array)
+		#print("LULU ENTERED LIGHT, ARRAY :", Global.light_array)
 		
 	if body.is_in_group(obscurite_group):
 		get_tree().call_group("Obscurite", "on_enter_light",self)
