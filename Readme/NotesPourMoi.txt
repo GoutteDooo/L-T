@@ -1,0 +1,13 @@
+Startup :
+	States Globales sont déclarées à chaque LVL
+	
+A chaque lvl, au ready :
+	#déclarer lulu et hades en global
+	Global.lulu = %Lumiere
+	Global.hades = %Obscurite
+	Global.player_control_O = false
+	Global.player_control_L = true
+	#Global.state = States.PLAYING
+	
+Cinematiques :
+	"cine_state" s'occupe en global de switch les cinématiques

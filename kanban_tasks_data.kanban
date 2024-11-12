@@ -14,16 +14,16 @@
 				"84ca3b21-9178-4e33-8a11-46cf45eb8afd",
 				"927a6c41-36d6-456e-b8b8-a44caecb44d8",
 				"ff7c3120-2e6b-458c-9293-e67425f64132",
-				"9cb3de32-edcb-4348-ac77-c94493e19166",
-				"681ced7c-583c-4cbc-b4c6-b05234b61c44",
-				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
+				"0c456abd-d177-418c-9aad-6bd16d5f1f79",
+				"b96c47ae-c35a-429b-ad68-56914c55dd59"
 			]
 		},
 		{
 			"uuid": "001ca8df-a615-44b4-ab8b-e7b1a6f1bb33",
 			"title": "Doing",
 			"tasks": [
-				"2fa42cd5-e538-4032-b40c-43673b2842cc"
+				"2fa42cd5-e538-4032-b40c-43673b2842cc",
+				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
 			]
 		},
 		{
@@ -32,7 +32,9 @@
 			"tasks": [
 				"ab06f2dd-c08b-4169-b9d4-c41460d31606",
 				"8e797887-b836-4a4a-9ace-9995abd468a8",
-				"63b73c9e-5a12-487d-a46c-081b3d66f79c"
+				"63b73c9e-5a12-487d-a46c-081b3d66f79c",
+				"681ced7c-583c-4cbc-b4c6-b05234b61c44",
+				"9cb3de32-edcb-4348-ac77-c94493e19166"
 			]
 		}
 	],
@@ -103,6 +105,20 @@
 		{
 			"uuid": "5fe4a0f2-5d86-46fb-8656-0a518c586569",
 			"title": "Rendre les switch cams impossible durant les cinématiques",
+			"description": "Il faudra que je prenne note de bien gérer les switchs_cinematiques pour rendre les switch_cams impossible",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "0c456abd-d177-418c-9aad-6bd16d5f1f79",
+			"title": "Gérer les caméras du lvl3",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "b96c47ae-c35a-429b-ad68-56914c55dd59",
+			"title": "Fixer le bug de Lulu qui tombe dans le vide au lvl2",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []

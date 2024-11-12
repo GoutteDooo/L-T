@@ -37,7 +37,7 @@ Obs: ... Vous êtes sûr ?
 Lulu: Pourquoi ? Il y aurait une autre raison selon toi ?
 Obs: Hmm...
 Obs: Comment je peux savoir que ce que vous dites est vrai ? Qu'est-ce qui me dit que vos intentions ne sont pas mauvaises ?
-Lulu: Ben, regarde \: 
+Lulu: Ben, regarde \:
 [signal arg="lulu_montre_le_fragment"]
 [wait time="1.0"]
 Obs: C'est un simple Cristal.

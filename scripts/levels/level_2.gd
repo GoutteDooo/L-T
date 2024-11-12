@@ -9,12 +9,12 @@ func _ready() -> void:
 	#déclarer lulu et hades en global
 	Global.lulu = %Lumiere
 	Global.hades = %Obscurite
-	Global.player_control_O = false
-	Global.player_control_L = true
-	
-	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Global.obscur_control(false)
 	Global.lumiere_control(true)
+	Global.cam_state = Global.States.SWITCH_DISABLED
+	Global.cine_state = Global.cine_States.ON
+	
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	Dialogic.start("level_2/intro")
 	
 
@@ -25,6 +25,7 @@ func _on_dialogic_signal(argument: String):
 		%Obscurite.set_physics_process(true)
 		Global.obscur_control(false)
 		Global.lumiere_control(true)
+		Global.cam_state = Global.States.SWITCH_ON
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,7 +68,8 @@ func _on_cinematique_animation_finished(anim_name: StringName) -> void:
 
 #Obscur rencontre Lumière
 func _on_entering_obscur_body_entered(body: Node2D) -> void:
-	if body == %Obscurite:
+	if body == %Obscurite and Global.cine_state == Global.cine_States.ON:
+		Global.cine_state = Global.cine_States.OFF
 		event_obscurite_meet_lulu = true
 		Global.obscur_control(false)
 		%Obscurite.set_physics_process(false)

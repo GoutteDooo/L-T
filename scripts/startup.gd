@@ -8,6 +8,13 @@ var annulerAction = false #Permettra de faire des annulations d'actions (pendant
 var cam_H = null #Sert de switch au joueur pour la caméra
 var cam_L = null #Sert de switch au joueur pour la caméra
 
+#State 
+enum States {SWITCH_ON, SWITCH_DISABLED}
+var cam_state: States = States.SWITCH_ON
+enum cine_States {ON,OFF}
+var cine_state: cine_States = cine_States.OFF
+
+
 #Player
 const number_click_obscurite = [100, 4, 5, 4, 0,0] #chaque number en fonction du niveau
 const number_click_lumiere = [100, 1, 2, 3, 0,0] #chaque number en fonction du niveau
@@ -54,13 +61,13 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("quit_game"):
 		get_tree().quit()
 	#lorsque le joueur appuie sur 'espace'
-	if Input.is_action_just_pressed("switch_cam"):
-		lumiere_control(!player_control_L)
-		obscur_control(!player_control_O)
-		lulu.animated_sprite.play("idle")
-		hades.animated_sprite.play("idle")
-		handleLuluView(!player_control_L)
-		handleHadesView(!player_control_O)
+	if Input.is_action_just_pressed("switch_cam") and (cam_state == States.SWITCH_ON):
+			lumiere_control(!player_control_L)
+			obscur_control(!player_control_O)
+			lulu.animated_sprite.play("idle")
+			hades.animated_sprite.play("idle")
+			handleLuluView(!player_control_L)
+			handleHadesView(!player_control_O)
 	#PROBLEME !
 	#Parfois, un <Freed Object> se plante dans le tableau lorsque Lulu kill Hadès
 	#Avec cette fonction qui vérifie en permanence s'il y'a un freed object, ça permet de les remove s'il y'en a.
@@ -123,7 +130,7 @@ func _on_timer_timeout() -> void:
 		game_over = false
 	else:
 		#si game over over
-		#print("game over over!")
+		print("game over over!")
 		counter_level = 1
 		get_tree().change_scene_to_file.call_deferred("res://scenes/levels/level_1.tscn")
 		get_tree().reload_current_scene()
@@ -132,11 +139,11 @@ func _on_timer_timeout() -> void:
 
 func lumiere_control(levier:bool) -> void:
 	Global.player_control_L = levier
-	#print("Lulu control : ", levier)
+	print("Lulu control : ", levier)
 	
 func obscur_control(levier:bool) -> void:
 	Global.player_control_O = levier
-	#print("Hades control : ", levier)
+	print("Hades control : ", levier)
 
 func handleLuluView(levier:bool) -> void:
 	if levier:
@@ -146,7 +153,7 @@ func handleLuluView(levier:bool) -> void:
 		lulu.animated_sprite.light_mask = 15
 		cam_L.enabled = true
 		cam_H.enabled = false
-		#print_debug("cam lulu activée & H désactivée")
+		print_debug("cam lulu activée & H désactivée")
 	
 func handleHadesView(levier: bool) -> void:
 	if levier:
@@ -155,32 +162,4 @@ func handleHadesView(levier: bool) -> void:
 		hades.visible = true
 		cam_L.enabled = false
 		cam_H.enabled = true
-		#print_debug("cam H activée & L désactivée")
-		
-## Fonction appelée lorsque Lulu exit une light ou une black_light
-func lulu_exit_light() -> void:
-	#Gérer le tableau des lights de Lulu
-	for i in range(0,light_array.size()):
-		#print("array size : ", Global.light_array.size())
-		#print("i : ", i)
-		#Vérifie que la light quittée est bien dans le tableau
-		if (light_array[i] == last_light_in or light_array[i] == null):
-			light_array.remove_at(i)
-			#print("Removed at index : ",i)
-			#print("BREAK")
-			break
-		#print("light array : ",Global.light_array)
-	#Enfin, on vérifie si son tableau est vide, et si tel est le cas, cela veut dire que Lulu n'est plus dans aucune light
-	if light_array.size() == 0 and last_light_in.monitoring:
-		#On check si la last_light existe encore
-		#Si c'est le cas, alors on renvoie Lulu à son origine
-		#Sinon, on recommence la partie (Hades a du l'éteindre)
-		print("lulu position :",lulu.position)
-		print("light pos : ", Global.last_light_in)
-		#print("Lulu est retransférée à la position : ", Global.last_light_in.global_position)
-		lulu.position = last_light_in.global_position# - Vector2(2, 2)
-		#print("Position de lulu : ", Global.lulu.position)
-	elif light_array.size() == 0:
-		print("dernière light quittée inexistante, fin de la partie : ", Global.last_light_in)
-		restart_game()
-	#print("Tableau vide !")
+		print_debug("cam H activée & L désactivée")
