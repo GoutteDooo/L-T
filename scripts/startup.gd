@@ -157,6 +157,7 @@ func handleHadesView(levier: bool) -> void:
 		cam_H.enabled = true
 		#print_debug("cam H activée & L désactivée")
 		
+## Fonction appelée lorsque Lulu exit une light ou une black_light
 func lulu_exit_light() -> void:
 	#Gérer le tableau des lights de Lulu
 	for i in range(0,light_array.size()):
@@ -174,9 +175,10 @@ func lulu_exit_light() -> void:
 		#On check si la last_light existe encore
 		#Si c'est le cas, alors on renvoie Lulu à son origine
 		#Sinon, on recommence la partie (Hades a du l'éteindre)
-		#print("last light in :",Global.last_light_in)
-		print("Lulu est retransférée à la position : ", Global.last_light_in.global_position)
-		lulu.position = last_light_in.global_position + Vector2(0, -10)
+		print("lulu position :",lulu.position)
+		print("light pos : ", Global.last_light_in)
+		#print("Lulu est retransférée à la position : ", Global.last_light_in.global_position)
+		lulu.position = last_light_in.global_position# - Vector2(2, 2)
 		#print("Position de lulu : ", Global.lulu.position)
 	elif light_array.size() == 0:
 		print("dernière light quittée inexistante, fin de la partie : ", Global.last_light_in)
