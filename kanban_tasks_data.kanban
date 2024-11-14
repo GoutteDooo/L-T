@@ -16,7 +16,6 @@
 				"ff7c3120-2e6b-458c-9293-e67425f64132",
 				"0c456abd-d177-418c-9aad-6bd16d5f1f79",
 				"cb0901c2-8b51-45ae-b4fb-ade9d6e363c1",
-				"6e6b2135-4607-4467-8e0b-76337f89b039",
 				"0b3469cd-c9da-43aa-8a8f-834a36772c13"
 			]
 		},
@@ -24,7 +23,8 @@
 			"uuid": "001ca8df-a615-44b4-ab8b-e7b1a6f1bb33",
 			"title": "Doing",
 			"tasks": [
-				"2fa42cd5-e538-4032-b40c-43673b2842cc"
+				"2fa42cd5-e538-4032-b40c-43673b2842cc",
+				"dc73e5db-0c21-44b0-a218-02200b2937e9"
 			]
 		},
 		{
@@ -37,7 +37,8 @@
 				"681ced7c-583c-4cbc-b4c6-b05234b61c44",
 				"9cb3de32-edcb-4348-ac77-c94493e19166",
 				"b96c47ae-c35a-429b-ad68-56914c55dd59",
-				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
+				"5fe4a0f2-5d86-46fb-8656-0a518c586569",
+				"6e6b2135-4607-4467-8e0b-76337f89b039"
 			]
 		}
 	],
@@ -143,6 +144,13 @@
 		{
 			"uuid": "0b3469cd-c9da-43aa-8a8f-834a36772c13",
 			"title": "Mushrooms : Résoudre soucis light dans le noir",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "dc73e5db-0c21-44b0-a218-02200b2937e9",
+			"title": "Continuer la fonction isInShadow",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []
