@@ -389,10 +389,9 @@ limit_bottom = 500
 limit_smoothed = true
 
 [node name="Ambiance" type="CanvasModulate" parent="."]
-visible = false
 z_index = -10
 position = Vector2(6, 6)
-color = Color(0.165656, 0.165656, 0.165656, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Obscurite" parent="." instance=ExtResource("1_njl74")]
 unique_name_in_owner = true
