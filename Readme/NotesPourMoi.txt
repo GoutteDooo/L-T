@@ -11,3 +11,6 @@ A chaque lvl, au ready :
 	
 Cinematiques :
 	"cine_state" s'occupe en global de switch les cinématiques
+
+Les persos :
+	Ont des meca_states pour leur donner contrôle au joueur ou non

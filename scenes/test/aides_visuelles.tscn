@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://brody5vyw0ctf"]
+
+[ext_resource type="Script" path="res://scripts/tests/aides_visuelles.gd" id="1_lxhqf"]
+
+[node name="HELP" type="CanvasLayer"]
+script = ExtResource("1_lxhqf")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 23.0
+offset_right = 53.0
+offset_bottom = 46.0
+scale = Vector2(0.895496, 0.895496)
+text = "Text"

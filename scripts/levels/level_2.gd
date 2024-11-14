@@ -26,6 +26,8 @@ func _on_dialogic_signal(argument: String):
 		Global.obscur_control(false)
 		Global.lumiere_control(true)
 		Global.cam_state = Global.States.SWITCH_ON
+		print("Lulu meca_state :", %Lumiere.meca_state)
+		%Lumiere.meca_state = %Lumiere.MecaStates.ON
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -37,13 +39,14 @@ func _process(delta: float) -> void:
 #jusqu'à la cutscene
 func _on_fragment_body_entered(body: Node2D) -> void:
 	%Lumiere.on_put_fragment(9999)
-	%Lumiere._play_idle_animation()
 	if body == %Lumiere:
-		%Cinematique.play("Obscurite_appear")
+		%Cinematique.play("manage_camera")
 		#Modifier la position de Lumiere pour la poser sur le sol car le
 		#controle la clou dans les airs
 		await get_tree().create_timer(0.2).timeout
-		%Lumiere._play_idle_animation()
+		print("meca_state de Lulu avant chgt: ",%Lumiere.meca_state)
+		%Lumiere.meca_state = %Lumiere.MecaStates.OFF
+		print("meca_state de Lulu après : ",%Lumiere.meca_state)
 		Global.lumiere_control(false)
 		
 #Fonction qui servait à play la CS d'Obscur mais je ne me sert plus du xP
@@ -59,6 +62,8 @@ func deactive_light_hole() -> void:
 
 #lorsque Obscur apparaît, donner le contrôle au joueur
 func _on_cinematique_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "manage_camera":
+		%Cinematique.play("Obscurite_appear")
 	if anim_name == "Obscurite_appear":
 		Global.obscur_control(true)
 		%Cinematique.play("end_Obscur_appeared")

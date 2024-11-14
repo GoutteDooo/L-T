@@ -10,8 +10,10 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 const FALL_GRAVITY = 1200
 #states
-enum States {PLAYING, IDLE2, STUCK, RUNNING}
-var state: States = States.PLAYING
+enum anim_States {PLAYING, IDLE2, STUCK, RUNNING}
+var animation_state: anim_States = anim_States.PLAYING
+enum MecaStates {ON, OFF}
+var meca_state: MecaStates = MecaStates.ON
 
 
 #sprite
@@ -104,9 +106,9 @@ func _physics_process(delta: float) -> void:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
 				else:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
-					if direction == 0 and state == States.PLAYING:
+					if direction == 0 and animation_state == anim_States.PLAYING:
 						animated_sprite.play("idle")
-					elif state == States.RUNNING:
+					elif animation_state == anim_States.RUNNING:
 						animated_sprite.play("run")
 				
 			else:
@@ -116,11 +118,11 @@ func _physics_process(delta: float) -> void:
 			
 			if direction and !hasFinished:
 				velocity.x = direction * SPEED
-				state = States.RUNNING
+				animation_state = anim_States.RUNNING
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
-				if state == States.RUNNING:
-					state = States.PLAYING
+				if animation_state == anim_States.RUNNING:
+					animation_state = anim_States.PLAYING
 			
 			
 			create_light()
@@ -152,15 +154,15 @@ func _physics_process(delta: float) -> void:
 	#Je dois réactiver la shape une fois le process relancé car sinon Lulu ne se déplacera pas car cela agira comme si que la shape n'avait pas changé d'état
 	#Calculer si Lulu est stuck dans un tileset
 	if %DetectStuckDown.is_colliding():
-		state = States.STUCK
-		print("Lulu STUCK DOWN ! State : ",state)
+		animation_state = anim_States.STUCK
+		print("Lulu STUCK DOWN ! State : ",animation_state)
 		position.y -= 1
 		#print_debug("colliding down ! position y : ", position.y)
 		print_debug("état de la shape:  ", $CollisionShape.disabled)
 	elif %DetectStuckUp.is_colliding():
 		position.y += 1
-		state = States.STUCK
-		print("Lulu STUCK UP ! State : ",state)
+		animation_state = anim_States.STUCK
+		print("Lulu STUCK UP ! State : ",animation_state)
 		#print("colliding up ! go DOWN")
 	
 	##TEST BOUNCING IN LIGHT
@@ -182,10 +184,14 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-	if state == States.PLAYING or state == States.IDLE2 or state == States.RUNNING:
+	if meca_state == MecaStates.ON and animation_state == anim_States.PLAYING or animation_state == anim_States.IDLE2 or animation_state == anim_States.RUNNING:
 		move_and_slide()
-	elif state in [States.STUCK]:
+	elif animation_state == anim_States.STUCK:
+		print("! Lulu est stuck !")
 		pass
+	elif meca_state == MecaStates.OFF:
+		#print("Lulu est off !")
+		animated_sprite.play("idle")
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -253,13 +259,13 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "idle_2":
 		#print("fin idle2!")
 		animated_sprite.animation = "idle"
-		state = States.PLAYING
+		animation_state = anim_States.PLAYING
 
 
 #Lorsque Lumiere enter une light, son compteur s'incrémente
 func on_enter_light() -> void:
 	compteur_lights_Lumiere += 1
-	print("compteur Lumiere (enter): ", compteur_lights_Lumiere)
+	#print("compteur Lumiere (enter): ", compteur_lights_Lumiere)
 	
 	
 #Lorsque Lumiere enter une light, son compteur s'incrémente
@@ -349,9 +355,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if animated_sprite.animation == "idle" and animated_sprite.frame == 2:
 		var rng = randf()
 		if rng > 0.8:
-			#print("lancement idle2 ! Ancien state : ", state)
-			state = States.IDLE2
-			#print("state actuel : ",state)
+			#print("lancement idle2 ! Ancien animation_state : ", animation_state)
+			animation_state = anim_States.IDLE2
+			#print("state actuel : ",animation_state)
 			animated_sprite.animation = "idle_2"
 	if animated_sprite.animation == "jump": return
 	if animated_sprite.animation == "magic_end": return

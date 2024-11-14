@@ -1,9 +1,10 @@
-[gd_scene load_steps=26 format=4 uid="uid://vn6qc30mlso4"]
+[gd_scene load_steps=28 format=4 uid="uid://vn6qc30mlso4"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_2.gd" id="1_mk6ou"]
 [ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="1_njl74"]
 [ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="2_o2txv"]
 [ext_resource type="PackedScene" uid="uid://cfvb6ft7w6ys4" path="res://scenes/GUI/gui.tscn" id="2_t17ww"]
+[ext_resource type="PackedScene" uid="uid://brody5vyw0ctf" path="res://scenes/test/aides_visuelles.tscn" id="2_vhboq"]
 [ext_resource type="Texture2D" uid="uid://b67mnscpgsv3h" path="res://assets/sprites/decor/background4a.png" id="3_0vmn1"]
 [ext_resource type="Texture2D" uid="uid://b37kpjsol1tlf" path="res://assets/sprites/decor/world_tileset.png" id="3_673a1"]
 [ext_resource type="Texture2D" uid="uid://bawyr2vu0ttsv" path="res://assets/sprites/decor/background1.png" id="4_u2dh7"]
@@ -48,37 +49,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(-12, -152), Vector2(28, -152)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:position")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(3.56667, 4.73334, 5.06667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-11, -11)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera2D:zoom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(3.56667, 4.73334, 5.06667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(2, 2), Vector2(4, 4)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -86,13 +63,13 @@ tracks/3/keys = {
 "method": &"deactive_light_hole"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mushroom")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mushroom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(2.73333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -118,66 +95,117 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:position")
+tracks/1/path = NodePath("Lumiere:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(30, 3)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera2D:zoom")
+tracks/2/path = NodePath("Cinematique/switch_cam_Hades:enabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2, 2)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Lumiere:position")
+tracks/3/path = NodePath("Cinematique/switch_cam_Hades:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(30, 3)]
+"values": [Vector2(583, 442)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Obscurite/Switch_camera:enabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Lumiere/Switch_camera:enabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_wtu6w"]
 resource_name = "end_Obscur_appeared"
 length = 2.0
+
+[sub_resource type="Animation" id="Animation_t1b7r"]
+resource_name = "manage_camera"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera2D:position")
+tracks/0/path = NodePath("Cinematique/switch_cam_Hades:enabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333334, 1.4, 1.96667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(-11, -11), Vector2(-11, -11), Vector2(0, 0)]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/path = NodePath("Cinematique/switch_cam_Hades:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333, 1.4, 1.96667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(4, 4), Vector2(4, 4), Vector2(2, 2)]
+"values": [Vector2(583, 442), Vector2(185, 105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Obscurite/Switch_camera:enabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lumiere/Switch_camera:enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wky64"]
@@ -185,7 +213,8 @@ _data = {
 "Obs_meet_Lu": SubResource("Animation_1huds"),
 "Obscurite_appear": SubResource("Animation_33h56"),
 "RESET": SubResource("Animation_h2l0f"),
-"end_Obscur_appeared": SubResource("Animation_wtu6w")
+"end_Obscur_appeared": SubResource("Animation_wtu6w"),
+"manage_camera": SubResource("Animation_t1b7r")
 }
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_8vq5b"]
@@ -334,6 +363,8 @@ sources/0 = SubResource("TileSetAtlasSource_s2ae0")
 position = Vector2(18, 74)
 script = ExtResource("1_mk6ou")
 
+[node name="HELP" parent="." instance=ExtResource("2_vhboq")]
+
 [node name="Cinematique" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -347,13 +378,13 @@ position = Vector2(18, 58)
 rotation = -3.14159
 scale = Vector2(0.683103, 0.683103)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(2, 2)
-limit_left = 0
-limit_top = 70
+[node name="switch_cam_Hades" type="Camera2D" parent="Cinematique"]
+position = Vector2(583, 442)
+enabled = false
+zoom = Vector2(3, 3)
 limit_right = 640
-limit_bottom = 400
+limit_bottom = 500
+limit_smoothed = true
 
 [node name="GUI" parent="." instance=ExtResource("2_t17ww")]
 
@@ -368,12 +399,22 @@ unique_name_in_owner = true
 position = Vector2(-22, -152)
 
 [node name="Switch_camera" parent="Obscurite" instance=ExtResource("5_ynmbd")]
+enabled = false
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 500
+limit_smoothed = true
 
 [node name="Lumiere" parent="." instance=ExtResource("2_o2txv")]
 unique_name_in_owner = true
 position = Vector2(30, 3)
 
 [node name="Switch_camera" parent="Lumiere" instance=ExtResource("5_ynmbd")]
+limit_left = 0
+limit_top = 0
+limit_right = 640
+limit_bottom = 500
 
 [node name="BGs" type="Node2D" parent="."]
 position = Vector2(368, 159)
