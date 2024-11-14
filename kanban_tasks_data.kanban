@@ -15,15 +15,15 @@
 				"927a6c41-36d6-456e-b8b8-a44caecb44d8",
 				"ff7c3120-2e6b-458c-9293-e67425f64132",
 				"0c456abd-d177-418c-9aad-6bd16d5f1f79",
-				"b96c47ae-c35a-429b-ad68-56914c55dd59"
+				"cb0901c2-8b51-45ae-b4fb-ade9d6e363c1",
+				"6e6b2135-4607-4467-8e0b-76337f89b039"
 			]
 		},
 		{
 			"uuid": "001ca8df-a615-44b4-ab8b-e7b1a6f1bb33",
 			"title": "Doing",
 			"tasks": [
-				"2fa42cd5-e538-4032-b40c-43673b2842cc",
-				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
+				"2fa42cd5-e538-4032-b40c-43673b2842cc"
 			]
 		},
 		{
@@ -34,7 +34,9 @@
 				"8e797887-b836-4a4a-9ace-9995abd468a8",
 				"63b73c9e-5a12-487d-a46c-081b3d66f79c",
 				"681ced7c-583c-4cbc-b4c6-b05234b61c44",
-				"9cb3de32-edcb-4348-ac77-c94493e19166"
+				"9cb3de32-edcb-4348-ac77-c94493e19166",
+				"b96c47ae-c35a-429b-ad68-56914c55dd59",
+				"5fe4a0f2-5d86-46fb-8656-0a518c586569"
 			]
 		}
 	],
@@ -119,6 +121,20 @@
 		{
 			"uuid": "b96c47ae-c35a-429b-ad68-56914c55dd59",
 			"title": "Fixer le bug de Lulu qui tombe dans le vide au lvl2",
+			"description": "",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "cb0901c2-8b51-45ae-b4fb-ade9d6e363c1",
+			"title": "LV2 : Fin ciné, gérer les cull masks qd switch ds black light",
+			"description": "[ ] Coder les cull masks pour que quand Hades est dans la BL, il voit Lulu red et pas noire\n[ ] Coder les cull masks lorsque Hades sort de la BL -> Lulu doit être noire\n[ ] Lorsqu'Hades sort de la light, Lulu ne le voit plus\n[ ] Lorsqu'Hades entre dans la light, Lulu le voit",
+			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
+			"steps": []
+		},
+		{
+			"uuid": "6e6b2135-4607-4467-8e0b-76337f89b039",
+			"title": "Ajouter un effet de parallax",
 			"description": "",
 			"category": "3b9cfead-4580-4ef3-925b-ea5ab9d26fb1",
 			"steps": []

@@ -23,8 +23,8 @@ func _on_dialogic_signal(argument: String):
 		pass
 	if argument == "end_meeting":
 		%Obscurite.set_physics_process(true)
-		Global.obscur_control(false)
-		Global.lumiere_control(true)
+		Global.obscur_control(true)
+		Global.lumiere_control(false)
 		Global.cam_state = Global.States.SWITCH_ON
 		print("Lulu meca_state :", %Lumiere.meca_state)
 		%Lumiere.meca_state = %Lumiere.MecaStates.ON

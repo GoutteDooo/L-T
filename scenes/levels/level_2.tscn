@@ -365,6 +365,8 @@ script = ExtResource("1_mk6ou")
 
 [node name="HELP" parent="." instance=ExtResource("2_vhboq")]
 
+[node name="GUI" parent="." instance=ExtResource("2_t17ww")]
+
 [node name="Cinematique" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -386,8 +388,6 @@ limit_right = 640
 limit_bottom = 500
 limit_smoothed = true
 
-[node name="GUI" parent="." instance=ExtResource("2_t17ww")]
-
 [node name="Ambiance" type="CanvasModulate" parent="."]
 visible = false
 z_index = -10
@@ -405,6 +405,7 @@ limit_top = 0
 limit_right = 640
 limit_bottom = 500
 limit_smoothed = true
+position_smoothing_enabled = true
 
 [node name="Lumiere" parent="." instance=ExtResource("2_o2txv")]
 unique_name_in_owner = true
@@ -415,22 +416,30 @@ limit_left = 0
 limit_top = 0
 limit_right = 640
 limit_bottom = 500
+position_smoothing_enabled = true
 
-[node name="BGs" type="Node2D" parent="."]
-position = Vector2(368, 159)
+[node name="BGs" type="ParallaxBackground" parent="."]
 scale = Vector2(0.799095, 0.799095)
+transform = Transform2D(0.799095, 0, 0, 0.799095, 0, 0)
 
-[node name="Background" type="Sprite2D" parent="BGs"]
-z_index = -99
-position = Vector2(-98.8618, 53.8109)
-scale = Vector2(1.15635, 1.15635)
-texture = ExtResource("3_0vmn1")
+[node name="ParallaxLayer" type="ParallaxLayer" parent="BGs"]
+position = Vector2(-6.25708, -53.8109)
+motion_scale = Vector2(0.3, 0.3)
 
-[node name="Bg2" type="Sprite2D" parent="BGs"]
+[node name="Bg2" type="Sprite2D" parent="BGs/ParallaxLayer"]
 z_index = -100
-position = Vector2(-89.748, 31.4213)
+position = Vector2(440.498, 271.557)
 scale = Vector2(1.17655, 1.30821)
 texture = ExtResource("4_u2dh7")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="BGs"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Background" type="Sprite2D" parent="BGs/ParallaxLayer2"]
+z_index = -99
+position = Vector2(431.738, 349.145)
+scale = Vector2(1.15635, 1.15635)
+texture = ExtResource("3_0vmn1")
 
 [node name="floor" type="TileMapLayer" parent="."]
 z_index = 10
