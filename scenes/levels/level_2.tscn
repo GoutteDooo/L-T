@@ -478,8 +478,8 @@ rotation = 1.57079
 scale = Vector2(1.92288, 1.92288)
 
 [node name="M_OK1" parent="." instance=ExtResource("5_pvy32")]
-position = Vector2(293, 143)
-scale = Vector2(1.20378, 1.20378)
+position = Vector2(310, 146)
+scale = Vector2(1.35657, 1.35657)
 
 [node name="M_OK2" parent="." instance=ExtResource("5_pvy32")]
 position = Vector2(488, 129)

@@ -165,7 +165,7 @@ func _physics_process(delta: float) -> void:
 		print("Lulu STUCK UP ! State : ",animation_state)
 		#print("colliding up ! go DOWN")
 	
-	_isInShadow()
+	is_in_shadow()
 	
 	##TEST BOUNCING IN LIGHT
 	#if !%DetectDarknessDown.is_colliding():
@@ -483,7 +483,7 @@ func _on_range_area_exited(area: Area2D) -> void:
 		print(area, " sorti.")
 		area.can_magic_light = false
 
-func _isInShadow() -> void:
+func is_in_shadow() -> void:
 	##Check a chaque instant si Lulu est dans les ténèbres
 	##dans ce cas, restart la partie ou go centre ancienne light
 	var rng = randf()
