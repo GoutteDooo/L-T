@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3k7f01mk0jkc"]
+[gd_scene load_steps=19 format=3 uid="uid://d3k7f01mk0jkc"]
 
 [ext_resource type="Script" path="res://scripts/magic_light.gd" id="1_gjxg2"]
 [ext_resource type="Texture2D" uid="uid://c3ihx2ldmubo5" path="res://assets/sprites/lights/64x64 textures (99).png" id="2_635ak"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cp3xvbhpdwalp" path="res://assets/sprites/lights/160x160 textures (107).png" id="5_sl3mb"]
 [ext_resource type="Texture2D" uid="uid://crn3df5mmgoue" path="res://assets/sprites/lights/circle-128.png" id="6_d4n0f"]
 [ext_resource type="Texture2D" uid="uid://bg3mluagyynlb" path="res://assets/sprites/lights/4.png" id="8_ymumb"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2v4f5"]
+blend_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_166en"]
 radius = 123.0
@@ -20,9 +23,8 @@ blend_mode = 1
 blend_mode = 1
 light_mode = 2
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_teqfi"]
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_p4nb4"]
 blend_mode = 1
-light_mode = 2
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wfdqr"]
 blend_mode = 1
@@ -74,8 +76,9 @@ script = ExtResource("1_gjxg2")
 
 [node name="luminosity" type="PointLight2D" parent="."]
 visible = false
+material = SubResource("CanvasItemMaterial_2v4f5")
 position = Vector2(1, 0)
-scale = Vector2(2.47367, 2.47367)
+scale = Vector2(4.19659, 4.19659)
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 2
@@ -129,15 +132,14 @@ rotation = -3.14159
 scale = Vector2(1.65825, 1.65825)
 texture = ExtResource("5_sl3mb")
 
-[node name="SpriteTest" type="Sprite2D" parent="."]
+[node name="Calque" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.0666667)
-light_mask = 2
-material = SubResource("CanvasItemMaterial_teqfi")
+material = SubResource("CanvasItemMaterial_p4nb4")
 rotation = -3.14159
 scale = Vector2(2.0331, 2.0331)
 texture = ExtResource("6_d4n0f")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Light_animee" type="AnimatedSprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.0784314)
 material = SubResource("CanvasItemMaterial_wfdqr")
 scale = Vector2(1.92919, 1.92919)
