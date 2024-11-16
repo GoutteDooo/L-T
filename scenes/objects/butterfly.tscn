@@ -159,7 +159,7 @@ blend_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l1qnq"]
 
-[node name="Butterfly" type="Area2D"]
+[node name="Butterfly" type="Area2D" groups=["lighters"]]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_4w65s")
 

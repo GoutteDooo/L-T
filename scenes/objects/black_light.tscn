@@ -249,9 +249,11 @@ texture = ExtResource("2_eleuv")
 texture_scale = 1.5
 
 [node name="fullCircle" type="PointLight2D" parent="."]
+light_mask = 7
+visibility_layer = 7
 scale = Vector2(1.92431, 1.92431)
-color = Color(0.233687, 0.240205, 0, 1)
-range_item_cull_mask = 3
+color = Color(0.308331, 0.316535, 9.62615e-08, 1)
+range_item_cull_mask = 7
 shadow_item_cull_mask = 3
 texture = ExtResource("3_s844m")
 
@@ -268,11 +270,10 @@ color = Color(0.466181, 0.466181, 0.466181, 1)
 shape = SubResource("CircleShape2D_166en")
 
 [node name="circle" type="Sprite2D" parent="."]
-visible = false
 light_mask = 2
 visibility_layer = 4
 z_index = -1
-scale = Vector2(0.25, 0.25)
+scale = Vector2(0.266004, 0.266004)
 texture = ExtResource("4_pt5ml")
 region_rect = Rect2(0, 0, 980, 980)
 

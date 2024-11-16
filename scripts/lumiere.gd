@@ -486,9 +486,5 @@ func _on_range_area_exited(area: Area2D) -> void:
 func is_in_shadow() -> void:
 	##Check a chaque instant si Lulu est dans les ténèbres
 	##dans ce cas, restart la partie ou go centre ancienne light
-	var rng = randf()
-	if rng > 0.98:
-		print("Lulu modulate : ", self.modulate)
-	if animated_sprite.modulate == Color(0, 0, 0):
-		print("Lulu est dans un shadow !!")
+	pass
 	

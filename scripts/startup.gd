@@ -7,6 +7,7 @@ var counter_level = 1 #Compteur de niveau
 var annulerAction = false #Permettra de faire des annulations d'actions (pendant les cutscenes, tutos et autres...)
 var cam_H = null #Sert de switch au joueur pour la caméra
 var cam_L = null #Sert de switch au joueur pour la caméra
+var level_en_cours: PackedScene #A déclarer à chaque début de lvl
 
 #State 
 enum States {SWITCH_ON, SWITCH_DISABLED}
@@ -147,14 +148,19 @@ func obscur_control(levier:bool) -> void:
 
 func handleLuluView(levier:bool) -> void:
 	if levier:
+		#Hades
 		lulu.animated_sprite.light_mask = 12
+		lulu.animated_sprite.modulate = Color(0,0,0,1)
 		#print_debug("lulu light mask :", lulu.light_mask)
+		switchLightView(levier)
 	else:
+		#Lulu
+		lulu.animated_sprite.modulate = Color(1,1,1,1)
 		lulu.animated_sprite.light_mask = 15
 		cam_L.enabled = true
 		cam_H.enabled = false
 		print_debug("cam lulu activée & H désactivée")
-	
+
 func handleHadesView(levier: bool) -> void:
 	if levier:
 		hades.visible = false
@@ -163,3 +169,11 @@ func handleHadesView(levier: bool) -> void:
 		cam_L.enabled = false
 		cam_H.enabled = true
 		print_debug("cam H activée & L désactivée")
+
+func switchLightView(leviel:bool) -> void:
+	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
+	for child in level_en_cours.get_children():
+		if child.is_in_group("lighters"):
+			print("enfant de la scene : ",child)
+			child.modulate = Color(1,0.5,0.5,1)
+	

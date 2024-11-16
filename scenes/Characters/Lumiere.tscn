@@ -686,7 +686,7 @@ sfx_L_magic_charge = ExtResource("4_sbunb")
 position = Vector2(0, -64)
 occluder = SubResource("OccluderPolygon2D_7ebyv")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Lumiere"]]
 unique_name_in_owner = true
 light_mask = 15
 visibility_layer = 15
