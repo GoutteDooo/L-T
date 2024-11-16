@@ -170,10 +170,13 @@ func handleHadesView(levier: bool) -> void:
 		cam_H.enabled = true
 		print_debug("cam H activée & L désactivée")
 
-func switchLightView(leviel:bool) -> void:
+func switchLightView(luluView:bool) -> void:
 	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
 	for child in level_en_cours.get_children():
 		if child.is_in_group("lighters"):
-			print("enfant de la scene : ",child)
-			child.modulate = Color(1,0.5,0.5,1)
+			if luluView: #Lulu
+				print("enfant de la scene : ",child)
+				child.modulate = Color(1,0.5,0.5,1)
+			else: #Hades
+				child.modulate = Color(1,1,1,1)
 	
