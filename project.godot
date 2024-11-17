@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scenes/Controls/Startup.tscn"
-Music="res://scenes/Controls/music.tscn"
+Music="*res://scenes/Controls/music.tscn"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]

@@ -718,12 +718,14 @@ position = Vector2(-357, 13)
 
 [node name="Switch_camera" parent="Obscurite" instance=ExtResource("4_vsw0c")]
 enabled = false
+position_smoothing_enabled = true
 
 [node name="Lumiere" parent="." instance=ExtResource("2_qdr6f")]
 unique_name_in_owner = true
 position = Vector2(-516, 38)
 
 [node name="Switch_camera" parent="Lumiere" instance=ExtResource("4_vsw0c")]
+position_smoothing_enabled = true
 
 [node name="BGs" type="ParallaxBackground" parent="."]
 scale = Vector2(0.799095, 0.799095)

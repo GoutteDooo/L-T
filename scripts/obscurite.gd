@@ -63,11 +63,17 @@ func _physics_process(delta: float) -> void:
 		#else:
 		# Add the gravity.
 		if not is_on_floor():
+			#désactiver l'ombre pendant que Hadès est dans les airs
+			if $Ombre.visible:
+				$Ombre.visible = false
 			if jump_available:
 				if coyote_timer.is_stopped():
 					coyote_timer.start(coyote_time)
 			velocity.y += _get_gravity(velocity) * delta
 		else:
+			#réactiver l'ombre une fois qu'Hadès a touché le so
+			if !$Ombre.visible:
+				$Ombre.visible = true
 			jump_available = true
 			coyote_timer.stop()
 			

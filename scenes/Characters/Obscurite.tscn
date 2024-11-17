@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cy8uooxj2bnmc"]
+[gd_scene load_steps=59 format=3 uid="uid://cy8uooxj2bnmc"]
 
 [ext_resource type="Script" path="res://scripts/obscurite.gd" id="1_n8dm4"]
 [ext_resource type="Texture2D" uid="uid://csvhx452yibgs" path="res://assets/sprites/Wizard/Idle.png" id="1_q7u4n"]
@@ -12,8 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://wcip4d0kleir" path="res://assets/sprites/Wizard/Dead.png" id="6_5lxwi"]
 [ext_resource type="Texture2D" uid="uid://61jbwbadtoc8" path="res://assets/sprites/lights/128x128 textures (93).png" id="6_aatib"]
 [ext_resource type="Texture2D" uid="uid://cq64gtqhgbwer" path="res://assets/sprites/lights/circle-512.png" id="10_sb3g8"]
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pnkln"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k81m8"]
 blend_mode = 3
@@ -296,6 +294,17 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_lvxrf"]
+offsets = PackedFloat32Array(0, 0.572192)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e8nou"]
+gradient = SubResource("Gradient_lvxrf")
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0p4xi"]
 height = 42.0
 
@@ -454,18 +463,16 @@ texture_scale = 0.2
 
 [node name="LumierePerso" type="PointLight2D" parent="."]
 unique_name_in_owner = true
-material = SubResource("CanvasItemMaterial_pnkln")
 use_parent_material = true
 position = Vector2(4, -48)
 scale = Vector2(8.8256, 9.07052)
-color = Color(1, 0.832862, 0.862788, 1)
+blend_mode = 2
 range_item_cull_mask = 7
 texture = ExtResource("5_0v7em")
-texture_scale = 0.15
+texture_scale = 0.2
 
 [node name="Vision" type="Sprite2D" parent="."]
 visible = false
-modulate = Color(0.370929, 0.581081, 1, 1)
 light_mask = 7
 material = SubResource("CanvasItemMaterial_k81m8")
 position = Vector2(4, -48)
@@ -478,6 +485,11 @@ position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_ehvb6")
 animation = &"lose"
 autoplay = "idle"
+
+[node name="Ombre" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -0.620689)
+scale = Vector2(0.625, 0.422414)
+texture = SubResource("GradientTexture2D_e8nou")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, -21)
