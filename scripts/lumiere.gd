@@ -10,8 +10,8 @@ const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 const FALL_GRAVITY = 1200
 #states
-enum anim_States {PLAYING, IDLE2, STUCK, RUNNING}
-var animation_state: anim_States = anim_States.PLAYING
+enum anim_States {IDLE, IDLE2, STUCK, RUNNING, MAGIC}
+var animation_state: anim_States = anim_States.IDLE
 enum MecaStates {ON, OFF}
 var meca_state: MecaStates = MecaStates.ON
 
@@ -76,6 +76,8 @@ func _physics_process(delta: float) -> void:
 				%Range.monitoring = false
 				%Range.visible = false
 				isPlayingMagic = false
+			if animation_state == anim_States.IDLE:
+				animated_sprite.play("idle")
 		else:
 			Handle_jump(delta)
 			#input direction : -1, 0, 1
@@ -106,7 +108,7 @@ func _physics_process(delta: float) -> void:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
 				else:
 					#print("isPlayingMagic, process : ", isPlayingMagic)
-					if direction == 0 and animation_state == anim_States.PLAYING:
+					if direction == 0 and animation_state == anim_States.IDLE:
 						animated_sprite.play("idle")
 					elif animation_state == anim_States.RUNNING:
 						animated_sprite.play("run")
@@ -125,7 +127,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
 				if animation_state == anim_States.RUNNING:
-					animation_state = anim_States.PLAYING
+					animation_state = anim_States.IDLE
 			
 			
 			create_light()
@@ -189,7 +191,7 @@ func _physics_process(delta: float) -> void:
 	
 	
 	#Que le joueur ait les controles ou pas, on joue le move_and_slide()
-	if meca_state == MecaStates.ON and animation_state == anim_States.PLAYING or animation_state == anim_States.IDLE2 or animation_state == anim_States.RUNNING:
+	if meca_state == MecaStates.ON and animation_state == anim_States.IDLE or animation_state == anim_States.IDLE2 or animation_state == anim_States.RUNNING:
 		move_and_slide()
 	elif animation_state == anim_States.STUCK:
 		print("! Lulu est stuck !")
@@ -264,7 +266,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "idle_2":
 		#print("fin idle2!")
 		animated_sprite.animation = "idle"
-		animation_state = anim_States.PLAYING
+		animation_state = anim_States.IDLE
 
 
 #Lorsque Lumiere enter une light, son compteur s'incrémente

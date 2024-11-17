@@ -65,8 +65,8 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("switch_cam") and (cam_state == States.SWITCH_ON):
 			lumiere_control(!player_control_L)
 			obscur_control(!player_control_O)
-			lulu.animated_sprite.play("idle")
-			hades.animated_sprite.play("idle")
+			lulu.animation_state = lulu.anim_States.IDLE
+			hades.animation_state = hades.anim_States.IDLE
 			handle_views(!player_control_L)
 	#PROBLEME !
 	#Parfois, un <Freed Object> se plante dans le tableau lorsque Lulu kill Hadès

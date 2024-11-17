@@ -24,6 +24,12 @@ var counter_in_light = 0 #compteur permettant de savoir si Hades collides dynami
 @export var isInBlackLight = false #levier permettant de savoir s'il est dans une BL
 var blackLightIn: Area2D = null #Variable qui stocke la black light dans laquelle Hades est.
 
+#states
+enum anim_States {IDLE, RUNNING, JUMPING, MAGIC}
+var animation_state: anim_States = anim_States.IDLE
+enum MecaStates {ON, OFF}
+var meca_state: MecaStates = MecaStates.ON
+
 #sons
 @export var sfx_O_footsteps : AudioStream
 @export var sfx_O_jump : AudioStream
@@ -60,11 +66,13 @@ func _physics_process(delta: float) -> void:
 			if %Range.monitoring == true:
 				%Range.monitoring = false
 				%Range.visible = false
-				isPlayingMagic = false
+				#isPlayingMagic = false
+			if animation_state == anim_States.IDLE:
+				animated_sprite.play("idle")
 			
-		#else:
 		# Add the gravity.
 		if not is_on_floor():
+			animation_state = anim_States.JUMPING
 			#désactiver l'ombre pendant que Hadès est dans les airs
 			if $Ombre.visible:
 				$Ombre.visible = false
@@ -73,7 +81,9 @@ func _physics_process(delta: float) -> void:
 					coyote_timer.start(coyote_time)
 			velocity.y += _get_gravity(velocity) * delta
 		else:
-			#réactiver l'ombre une fois qu'Hadès a touché le so
+			if animation_state != anim_States.MAGIC:
+				animation_state = anim_States.IDLE
+			#réactiver l'ombre une fois qu'Hadès a touché le sol
 			if !$Ombre.visible:
 				$Ombre.visible = true
 			jump_available = true
@@ -84,7 +94,7 @@ func _physics_process(delta: float) -> void:
 			print("hades jump")
 
 		# Handle jump.
-		if Input.is_action_just_pressed("jump_obscurite") and jump_available and !hasFinished and !isPlayingMagic and Global.player_control_O:
+		if Input.is_action_just_pressed("jump_obscurite") and jump_available and !hasFinished and animation_state != anim_States.MAGIC and Global.player_control_O:
 			#jouer le son du jump
 			load_sfx(sfx_O_jump)
 			%sfx_player.play()
@@ -96,11 +106,22 @@ func _physics_process(delta: float) -> void:
 		if Global.player_control_O:
 			#input direction : -1, 0, 1
 			var direction := Input.get_axis("move_obscurite_left", "move_obscurite_right")
-			
+			if animation_state == anim_States.MAGIC:
+				direction = 0
+				
+			#flip the sprite
+			if direction != 0:
+				animation_state = anim_States.RUNNING
+				if direction > 0:
+					animated_sprite.flip_h = false
+				elif direction < 0:
+					animated_sprite.flip_h = true
+				
 			# Handle magic.
-			if Input.is_action_just_pressed("magic_obscurite") and is_on_floor():
-				isPlayingMagic = true
+			if Input.is_action_just_pressed("magic_obscurite") and is_on_floor() and animation_state == anim_States.IDLE:
+				#isPlayingMagic = true
 				animated_sprite.play("magic_loop")
+				animation_state = anim_States.MAGIC
 				
 				#Ouvrir la range
 				%Range.monitoring = true
@@ -112,17 +133,10 @@ func _physics_process(delta: float) -> void:
 				%Range.visible = false
 				animated_sprite.play("magic_end")
 				
-				
-				
-			#flip the sprite
-			if direction > 0:
-				animated_sprite.flip_h = false
-			elif direction < 0:
-				animated_sprite.flip_h = true
-				
 			#animations
 			if is_on_floor():
-				if isPlayingMagic:
+				#if isPlayingMagic && animation_state == anim_States.MAGIC:
+				if animation_state == anim_States.MAGIC:
 					#stopper le déplacement pendant le sort
 					direction = 0
 					#jouer le son magic charge
@@ -152,6 +166,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 		
+		
 	##TEST##
 	#On va changer la manière de faire pour les raycasters
 	#Si un raycast détecte une light, cela repousse Hadès vers la direction opposée.
@@ -178,9 +193,9 @@ func Coyote_timeout() -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animated_sprite.animation == "jump":
 		animated_sprite.stop()
-	if animated_sprite.animation == "magic_end":
-		await get_tree().create_timer(0.3).timeout
-		isPlayingMagic = false
+	if animated_sprite.animation == "magic_end": 
+		#isPlayingMagic = false
+		animation_state = anim_States.IDLE
 		
 func _play_idle_animation() -> void:
 	animated_sprite.play("idle")
