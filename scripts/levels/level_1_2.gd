@@ -8,6 +8,7 @@ func _ready() -> void:
 	Global.hades = %Obscurite
 	Global.player_control_O = false
 	Global.player_control_L = true
+	Global.handle_views(false)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

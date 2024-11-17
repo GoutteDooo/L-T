@@ -473,7 +473,6 @@ texture = ExtResource("5_0v7em")
 texture_scale = 0.2
 
 [node name="Vision" type="Sprite2D" parent="."]
-visible = false
 light_mask = 7
 material = SubResource("CanvasItemMaterial_k81m8")
 position = Vector2(4, -48)

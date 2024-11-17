@@ -253,6 +253,7 @@ light_mask = 7
 visibility_layer = 7
 scale = Vector2(1.92431, 1.92431)
 color = Color(0.308331, 0.316535, 9.62615e-08, 1)
+energy = 1.5
 range_item_cull_mask = 7
 shadow_item_cull_mask = 3
 texture = ExtResource("3_s844m")

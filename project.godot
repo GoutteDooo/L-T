@@ -69,6 +69,7 @@ text/autoadvance_per_word_delay=0
 
 [display]
 
+window/size/always_on_top=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
