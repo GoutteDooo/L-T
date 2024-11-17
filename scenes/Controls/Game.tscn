@@ -1,14 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb4catmofiahb"]
 
-[ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="1_lmw63"]
 [ext_resource type="PackedScene" uid="uid://cfvb6ft7w6ys4" path="res://scenes/GUI/gui.tscn" id="1_ueryn"]
-[ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="2_5ildt"]
+[ext_resource type="PackedScene" uid="uid://b3d53xqf7rbh2" path="res://scenes/levels/level_1_2.tscn" id="2_3ur1u"]
+
+[sub_resource type="Environment" id="Environment_ir73r"]
+background_mode = 3
+tonemap_mode = 2
+tonemap_white = 3.0
+glow_enabled = true
+glow_bloom = 0.1
 
 [node name="Game" type="Node2D"]
 
 [node name="GUI" parent="." instance=ExtResource("1_ueryn")]
 
-[node name="Lumiere" parent="." instance=ExtResource("1_lmw63")]
-coyote_time = 0.2
+[node name="Level1_2" parent="." instance=ExtResource("2_3ur1u")]
 
-[node name="Obscurite" parent="." instance=ExtResource("2_5ildt")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ir73r")

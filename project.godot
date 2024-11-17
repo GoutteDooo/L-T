@@ -64,8 +64,11 @@ layout/style_list=["res://dialogic/styles/lulu_style.tres", "res://dialogic/styl
 layout/default_style="res://dialogic/styles/lulu_style.tres"
 variables={}
 glossary/glossary_files=["res://dialogic/styles/glossary_test/test.tres"]
-glossary/default_color=Color(0.901961, 0.690196, 0.690196, 1)
 text/autoadvance_per_word_delay=0
+glossary/default_color=Color(0.901961, 0.690196, 0.690196, 1)
+glossary/defaults/default_clear_color=Color(0.3, 0.3, 0.3, 1)
+glossary/size/always_on_top=false
+glossary/layer_2=""
 
 [display]
 

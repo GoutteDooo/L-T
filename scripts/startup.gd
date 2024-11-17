@@ -60,7 +60,7 @@ func _ready() -> void:
 		
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("quit_game"):
-		get_tree().quit()
+		get_tree().reload_current_scene()
 	#lorsque le joueur appuie sur 'espace'
 	if Input.is_action_just_pressed("switch_cam") and (cam_state == States.SWITCH_ON):
 			lumiere_control(!player_control_L)
@@ -176,7 +176,7 @@ func handleHadesView(levier: bool) -> void:
 
 ## Gère les couleurs des lights lors du "Switch Characters"
 func switchLightView(hadesView:bool) -> void:
-	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
+	var level_en_cours = get_node("/root/Game/Level" + str(counter_level) + "_2")
 	##----- Change les couleurs des lighters -----
 	for lighters in level_en_cours.get_children():
 		if lighters.is_in_group("lighters"):

@@ -202,7 +202,7 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.play("idle")
 	printer = printer+5
 	if printer == 60:
-		print("lulu state : ", animation_state)
+		#print("lulu state : ", animation_state)
 		printer = 0
 
 func Coyote_timeout() -> void:

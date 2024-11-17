@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfayvub537h8e"]
+[gd_scene load_steps=17 format=3 uid="uid://dfayvub537h8e"]
 
 [ext_resource type="Texture2D" uid="uid://der5iuwycwmat" path="res://assets/sprites/decor/lightning_mushroom.png" id="1_cuniw"]
 [ext_resource type="Script" path="res://scripts/mushroom.gd" id="1_ic3mt"]
@@ -108,7 +108,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -133,6 +133,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Ombre:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_pp4jw"]
@@ -223,6 +235,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ombre:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_gvwgy"]
 resource_name = "light_on"
@@ -312,6 +336,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Ombre:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_heuiy"]
 resource_name = "on_ready"
@@ -377,6 +413,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ombre:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0gfoi"]
 _data = {
@@ -386,10 +434,20 @@ _data = {
 "on_ready": SubResource("Animation_heuiy")
 }
 
+[sub_resource type="Gradient" id="Gradient_nupk0"]
+offsets = PackedFloat32Array(0.0641711, 0.700535)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6gkv"]
+gradient = SubResource("Gradient_nupk0")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Mushroom" type="Area2D" groups=["lighters"]]
 modulate = Color(0.529582, 0.21925, 0, 1)
 light_mask = 7
-z_index = 10
+z_index = 11
+position = Vector2(0, -3)
 script = ExtResource("1_ic3mt")
 
 [node name="Light_in_black" type="PointLight2D" parent="."]
@@ -416,7 +474,6 @@ scale = Vector2(0.05, 0.05)
 shape = SubResource("CircleShape2D_x6yp4")
 
 [node name="CircleWhenHover" type="Sprite2D" parent="."]
-visible = false
 z_index = 1000
 material = SubResource("CanvasItemMaterial_ojhc3")
 position = Vector2(0, -10)
@@ -445,6 +502,13 @@ bus = &"SFX"
 stream = ExtResource("5_bc2ke")
 pitch_scale = 0.9
 bus = &"SFX"
+
+[node name="Ombre" type="Sprite2D" parent="."]
+visible = false
+z_index = -1
+position = Vector2(1, 2.50941)
+scale = Vector2(0.380952, 0.109669)
+texture = SubResource("GradientTexture2D_n6gkv")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
