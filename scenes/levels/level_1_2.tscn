@@ -703,6 +703,7 @@ pattern_1 = SubResource("TileMapPattern_qusqo")
 script = ExtResource("1_g2ste")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 z_index = -10
 color = Color(0, 0, 0, 1)
 
@@ -713,6 +714,7 @@ tile_set = SubResource("TileSet_8rh8o")
 
 [node name="Obscurite" parent="." instance=ExtResource("2_8smen")]
 unique_name_in_owner = true
+visible = false
 position = Vector2(580, -107)
 
 [node name="Switch_camera" parent="Obscurite" instance=ExtResource("4_vsw0c")]
@@ -745,6 +747,7 @@ scale = Vector2(0.799095, 0.799095)
 transform = Transform2D(0.799095, 0, 0, 0.799095, 0, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="BGs"]
+visible = false
 color = Color(0.359069, 0.359069, 0.359069, 1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BGs"]
@@ -809,4 +812,4 @@ position = Vector2(-540, 0)
 scale = Vector2(0.49689, 0.536633)
 
 [node name="CristalRouge" parent="." instance=ExtResource("11_qb0ur")]
-position = Vector2(-346, 21)
+position = Vector2(26, -42)

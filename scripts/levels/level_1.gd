@@ -14,6 +14,7 @@ func _ready() -> void:
 	#déclarer lulu et hades en global
 	Global.lulu = %Lumiere
 	Global.hades = %Obscurite
+	Global.handle_views(false)
 
 	Dialogic.signal_event.connect(_on_dialogic_signal)
 	if Global.cutscene_intro:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfvb6ft7w6ys4"]
+[gd_scene load_steps=10 format=3 uid="uid://cfvb6ft7w6ys4"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_3mqw5"]
 [ext_resource type="Texture2D" uid="uid://cnnb7d1pv5v8w" path="res://assets/sprites/ProgressBar/BarV1_Bar.png" id="1_i7vvn"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4t8wvsmt1vad" path="res://assets/sprites/ProgressBar/BarV3_ProgressBarOrange.png" id="6_ckka5"]
 [ext_resource type="Texture2D" uid="uid://b31hcil153lcn" path="res://assets/sprites/ProgressBar/heart_video_game2.png" id="7_v4db3"]
 [ext_resource type="Texture2D" uid="uid://der5iuwycwmat" path="res://assets/sprites/decor/lightning_mushroom.png" id="8_b66xg"]
+[ext_resource type="Texture2D" uid="uid://7djqn5puajsg" path="res://assets/sprites/elements/cristal_rouge.png" id="9_v6cos"]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_3mqw5")
@@ -19,12 +20,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -596.0
-offset_top = -378.0
-offset_right = -499.0
-offset_bottom = -358.0
+offset_left = -600.0
+offset_top = -292.0
+offset_right = -503.0
+offset_bottom = -268.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1, 0.674405)
 size_flags_horizontal = 4
 max_value = 4.0
 value = 2.0
@@ -40,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -596.0
-offset_top = -356.0
-offset_right = -499.0
-offset_bottom = -336.0
+offset_left = -600.0
+offset_top = -268.0
+offset_right = -503.0
+offset_bottom = -252.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -6.28319
@@ -58,17 +60,17 @@ texture_progress = ExtResource("6_ckka5")
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1.0
-offset_top = -7.0
-offset_right = 39.0
-offset_bottom = 33.0
+offset_left = -2.0
+offset_top = -8.0
+offset_right = 38.0
+offset_bottom = 32.0
 
 [node name="Lives" type="TextureRect" parent="Control"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 14.0
-offset_right = 39.0
-offset_bottom = 43.0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 50.0
+offset_bottom = 45.0
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_v4db3")
 stretch_mode = 1
@@ -124,7 +126,7 @@ layout_mode = 2
 
 [node name="Item_3" type="TextureRect" parent="Container/inventaire"]
 layout_mode = 2
-texture = ExtResource("8_b66xg")
+texture = ExtResource("9_v6cos")
 expand_mode = 2
 
 [node name="VSeparator4" type="VSeparator" parent="Container/inventaire"]
