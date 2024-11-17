@@ -68,7 +68,6 @@ func _process(delta: float) -> void:
 			lulu.animated_sprite.play("idle")
 			hades.animated_sprite.play("idle")
 			handle_views(!player_control_L)
-			#handleHadesView(!player_control_O)
 	#PROBLEME !
 	#Parfois, un <Freed Object> se plante dans le tableau lorsque Lulu kill Hadès
 	#Avec cette fonction qui vérifie en permanence s'il y'a un freed object, ça permet de les remove s'il y'en a.
@@ -149,10 +148,8 @@ func obscur_control(levier:bool) -> void:
 func handle_views(levier:bool) -> void:
 	if levier:
 		#Hades
-		lulu.animated_sprite.light_mask = 12
 		lulu.animated_sprite.modulate = Color(0,0,0,1)
 		#print_debug("lulu light mask :", lulu.light_mask)
-		##test
 		hades.visible = true
 		cam_L.enabled = false
 		cam_H.enabled = true
@@ -160,11 +157,9 @@ func handle_views(levier:bool) -> void:
 	else:
 		#Lulu
 		lulu.animated_sprite.modulate = Color(1,1,1,1)
-		lulu.animated_sprite.light_mask = 15
 		cam_L.enabled = true
 		cam_H.enabled = false
 		#print_debug("cam lulu activée & H désactivée")
-		##test
 		hades.visible = false
 		
 	switchLightView(levier)
@@ -180,15 +175,15 @@ func handleHadesView(levier: bool) -> void:
 	pass
 
 ## Gère les couleurs des lights lors du "Switch Characters"
-func switchLightView(luluView:bool) -> void:
+func switchLightView(hadesView:bool) -> void:
 	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
 	##----- Change les couleurs des lighters -----
 	for lighters in level_en_cours.get_children():
 		if lighters.is_in_group("lighters"):
 			var calque = lighters.get_node("Magic_light/Calque")
 			var full_circle = lighters.get_node("Magic_light/fullCircle")
-			#----- LULU -----
-			if luluView: 
+			#----- HADES -----
+			if hadesView: 
 				#print("enfant de la scene : ",lighters)
 				lighters.modulate = Color(1,1,1,1)
 				#Gère le calque de la light pour une light toute noire
@@ -196,14 +191,29 @@ func switchLightView(luluView:bool) -> void:
 					#print("full circle : ", full_circle)
 					calque.modulate = Color(1,0,0,1)
 					full_circle.visible = false
-			#----- HADES -----
+			#----- LULU -----
 			else:
 				lighters.modulate = Color(1,1,1,1)
 				if calque && full_circle:
 					calque.modulate = Color(1,1,1,0.0666)
 					full_circle.visible = true
 	##----- Change les couleurs des characters -----
-	#----- LULU -----
-	if luluView:
-		hades.visible = true
+	#----- HADES -----
+	if hadesView:
+		#On vérifie si Lulu est dans la même BL qu'Hadès
+		#Et alors, on la rend visible aux yeux de ce bg
+		if hades.isInBlackLight:
+			for i in range(0, light_array.size()):
+				if light_array[i] == hades.blackLightIn:
+					lulu.animated_sprite.modulate = Color(1,1,1,1)
+					print("Lulu modulate : ", lulu.modulate)
+					break
+		#Si Hades n'est pas dans une BL, alors il voit une ombre
+		else:
+			lulu.animated_sprite.modulate = Color(0,0,0,1)
+			
+		#----- LULU -----
+	else:
+		if hades.isInBlackLight: 
+			hades.visible = true
 		

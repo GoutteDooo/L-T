@@ -159,12 +159,8 @@ func _physics_process(delta: float) -> void:
 	#GO
 	if %DetectLightRight.is_colliding():
 		position.x -= 10
-	if %DetectLightDown.is_colliding():
-		position.y -= 10
 	if %DetectLightLeft.is_colliding():
 		position.x += 10
-	if %DetectLightUp.is_colliding():
-		position.y += 10
 	
 	
 	#si Hades collides avec une light, alors on va calculer sa position x à ce moment-là.
@@ -271,8 +267,9 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 func on_enter_black_light(BL:Area2D) -> void:
 	isInBlackLight = true
 	blackLightIn = BL
-	%LumierePerso.range_item_cull_mask = 10
+	%LumierePerso.range_item_cull_mask = 6
 	print("Obs entered BL : ", BL)
+	Global.switchLightView(true)
 
 #Lorsque Obscurite exit une black light, son Item cull Mask de LumierePerso repasse à sa valeur par défaut
 func on_exit_black_light() -> void:
@@ -280,6 +277,7 @@ func on_exit_black_light() -> void:
 	blackLightIn = null
 	%LumierePerso.range_item_cull_mask = 11
 	print("O exit BL, blackLightIn : ",blackLightIn)
+	Global.switchLightView(true)
 
 
 #lorsque l'area de sa range est active, toutes les lights à proximité ont leur variable can_light_off activée

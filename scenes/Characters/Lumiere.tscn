@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://dxgrb1rjapq76"]
+[gd_scene load_steps=72 format=3 uid="uid://dxgrb1rjapq76"]
 
 [ext_resource type="Script" path="res://scripts/lumiere.gd" id="1_3jle8"]
 [ext_resource type="Texture2D" uid="uid://c258s65pwiupf" path="res://assets/sprites/Enchantress/Idle.png" id="1_uewwh"]
@@ -17,6 +17,15 @@
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7ebyv"]
 polygon = PackedVector2Array(0, 59, -5, 64, 7.5, 64)
+
+[sub_resource type="Gradient" id="Gradient_f2i0k"]
+offsets = PackedFloat32Array(0, 0.631016, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_c5ic8"]
+gradient = SubResource("Gradient_f2i0k")
+fill = 1
+fill_from = Vector2(0.512821, 0.551282)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u1h8b"]
 atlas = ExtResource("1_uewwh")
@@ -686,9 +695,13 @@ sfx_L_magic_charge = ExtResource("4_sbunb")
 position = Vector2(0, -64)
 occluder = SubResource("OccluderPolygon2D_7ebyv")
 
+[node name="Ombre" type="Sprite2D" parent="."]
+position = Vector2(2.5, -1.69407e-21)
+scale = Vector2(0.472074, 0.104365)
+texture = SubResource("GradientTexture2D_c5ic8")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Lumiere"]]
 unique_name_in_owner = true
-light_mask = 15
 visibility_layer = 15
 position = Vector2(0, -64)
 sprite_frames = SubResource("SpriteFrames_o4ikh")

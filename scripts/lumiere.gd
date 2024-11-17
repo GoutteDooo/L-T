@@ -76,11 +76,8 @@ func _physics_process(delta: float) -> void:
 				%Range.monitoring = false
 				%Range.visible = false
 				isPlayingMagic = false
-			
 		else:
-			
 			Handle_jump(delta)
-			
 			#input direction : -1, 0, 1
 			direction = Input.get_axis("move_lumiere_left", "move_lumiere_right")
 			
@@ -95,6 +92,9 @@ func _physics_process(delta: float) -> void:
 				
 			#animations
 			if is_on_floor():
+				#remettre son ombre si elle vient d'atterir
+				if !$Ombre.visible:
+					$Ombre.visible = true
 				if isPlayingMagic:
 					#stopper le déplacement pendant le sort
 					direction = 0
@@ -112,6 +112,9 @@ func _physics_process(delta: float) -> void:
 						animated_sprite.play("run")
 				
 			else:
+				#Annuler son ombre quand dans les airs
+				if $Ombre.visible:
+					$Ombre.visible = false
 				#ne joue l'animation jump qu'une seule fois
 				if not animated_sprite.is_playing() or animated_sprite.animation != "jump":
 					animated_sprite.play("jump")
@@ -273,7 +276,7 @@ func on_enter_light() -> void:
 #Lorsque Lumiere enter une light, son compteur s'incrémente
 func on_enter_black_light() -> void:
 	on_enter_light()
-	animated_sprite.light_mask = 2
+	animated_sprite.light_mask = 1
 	#Pour la BL, problèmes de bugs
 	#désactive la ML si elle est déjà activée
 	if %ML.monitoring == true && %BL.visible == true:
@@ -285,7 +288,7 @@ func on_enter_black_light() -> void:
 #Lorsque Lumiere quitte la black_light, son light_mask se remet à sa valeur par défaut
 func on_exit_black_light(black_light:Area2D) -> void:
 	on_exit_light(black_light)
-	animated_sprite.light_mask = 7
+	animated_sprite.light_mask = 6
 	print("light mask :", animated_sprite.light_mask)
 
 
@@ -371,7 +374,8 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if animated_sprite.frame in footstep_frames: %sfx_player.play()
 	
 
-
+##CETTE FONCTION N'EST PLUS UTILE ACTUELLEMENT
+##ELLE EST D'AILLEURS VIDE
 func create_light() -> void:
 	# --- LUMIERE ---
 	
