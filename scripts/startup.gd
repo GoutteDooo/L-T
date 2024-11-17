@@ -77,7 +77,7 @@ func _process(delta: float) -> void:
 		var rng = randf() #permettra de randomiser pour éviter de lancer la fonction 10000x/sec
 		if rng > 0.9:
 			for i in range(0, light_array.size()):
-				print("Array : ", light_array)
+				#print("Array : ", light_array)
 				if light_array[i] == null:
 					#print("Tentative de removing freed object...")
 					light_array.remove_at(i)
@@ -158,7 +158,7 @@ func handleLuluView(levier:bool) -> void:
 		lulu.animated_sprite.light_mask = 15
 		cam_L.enabled = true
 		cam_H.enabled = false
-		print_debug("cam lulu activée & H désactivée")
+		#print_debug("cam lulu activée & H désactivée")
 	switchLightView(levier)
 
 func handleHadesView(levier: bool) -> void:
@@ -168,25 +168,33 @@ func handleHadesView(levier: bool) -> void:
 		hades.visible = true
 		cam_L.enabled = false
 		cam_H.enabled = true
-		print_debug("cam H activée & L désactivée")
+		#print_debug("cam H activée & L désactivée")
 
+## Gère les couleurs des lights lors du "Switch Characters"
 func switchLightView(luluView:bool) -> void:
 	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
+	##----- Change les couleurs des lighters -----
 	for lighters in level_en_cours.get_children():
 		if lighters.is_in_group("lighters"):
 			var calque = lighters.get_node("Magic_light/Calque")
 			var full_circle = lighters.get_node("Magic_light/fullCircle")
-			if luluView: #Lulu
-				print("enfant de la scene : ",lighters)
+			#----- LULU -----
+			if luluView: 
+				#print("enfant de la scene : ",lighters)
 				lighters.modulate = Color(1,1,1,1)
 				#Gère le calque de la light pour une light toute noire
 				if calque && full_circle:
-					print("full circle : ", full_circle)
+					#print("full circle : ", full_circle)
 					calque.modulate = Color(1,0,0,1)
 					full_circle.visible = false
-			else: #Hades
+			#----- HADES -----
+			else:
 				lighters.modulate = Color(1,1,1,1)
 				if calque && full_circle:
 					calque.modulate = Color(1,1,1,0.0666)
 					full_circle.visible = true
-	
+	##----- Change les couleurs des characters -----
+	#----- LULU -----
+	if luluView:
+		hades.visible = true
+		

@@ -429,7 +429,7 @@ _data = {
 [node name="Obscurite" type="CharacterBody2D" groups=["Characters", "Obscurite"]]
 z_index = 20
 scale = Vector2(0.5, 0.5)
-collision_layer = 2
+collision_layer = 3
 collision_mask = 2
 script = ExtResource("1_n8dm4")
 sfx_O_footsteps = ExtResource("2_fy3ng")
@@ -461,7 +461,7 @@ range_item_cull_mask = 6
 texture = ExtResource("5_0v7em")
 texture_scale = 0.2
 
-[node name="LumierePerso" type="PointLight2D" parent="."]
+[node name="LumierePerso" type="PointLight2D" parent="." groups=["Characters", "Obscurite"]]
 unique_name_in_owner = true
 use_parent_material = true
 position = Vector2(4, -48)

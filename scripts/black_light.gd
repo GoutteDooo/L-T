@@ -2,11 +2,12 @@ extends Area2D
 
 
 func _on_body_entered(body: Node2D) -> void:
+	print("Oui")
 	if body.is_in_group("Lumiere"):
 		get_tree().call_group("Lumiere", "on_enter_black_light")
 		Global.light_array.push_front(self)
 	if body.is_in_group("Obscurite"):
-		get_tree().call_group("Obscurite", "on_enter_black_light")
+		get_tree().call_group("Obscurite", "on_enter_black_light", self)
 
 
 func _on_body_exited(body: Node2D) -> void:

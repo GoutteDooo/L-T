@@ -714,7 +714,7 @@ tile_set = SubResource("TileSet_8rh8o")
 
 [node name="Obscurite" parent="." instance=ExtResource("2_8smen")]
 unique_name_in_owner = true
-position = Vector2(-357, 13)
+position = Vector2(-332, 23)
 
 [node name="Switch_camera" parent="Obscurite" instance=ExtResource("4_vsw0c")]
 enabled = false
@@ -799,5 +799,5 @@ scale = Vector2(18.4821, 1.10321)
 position = Vector2(185, -8)
 
 [node name="Black_Light" parent="." instance=ExtResource("13_3bn3a")]
-position = Vector2(-328, -81)
-scale = Vector2(0.395894, 0.395894)
+position = Vector2(-422, 0)
+scale = Vector2(0.49689, 0.536633)

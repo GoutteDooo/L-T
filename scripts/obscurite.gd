@@ -21,6 +21,8 @@ var jump_available = true
 var collides_with_light = false #levier permettant de lever/actionner le process
 var diff_x = 0 #permettra de connaître dans quelle direction Hades rebondira
 var counter_in_light = 0 #compteur permettant de savoir si Hades collides dynamiquement avec une light
+@export var isInBlackLight = false #levier permettant de savoir s'il est dans une BL
+var blackLightIn: Area2D = null #Variable qui stocke la black light dans laquelle Hades est.
 
 #sons
 @export var sfx_O_footsteps : AudioStream
@@ -170,7 +172,6 @@ func _physics_process(delta: float) -> void:
 	#if collides_with_light:
 		#if counter_in_light > 0:
 			#position.x += sign(diff_x) * 10
-			
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -267,14 +268,18 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 	if %AnimatedSprite2D.frame in footstep_frames: %sfx_player.play()
 	
 #Lorsque Obscurite enter une black light, son Item cull Mask de LumierePerso passe a 2 et 4
-func on_enter_black_light() -> void:
+func on_enter_black_light(BL:Area2D) -> void:
+	isInBlackLight = true
+	blackLightIn = BL
 	%LumierePerso.range_item_cull_mask = 10
-	print("O enter BL")
+	print("Obs entered BL : ", BL)
 
 #Lorsque Obscurite exit une black light, son Item cull Mask de LumierePerso repasse à sa valeur par défaut
 func on_exit_black_light() -> void:
+	isInBlackLight = false
+	blackLightIn = null
 	%LumierePerso.range_item_cull_mask = 11
-	print("O exit BL")
+	print("O exit BL, blackLightIn : ",blackLightIn)
 
 
 #lorsque l'area de sa range est active, toutes les lights à proximité ont leur variable can_light_off activée
