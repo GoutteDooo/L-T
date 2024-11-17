@@ -67,8 +67,8 @@ func _process(delta: float) -> void:
 			obscur_control(!player_control_O)
 			lulu.animated_sprite.play("idle")
 			hades.animated_sprite.play("idle")
-			handleLuluView(!player_control_L)
-			handleHadesView(!player_control_O)
+			handle_views(!player_control_L)
+			#handleHadesView(!player_control_O)
 	#PROBLEME !
 	#Parfois, un <Freed Object> se plante dans le tableau lorsque Lulu kill Hadès
 	#Avec cette fonction qui vérifie en permanence s'il y'a un freed object, ça permet de les remove s'il y'en a.
@@ -146,12 +146,17 @@ func obscur_control(levier:bool) -> void:
 	Global.player_control_O = levier
 	print("Hades control : ", levier)
 
-func handleLuluView(levier:bool) -> void:
+func handle_views(levier:bool) -> void:
 	if levier:
 		#Hades
 		lulu.animated_sprite.light_mask = 12
 		lulu.animated_sprite.modulate = Color(0,0,0,1)
 		#print_debug("lulu light mask :", lulu.light_mask)
+		##test
+		hades.visible = true
+		cam_L.enabled = false
+		cam_H.enabled = true
+		
 	else:
 		#Lulu
 		lulu.animated_sprite.modulate = Color(1,1,1,1)
@@ -159,16 +164,20 @@ func handleLuluView(levier:bool) -> void:
 		cam_L.enabled = true
 		cam_H.enabled = false
 		#print_debug("cam lulu activée & H désactivée")
+		##test
+		hades.visible = false
+		
 	switchLightView(levier)
 
 func handleHadesView(levier: bool) -> void:
-	if levier:
-		hades.visible = false
-	else:
-		hades.visible = true
-		cam_L.enabled = false
-		cam_H.enabled = true
+	#if levier:
+		#hades.visible = false
+	#else:
+		#hades.visible = true
+		#cam_L.enabled = false
+		#cam_H.enabled = true
 		#print_debug("cam H activée & L désactivée")
+	pass
 
 ## Gère les couleurs des lights lors du "Switch Characters"
 func switchLightView(luluView:bool) -> void:
