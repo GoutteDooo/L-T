@@ -3,6 +3,7 @@ extends CharacterBody2D
 #variable de test
 var levier_test = false
 const light_pushing = 50 #en px
+var printer = 0 #faire printer++ jusqu'à 100 pour actualiser le print
 
 #constantes
 const SPEED = 170.0
@@ -97,7 +98,7 @@ func _physics_process(delta: float) -> void:
 				#remettre son ombre si elle vient d'atterir
 				if !$Ombre.visible:
 					$Ombre.visible = true
-				if isPlayingMagic:
+				if isPlayingMagic && animation_state == anim_States.MAGIC:
 					#stopper le déplacement pendant le sort
 					direction = 0
 					#jouer le son magic charge
@@ -199,6 +200,10 @@ func _physics_process(delta: float) -> void:
 	elif meca_state == MecaStates.OFF:
 		#print("Lulu est off !")
 		animated_sprite.play("idle")
+	printer = printer+5
+	if printer == 60:
+		print("lulu state : ", animation_state)
+		printer = 0
 
 func Coyote_timeout() -> void:
 	jump_available = false
@@ -235,6 +240,7 @@ func Handle_magic() -> void:
 				#levier contrôlant l'animation
 				isPlayingMagic = true
 				#on déclenche l'animation magic
+				animation_state = anim_States.MAGIC
 				animated_sprite.play("magic_start")
 				#Range est on
 				%Range.monitoring = true
@@ -260,6 +266,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		
 	if animated_sprite.animation == "magic_end":
 		isPlayingMagic = false
+		animation_state = anim_States.IDLE
 		#DEBUG
 		#print("isPlayingMagic, fin anim : ", isPlayingMagic)
 	#Lorsque clignement des yeux finis, on retourne à idle original
