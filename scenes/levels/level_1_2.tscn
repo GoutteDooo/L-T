@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://b3d53xqf7rbh2"]
+[gd_scene load_steps=45 format=4 uid="uid://b3d53xqf7rbh2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1_2.gd" id="1_g2ste"]
 [ext_resource type="Texture2D" uid="uid://c6b1asvtp5xj6" path="res://assets/sprites/decor/main_lev_build_1.png" id="1_of2ru"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="6_31nni"]
 [ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="7_rctse"]
 [ext_resource type="PackedScene" uid="uid://cty4e4wfd0ri1" path="res://scenes/objects/cristal_rouge.tscn" id="11_qb0ur"]
+[ext_resource type="PackedScene" uid="uid://bfm8d3cpo0smu" path="res://scenes/objects/magical_light_shape.tscn" id="12_gaov8"]
 [ext_resource type="PackedScene" uid="uid://dngbj1ef678lw" path="res://scenes/objects/black_light.tscn" id="13_3bn3a"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_ilvwo"]
@@ -703,7 +704,6 @@ pattern_1 = SubResource("TileMapPattern_qusqo")
 script = ExtResource("1_g2ste")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 z_index = -10
 color = Color(0, 0, 0, 1)
 
@@ -747,7 +747,6 @@ scale = Vector2(0.799095, 0.799095)
 transform = Transform2D(0.799095, 0, 0, 0.799095, 0, 0)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="BGs"]
-visible = false
 color = Color(0.359069, 0.359069, 0.359069, 1)
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="BGs"]
@@ -813,3 +812,6 @@ scale = Vector2(0.49689, 0.536633)
 
 [node name="CristalRouge" parent="." instance=ExtResource("11_qb0ur")]
 position = Vector2(26, -42)
+
+[node name="MagicalLightShape" parent="." instance=ExtResource("12_gaov8")]
+position = Vector2(-810, -246)

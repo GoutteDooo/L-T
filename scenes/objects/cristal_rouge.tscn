@@ -140,6 +140,9 @@ _data = {
 }
 
 [node name="CristalRouge" type="Area2D"]
+light_mask = 16
+visibility_layer = 16
+z_index = 20
 scale = Vector2(0.388784, 0.388784)
 collision_mask = 3
 script = ExtResource("1_rug6y")
@@ -149,7 +152,7 @@ position = Vector2(-3.8147e-06, -2.57212)
 scale = Vector2(1.79468, 2.37948)
 color = Color(1, 0, 0, 1)
 energy = 4.0
-range_item_cull_mask = 7
+blend_mode = 2
 texture = SubResource("GradientTexture2D_niop5")
 texture_scale = 0.8
 

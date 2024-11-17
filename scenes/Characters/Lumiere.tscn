@@ -684,7 +684,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_o4s4n"]
 
 [node name="Lumiere" type="CharacterBody2D" groups=["Characters", "Lumiere"]]
-z_index = 20
+z_index = 21
 scale = Vector2(0.4, 0.4)
 script = ExtResource("1_3jle8")
 sfx_L_footsteps = ExtResource("6_58n88")

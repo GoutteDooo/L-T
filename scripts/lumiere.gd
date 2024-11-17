@@ -391,61 +391,61 @@ func create_light() -> void:
 	#Fait apparaître une light avec clic gauche
 	if Input.is_action_just_pressed("left_click"):
 		if Global.counter_click_lumiere > 0:
-			return
+			#return
 			print("ALERT : lumiere left click played !!!")
-			#Global.counter_click_lumiere -= 1
+			Global.counter_click_lumiere -= 1
 			#print("click restants lumière : ", Global.counter_click_lumiere)
-			#l_click_position = get_global_mouse_position()
-			#
-			##crée l'instance de la light
-			#var light_instance = light.instantiate()
-			#light_instance.scale = Vector2(0.5,0.5)
-			#
-			## Obtenir le nœud principal de la scène actuelle (Main Node)
-			#var main_node = get_tree().current_scene
-			#
-			#
-			##--- Vérifier si on a pas cliqué sur un mushroom ou une instance particulière ---
-			#var query = PhysicsPointQueryParameters2D.new()
-			#query.position = l_click_position
-			#
-			## Activer la détection des Area2D car false par défaut dans la doc
-			#query.collide_with_areas = true
-			#
-			#var space_state = get_world_2d().direct_space_state
-			#
-			#var result = space_state.intersect_point(query, 4)
-			#
-			##Avant de vérifier si on a cliqué sur une instance particulière, on add la light au main node
-			##important pour avoir de bons résultats de positions
-			## Ajouter l'instance au nœud Main
-			#main_node.add_child(light_instance)
-			#
-			## Positionner l'instance à la position du clic
-			#light_instance.global_position = l_click_position
-			#
-			##Vérifier si on a cliqué sur un lighter, et, le cas échéant, modifier la scale et la color
-			#for hit in result:
-				#if hit.collider.is_in_group("lighters"):
-					##DEBUG
-					##print("scale du mush:", hit.collider.scale)
-					#var collision_shape = hit.collider.get_node("%AllumerMush")
-					#if collision_shape:
-						#light_instance.scale = hit.collider.scale * 0.4
-						##DEBUG
-						##print("scale de la light : ", light_instance.scale)
-						#light_instance.modulate = Color(1, 1, 0)  # Jaune
-						#
-						## Positionner l'instance à la position du lighter
-						#light_instance.global_position = collision_shape.global_position
-						##DEBUG
-						##print("lighters trouvé")
-			#
-			##jouer le son magie
-			#Global.magic_lumiere_sound.play()
+			l_click_position = get_global_mouse_position()
 			
-			#DEBUG
-			#print("light placée. Compteur de Lumiere : ", Global.counter_click_lumiere)
+			#crée l'instance de la light
+			var light_instance = light.instantiate()
+			light_instance.scale = Vector2(0.3,0.3)
+			
+			# Obtenir le nœud principal de la scène actuelle (Main Node)
+			var main_node = get_tree().current_scene
+			
+			
+			#--- Vérifier si on a pas cliqué sur un mushroom ou une instance particulière ---
+			var query = PhysicsPointQueryParameters2D.new()
+			query.position = l_click_position
+			
+			# Activer la détection des Area2D car false par défaut dans la doc
+			query.collide_with_areas = true
+			
+			var space_state = get_world_2d().direct_space_state
+			
+			var result = space_state.intersect_point(query, 4)
+			
+			#Avant de vérifier si on a cliqué sur une instance particulière, on add la light au main node
+			#important pour avoir de bons résultats de positions
+			# Ajouter l'instance au nœud Main
+			main_node.add_child(light_instance)
+			
+			# Positionner l'instance à la position du clic
+			light_instance.global_position = l_click_position
+			
+			#Vérifier si on a cliqué sur un lighter, et, le cas échéant, modifier la scale et la color
+			for hit in result:
+				if hit.collider.is_in_group("lighters"):
+					#DEBUG
+					#print("scale du mush:", hit.collider.scale)
+					var collision_shape = hit.collider.get_node("%AllumerMush")
+					if collision_shape:
+						light_instance.scale = hit.collider.scale * 0.4
+						#DEBUG
+						#print("scale de la light : ", light_instance.scale)
+						light_instance.modulate = Color(1, 1, 0)  # Jaune
+						
+						# Positionner l'instance à la position du lighter
+						light_instance.global_position = collision_shape.global_position
+						#DEBUG
+						#print("lighters trouvé")
+			
+			#jouer le son magie
+			Global.magic_lumiere_sound.play()
+			
+			##DEBUG
+			print("light placée. Compteur de Lumiere : ", Global.counter_click_lumiere)
 		else:
 			return
 			print("ALERT : lumiere left click played !!!")
