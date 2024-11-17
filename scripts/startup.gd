@@ -152,7 +152,6 @@ func handleLuluView(levier:bool) -> void:
 		lulu.animated_sprite.light_mask = 12
 		lulu.animated_sprite.modulate = Color(0,0,0,1)
 		#print_debug("lulu light mask :", lulu.light_mask)
-		switchLightView(levier)
 	else:
 		#Lulu
 		lulu.animated_sprite.modulate = Color(1,1,1,1)
@@ -160,6 +159,7 @@ func handleLuluView(levier:bool) -> void:
 		cam_L.enabled = true
 		cam_H.enabled = false
 		print_debug("cam lulu activée & H désactivée")
+	switchLightView(levier)
 
 func handleHadesView(levier: bool) -> void:
 	if levier:
@@ -172,11 +172,21 @@ func handleHadesView(levier: bool) -> void:
 
 func switchLightView(luluView:bool) -> void:
 	var level_en_cours = get_node("/root/Level" + str(counter_level) + "_2")
-	for child in level_en_cours.get_children():
-		if child.is_in_group("lighters"):
+	for lighters in level_en_cours.get_children():
+		if lighters.is_in_group("lighters"):
+			var calque = lighters.get_node("Magic_light/Calque")
+			var full_circle = lighters.get_node("Magic_light/fullCircle")
 			if luluView: #Lulu
-				print("enfant de la scene : ",child)
-				child.modulate = Color(1,0.5,0.5,1)
+				print("enfant de la scene : ",lighters)
+				lighters.modulate = Color(1,1,1,1)
+				#Gère le calque de la light pour une light toute noire
+				if calque && full_circle:
+					print("full circle : ", full_circle)
+					calque.modulate = Color(1,0,0,1)
+					full_circle.visible = false
 			else: #Hades
-				child.modulate = Color(1,1,1,1)
+				lighters.modulate = Color(1,1,1,1)
+				if calque && full_circle:
+					calque.modulate = Color(1,1,1,0.0666)
+					full_circle.visible = true
 	

@@ -428,6 +428,7 @@ sfx_O_jump = ExtResource("3_7pcdo")
 sfx_O_magic_loop = ExtResource("4_8msxb")
 
 [node name="NegativeLumiereFee" type="PointLight2D" parent="."]
+visible = false
 light_mask = 7
 visibility_layer = 7
 position = Vector2(2, -44)
@@ -439,6 +440,7 @@ texture = ExtResource("5_0v7em")
 texture_scale = 0.2
 
 [node name="NegativeLumiere" type="PointLight2D" parent="."]
+visible = false
 light_mask = 7
 visibility_layer = 7
 position = Vector2(4, -48)
@@ -456,12 +458,13 @@ material = SubResource("CanvasItemMaterial_pnkln")
 use_parent_material = true
 position = Vector2(4, -48)
 scale = Vector2(8.8256, 9.07052)
-color = Color(1, 0.845564, 0.87294, 1)
+color = Color(1, 0.832862, 0.862788, 1)
 range_item_cull_mask = 7
 texture = ExtResource("5_0v7em")
 texture_scale = 0.15
 
 [node name="Vision" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.370929, 0.581081, 1, 1)
 light_mask = 7
 material = SubResource("CanvasItemMaterial_k81m8")

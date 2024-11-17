@@ -135,6 +135,7 @@ scale = Vector2(1.65825, 1.65825)
 texture = ExtResource("5_sl3mb")
 
 [node name="Calque" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.0666667)
 material = SubResource("CanvasItemMaterial_p4nb4")
 rotation = -3.14159

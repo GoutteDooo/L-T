@@ -484,7 +484,7 @@ func _on_range_area_exited(area: Area2D) -> void:
 		area.can_magic_light = false
 
 func is_in_shadow() -> void:
-	##Check a chaque instant si Lulu est dans les ténèbres
+	##Check a chaque instant avec process si Lulu est dans les ténèbres
 	##dans ce cas, restart la partie ou go centre ancienne light
 	pass
 	

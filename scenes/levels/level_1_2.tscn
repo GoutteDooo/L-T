@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=4 uid="uid://b3d53xqf7rbh2"]
+[gd_scene load_steps=45 format=4 uid="uid://b3d53xqf7rbh2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1_2.gd" id="1_g2ste"]
 [ext_resource type="Texture2D" uid="uid://c6b1asvtp5xj6" path="res://assets/sprites/decor/main_lev_build_1.png" id="1_of2ru"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dfayvub537h8e" path="res://scenes/objects/Mushroom.tscn" id="6_31nni"]
 [ext_resource type="PackedScene" uid="uid://dg61vboaimjrs" path="res://scenes/objects/butterfly.tscn" id="7_fg7qq"]
 [ext_resource type="PackedScene" uid="uid://callp3dxi201o" path="res://scenes/objects/checkpoint_lumiere.tscn" id="7_rctse"]
-[ext_resource type="PackedScene" uid="uid://d3k7f01mk0jkc" path="res://scenes/objects/magic_light.tscn" id="9_1ji0j"]
 [ext_resource type="PackedScene" uid="uid://8yvdlv2frcn5" path="res://scenes/objects/CristalBleu.tscn" id="11_c3566"]
 [ext_resource type="PackedScene" uid="uid://dngbj1ef678lw" path="res://scenes/objects/black_light.tscn" id="13_3bn3a"]
 
@@ -764,8 +763,9 @@ scale = Vector2(0.691879, 0.691879)
 mushroom_light_on = true
 
 [node name="Mushroom2" parent="." instance=ExtResource("6_31nni")]
-position = Vector2(-358, 47)
+position = Vector2(-509, 48)
 scale = Vector2(1.28221, 1.28221)
+mushroom_light_on = true
 
 [node name="Mushroom3" parent="." instance=ExtResource("6_31nni")]
 position = Vector2(-106, -24)
@@ -786,21 +786,16 @@ mushroom_light_on = true
 
 [node name="Butterfly" parent="." instance=ExtResource("7_fg7qq")]
 z_index = 1
-position = Vector2(-474, -26)
+position = Vector2(-456, -55)
 
 [node name="Checkpoint_Lumiere" parent="." instance=ExtResource("7_rctse")]
 unique_name_in_owner = true
 position = Vector2(-194, 249)
 scale = Vector2(18.4821, 1.10321)
 
-[node name="Magic_light" parent="." instance=ExtResource("9_1ji0j")]
-modulate = Color(1, 1, 0, 1)
-position = Vector2(-514, 22)
-scale = Vector2(0.557645, 0.557645)
-
 [node name="CristalBleu" parent="." instance=ExtResource("11_c3566")]
 position = Vector2(185, -8)
 
 [node name="Black_Light" parent="." instance=ExtResource("13_3bn3a")]
-position = Vector2(-359, 19)
+position = Vector2(-328, -81)
 scale = Vector2(0.395894, 0.395894)

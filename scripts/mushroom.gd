@@ -16,7 +16,7 @@ func _process(delta: float) -> void:
 	if mushroom_light_on == temp_switch_light:
 		temp_switch_light = !temp_switch_light
 		handle_mushroom_light(temp_switch_light)
-		print("switch")
+		#print("switch")
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	

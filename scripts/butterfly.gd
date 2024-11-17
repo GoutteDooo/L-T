@@ -62,7 +62,8 @@ func _process(delta: float) -> void:
 	if is_magic_light_on == temp_switch_light:
 		temp_switch_light = !temp_switch_light
 		handle_light(temp_switch_light)
-		
+	
+	
 func handle_light(levier:bool) -> void:
 	if !levier:
 		%AnimationPlayer.play("ML_on")
