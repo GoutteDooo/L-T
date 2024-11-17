@@ -17,8 +17,8 @@ var cine_state: cine_States = cine_States.OFF
 
 
 #Player
-const number_click_obscurite = [100, 4, 5, 4, 0,0] #chaque number en fonction du niveau
-const number_click_lumiere = [100, 1, 2, 3, 0,0] #chaque number en fonction du niveau
+const number_click_obscurite = [100, 104, 105, 104, 100,100] #chaque number en fonction du niveau
+const number_click_lumiere = [100, 101, 102, 103, 100,100] #chaque number en fonction du niveau
 var counter_click_obscurite = number_click_obscurite[counter_level] #nbs de lights que Obscurite peut éteindre
 var counter_click_lumiere = number_click_lumiere[counter_level] #nbs de lights que Lumiere peut créer par scene
 var lulu = null

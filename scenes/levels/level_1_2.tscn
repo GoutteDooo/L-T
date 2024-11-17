@@ -705,7 +705,6 @@ pattern_1 = SubResource("TileMapPattern_qusqo")
 script = ExtResource("1_g2ste")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 z_index = -10
 color = Color(0, 0, 0, 1)
 
@@ -788,7 +787,6 @@ mushroom_light_on = true
 [node name="Butterfly" parent="." instance=ExtResource("7_fg7qq")]
 z_index = 1
 position = Vector2(-474, -26)
-is_magic_light_on = true
 
 [node name="Checkpoint_Lumiere" parent="." instance=ExtResource("7_rctse")]
 unique_name_in_owner = true
