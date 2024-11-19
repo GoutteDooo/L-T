@@ -6,10 +6,10 @@ extends Area2D
 
 
 func _process(delta: float) -> void:
-		if !Global.player_control_L && !Global.player_control_O:
-			set_process_input(false)
-		else:
-			set_process_input(true)
+	if !Global.player_control_L && !Global.player_control_O:
+		set_process_input(false)
+	else:
+		set_process_input(true)
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
@@ -68,7 +68,7 @@ func _on_body_exited(body: Node2D) -> void:
 			#Si c'est le cas, alors on renvoie Lulu à son origine
 			#Sinon, on recommence la partie (Hades a du l'éteindre)
 			print("last light in :",Global.last_light_in)
-			#await get_tree().create_timer(0.01).timeout #car l'animation "OFF" du mushroom dure 0.2s
+			#await get_tree().create_timer(0.1).timeout #car l'animation "OFF" du mushroom dure 0.2s
 			if Global.last_light_in.monitoring:
 				print("Lulu est retransférée à la position : ", Global.last_light_in.global_position)
 				Global.lulu.position = Global.last_light_in.global_position
@@ -76,7 +76,13 @@ func _on_body_exited(body: Node2D) -> void:
 			else:
 				print("dernière light quittée inexistante, fin de la partie : ", Global.last_light_in)
 				Global.restart_game()
-			print("Tableau vide !")
+			print_debug("Tableau vide !")
 			
 	if body.is_in_group(obscurite_group) and !Global.game_over:
 		get_tree().call_group("Obscurite", "on_exit_light")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "free_light":
+		print("free_light finished")
+		self.queue_free()

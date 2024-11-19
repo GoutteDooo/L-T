@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d3k7f01mk0jkc"]
+[gd_scene load_steps=22 format=3 uid="uid://d3k7f01mk0jkc"]
 
 [ext_resource type="Script" path="res://scripts/magic_light.gd" id="1_gjxg2"]
 [ext_resource type="Texture2D" uid="uid://c3ihx2ldmubo5" path="res://assets/sprites/lights/64x64 textures (99).png" id="2_635ak"]
@@ -66,12 +66,74 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Animation" id="Animation_3b66s"]
+resource_name = "free_light"
+length = 11.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 5, 8.96667, 11.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.4, 0.4), Vector2(0.25, 0.25), Vector2(0.1, 0.1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 10.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_u6ay7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:monitoring")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pddho"]
+_data = {
+"RESET": SubResource("Animation_u6ay7"),
+"free_light": SubResource("Animation_3b66s")
+}
+
 [node name="Magic_light" type="Area2D" groups=["lights"]]
 light_mask = 2
 visibility_layer = 2
 z_index = 100
 collision_layer = 143
 collision_mask = 15
+monitoring = false
 script = ExtResource("1_gjxg2")
 
 [node name="luminosity" type="PointLight2D" parent="."]
@@ -151,6 +213,13 @@ sprite_frames = SubResource("SpriteFrames_pkcwu")
 autoplay = "default"
 frame_progress = 0.37338
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_pddho")
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

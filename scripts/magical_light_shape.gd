@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#When Player press 'E', shape of magical light appears
-	if Input.is_action_pressed("magic_lumiere"):
+	if Input.is_action_pressed("magic_lumiere") and Global.cam_L.enabled:
 		global_position = get_global_mouse_position()
 		if magicLoopSound.playing:
 			pass

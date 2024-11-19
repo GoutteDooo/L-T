@@ -392,9 +392,9 @@ func create_light() -> void:
 	if Input.is_action_just_pressed("left_click"):
 		if Global.counter_click_lumiere > 0:
 			#return
-			print("ALERT : lumiere left click played !!!")
+			#print("ALERT : lumiere left click played !!!")
 			Global.counter_click_lumiere -= 1
-			#print("click restants lumière : ", Global.counter_click_lumiere)
+			print("click restants lumière : ", Global.counter_click_lumiere)
 			l_click_position = get_global_mouse_position()
 			
 			#crée l'instance de la light
@@ -414,7 +414,8 @@ func create_light() -> void:
 			
 			var space_state = get_world_2d().direct_space_state
 			
-			var result = space_state.intersect_point(query, 4)
+			var result = space_state.intersect_point(query, 4)#crée un array s'il a touché une shape, sinon vide
+			print("result : ", result)
 			
 			#Avant de vérifier si on a cliqué sur une instance particulière, on add la light au main node
 			#important pour avoir de bons résultats de positions
@@ -423,31 +424,33 @@ func create_light() -> void:
 			
 			# Positionner l'instance à la position du clic
 			light_instance.global_position = l_click_position
+			light_instance.modulate = Color(1, 1, 0)  # Jaune
+			light_instance.get_node("%AnimationPlayer").play("free_light")
+			print("instance créée : ",light_instance)
 			
-			#Vérifier si on a cliqué sur un lighter, et, le cas échéant, modifier la scale et la color
+			#Vérifier si on a cliqué sur un lighter, et, le cas échéant, annuler l'action
 			for hit in result:
 				if hit.collider.is_in_group("lighters"):
 					#DEBUG
 					#print("scale du mush:", hit.collider.scale)
 					var collision_shape = hit.collider.get_node("%AllumerMush")
 					if collision_shape:
-						light_instance.scale = hit.collider.scale * 0.4
-						#DEBUG
-						#print("scale de la light : ", light_instance.scale)
-						light_instance.modulate = Color(1, 1, 0)  # Jaune
-						
-						# Positionner l'instance à la position du lighter
-						light_instance.global_position = collision_shape.global_position
-						#DEBUG
+						print("collision shape of ", hit.collider, "clicked !")
+						light_instance.queue_free()
+						#light_instance.scale = hit.collider.scale * 0.4
+						##DEBUG
+						##print("scale de la light : ", light_instance.scale)
+						#
+						## Positionner l'instance à la position du lighter
+						#light_instance.global_position = collision_shape.global_position
+						##DEBUG
 						#print("lighters trouvé")
 			
 			#jouer le son magie
 			Global.magic_lumiere_sound.play()
-			
 			##DEBUG
-			print("light placée. Compteur de Lumiere : ", Global.counter_click_lumiere)
+			#print("light placée. Compteur de Lumiere : ", Global.counter_click_lumiere)
 		else:
-			return
 			print("ALERT : lumiere left click played !!!")
 			Global.no_magic_yet_sound.play()
 			#DEBUG

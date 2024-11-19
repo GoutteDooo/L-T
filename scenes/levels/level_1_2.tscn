@@ -1,8 +1,9 @@
-[gd_scene load_steps=45 format=4 uid="uid://b3d53xqf7rbh2"]
+[gd_scene load_steps=46 format=4 uid="uid://b3d53xqf7rbh2"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_1_2.gd" id="1_g2ste"]
 [ext_resource type="Texture2D" uid="uid://c6b1asvtp5xj6" path="res://assets/sprites/decor/main_lev_build_1.png" id="1_of2ru"]
 [ext_resource type="PackedScene" uid="uid://cy8uooxj2bnmc" path="res://scenes/Characters/Obscurite.tscn" id="2_8smen"]
+[ext_resource type="PackedScene" uid="uid://brody5vyw0ctf" path="res://scenes/test/aides_visuelles.tscn" id="2_cb01h"]
 [ext_resource type="Texture2D" uid="uid://bawyr2vu0ttsv" path="res://assets/sprites/decor/background1.png" id="2_hmoqy"]
 [ext_resource type="PackedScene" uid="uid://dxgrb1rjapq76" path="res://scenes/Characters/Lumiere.tscn" id="2_qdr6f"]
 [ext_resource type="Texture2D" uid="uid://b67mnscpgsv3h" path="res://assets/sprites/decor/background4a.png" id="3_fie7o"]
@@ -702,6 +703,8 @@ pattern_1 = SubResource("TileMapPattern_qusqo")
 
 [node name="Level1_2" type="Node2D"]
 script = ExtResource("1_g2ste")
+
+[node name="HELP" parent="." instance=ExtResource("2_cb01h")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = -10
