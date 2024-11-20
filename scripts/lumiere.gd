@@ -387,7 +387,7 @@ func create_light() -> void:
 	# --- LUMIERE ---
 	
 	#Fait apparaître une light avec clic gauche
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("left_click") and isPlayingMagic:
 		if Global.counter_click_lumiere > 0:
 			#return
 			#print("ALERT : lumiere left click played !!!")
@@ -398,6 +398,12 @@ func create_light() -> void:
 			#crée l'instance de la light
 			var light_instance = light.instantiate()
 			light_instance.scale = Vector2(0.3,0.3)
+			
+			## TEST
+			#Si light est dans range, activer light sinon return
+			
+			
+			## TEST
 			
 			# Obtenir le nœud principal de la scène actuelle (Main Node)
 			var main_node = get_tree().current_scene
@@ -418,13 +424,8 @@ func create_light() -> void:
 			#Avant de vérifier si on a cliqué sur une instance particulière, on add la light au main node
 			#important pour avoir de bons résultats de positions
 			# Ajouter l'instance au nœud Main
-			main_node.add_child(light_instance)
+			#main_node.add_child(light_instance)
 			
-			# Positionner l'instance à la position du clic
-			light_instance.global_position = l_click_position
-			light_instance.modulate = Color(1, 1, 0)  # Jaune
-			light_instance.get_node("%AnimationPlayer").play("free_light")
-			print("instance créée : ",light_instance)
 			
 			#Vérifier si on a cliqué sur un lighter, et, le cas échéant, annuler l'action
 			for hit in result:
@@ -435,6 +436,7 @@ func create_light() -> void:
 					if collision_shape:
 						print("collision shape of ", hit.collider, "clicked !")
 						light_instance.queue_free()
+						return
 						#light_instance.scale = hit.collider.scale * 0.4
 						##DEBUG
 						##print("scale de la light : ", light_instance.scale)
@@ -443,6 +445,13 @@ func create_light() -> void:
 						#light_instance.global_position = collision_shape.global_position
 						##DEBUG
 						#print("lighters trouvé")
+				if hit.collider.is_in_group("lulu_range"):
+					# Positionner l'instance à la position du clic
+					main_node.add_child(light_instance)
+					light_instance.global_position = l_click_position
+					light_instance.modulate = Color(1, 1, 0)  # Jaune
+					light_instance.get_node("%AnimationPlayer").play("free_light")
+					print("instance créée : ",light_instance)
 			
 			#jouer le son magie
 			Global.magic_lumiere_sound.play()
