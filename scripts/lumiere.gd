@@ -391,7 +391,6 @@ func create_light() -> void:
 		if Global.counter_click_lumiere > 0:
 			#return
 			#print("ALERT : lumiere left click played !!!")
-			Global.counter_click_lumiere -= 1
 			print("click restants lumière : ", Global.counter_click_lumiere)
 			l_click_position = get_global_mouse_position()
 			
@@ -447,6 +446,7 @@ func create_light() -> void:
 						#print("lighters trouvé")
 				if hit.collider.is_in_group("lulu_range"):
 					# Positionner l'instance à la position du clic
+					Global.counter_click_lumiere -= 1
 					main_node.add_child(light_instance)
 					light_instance.global_position = l_click_position
 					light_instance.modulate = Color(1, 1, 0)  # Jaune
