@@ -383,8 +383,6 @@ func _on_animated_sprite_2d_frame_changed() -> void:
 		if animated_sprite.frame in footstep_frames: %sfx_player.play()
 	
 
-##CETTE FONCTION N'EST PLUS UTILE ACTUELLEMENT
-##ELLE EST D'AILLEURS VIDE
 func create_light() -> void:
 	# --- LUMIERE ---
 	

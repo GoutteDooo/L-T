@@ -12,9 +12,13 @@ glow_bloom = 0.1
 
 [node name="Game" type="Node2D"]
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ir73r")
+
 [node name="GUI" parent="." instance=ExtResource("1_ueryn")]
 
 [node name="Level1_2" parent="." instance=ExtResource("2_3ur1u")]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ir73r")
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+z_index = -10
+color = Color(0, 0, 0, 1)

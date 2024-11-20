@@ -378,7 +378,6 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 0, 1)
 position = Vector2(18, 58)
 rotation = -3.14159
-scale = Vector2(0.683103, 0.683103)
 
 [node name="switch_cam_Hades" type="Camera2D" parent="Cinematique"]
 position = Vector2(583, 442)
